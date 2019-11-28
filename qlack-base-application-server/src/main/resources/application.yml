@@ -3,7 +3,7 @@ spring:
   jackson:
     default-property-inclusion: non_null
   datasource:
-    name: sdpDS
+    name: qlackbaDS
     url: <db-url>
     username: <username>
     password: <password>
