@@ -1,0 +1,33 @@
+$sidenav-width: 200px;
+
+mat-sidenav {
+  width: $sidenav-width;
+}
+
+.sidenav {
+  button {
+    line-height: 2.5rem !important;
+    letter-spacinghg: .035em !important;
+    width: $sidenav-width;
+    text-align: left !important;
+    font-size: 1rem;
+  }
+
+  p {
+    margin-top: 0px;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  .active {
+    button {
+      background-color: #dddddd !important;
+    }
+  }
+}
+
+mat-divider {
+  margin: 0.3rem 0 0.3rem 0.8rem !important
+}

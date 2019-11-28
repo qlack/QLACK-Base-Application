@@ -1,0 +1,29 @@
+<div class="form-bg" fxLayoutAlign="center center" *ngIf="!hideLoginForm">
+  <mat-card>
+    <mat-card-title>Welcome, ready to authenticate?</mat-card-title>
+    <mat-card-content>
+      <form novalidate [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
+        <div fxLayout="column">
+          <div *ngIf="errorMessage!=null" class="alert">
+            {{ errorMessage }}
+          </div>
+          <mat-form-field>
+            <input matInput placeholder="Enter your email" formControlName="email" autofocus>
+            <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Enter your password" [type]="hidePassword ? 'password' : 'text'"
+                   formControlName="password">
+            <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility' : 'visibility_off'}}
+            </mat-icon>
+          </mat-form-field>
+          <button mat-button type="submit" color="primary" [disabled]="loginForm.invalid">LOGIN
+          </button>
+<!--          <a mat-button-->
+<!--             routerLink="/forgot-password">Forgot your password?-->
+<!--          </a>-->
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

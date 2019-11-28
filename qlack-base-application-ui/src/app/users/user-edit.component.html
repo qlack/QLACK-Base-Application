@@ -1,0 +1,45 @@
+<mat-card>
+  <mat-card-title>User edit</mat-card-title>
+  <mat-card-content>
+    <form novalidate [formGroup]="form">
+      <div fxLayout="column">
+        <mat-form-field>
+          <input matInput placeholder="Email"
+                 formControlName="email" autocomplete="username email">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="First Name" formControlName="firstname">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Last Name" formControlName="lastname">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="Status" formControlName="status">
+            <mat-option *ngFor="let o of constants.USER_STATUS| keyvalue"
+                        [value]="o.value">
+              {{ lookupByValue(constants.USER_STATUS, o.value) }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="New Password" [type]="hide1 ? 'password' :'text'"
+                 formControlName=newPassword1>
+          <mat-icon matSuffix (click)="hide1 = !hide1">{{hide1 ? 'visibility' : 'visibility_off'}}
+          </mat-icon>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Repeat Password" [type]="hide2 ? 'password' :'text'"
+                 formControlName="newPassword2">
+          <mat-icon matSuffix (click)="hide2 = !hide2">{{hide2 ? 'visibility' : 'visibility_off'}}
+          </mat-icon>
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button routerLink="new" routerLink="/users">CANCEL</button>
+    <button mat-button color="primary" (click)="save()">SAVE</button>
+    <button mat-button color="warn" (click)="delete()" *ngIf="id != 0">DELETE</button>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,21 @@
+@import "../styles-variables.scss";
+
+.toolbar {
+  font-size: 18px;
+  background-color: $e-color-blue;
+  color: #ffffff;
+  font-weight: 300;
+  height: 56px !important;
+  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);
+  margin-bottom: 2px;
+}
+
+.main {
+  margin: 15px 15px 15px 0;
+  .content {
+    margin-left: 15px;
+  }
+  .sidebar {
+  }
+}

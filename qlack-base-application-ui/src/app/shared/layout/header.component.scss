@@ -1,0 +1,17 @@
+@import "../../../styles-variables.scss";
+
+.top-line {
+  padding: 10px 10px 5px 10px;
+
+  .logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .logo-text {
+    padding-left: 10px;
+    font-size: 2em;
+    color: #666666;
+  }
+  background-color: #ffffff;
+}

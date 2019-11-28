@@ -1,0 +1,41 @@
+/** Material Design elements customization */
+@import 'styles-variables.scss';
+
+// Card title's style.
+.mat-card-title {
+  font-weight: 300 !important;
+  font-size: 22px !important;
+}
+
+// Add some bottom margin in inline tabs.
+.mat-tab-nav-bar {
+  margin-bottom: 1rem;
+}
+
+// No styling for href inside tables.
+.mat-table {
+  a {
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+// Tab's icons.
+.mat-tab-group {
+  .mat-icon {
+    margin-right: 0.3rem;
+    color: $e-color-blue-light;
+  }
+}
+
+// Allow some space below tabs (before tab's content starts).
+.mat-tab-header {
+  margin-bottom: 1rem;
+}
+
+// Pad tab's content, so that material elements with animations (e.g. radio button) do not clip the animation.
+.mat-tab-body-content {
+  padding-left: 1rem;
+}

@@ -1,0 +1,26 @@
+<ng-progress></ng-progress>
+<div fxLayout="column" fxFlexFill>
+  <!-- Header -->
+  <div>
+    <app-header></app-header>
+  </div>
+
+  <!-- Main content -->
+  <div>
+    <mat-toolbar color="primary" class="toolbar" *ngIf="isLoggedIn()">
+      <button type="button" mat-icon-button (click)="toggleSidebar()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Administration console</span>
+    </mat-toolbar>
+  </div>
+
+  <div fxFlex="grow" fxLayout="row" [class]="isLoggedIn() ? 'main' : ''" fxLayoutGap="1rem">
+    <div fxFlex="200px" *ngIf="isLoggedIn() && sidebarVisibility" class="sidebar">
+      <app-sidenav></app-sidenav>
+    </div>
+    <div fxFlex="grow" class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
