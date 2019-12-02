@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+  <packaging>jar</packaging>
     <parent>
         <groupId>com.eurodyn</groupId>
         <artifactId>qlack-base-application</artifactId>
@@ -14,5 +14,49 @@
     <artifactId>qlack-base-application-ui</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>frontend-maven-plugin</artifactId>
+        <configuration>
+          <installDirectory>./</installDirectory>
+          <nodeDownloadRoot>http://nodejs.org/dist/</nodeDownloadRoot>
+          <nodeVersion>${node.version}</nodeVersion>
+          <npmDownloadRoot>http://registry.npmjs.org/npm/-/</npmDownloadRoot>
+          <npmVersion>${npm.version}</npmVersion>
+          <workingDirectory>./</workingDirectory>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>install-node-and-npm</goal>
+            </goals>
+            <id>install node and npm</id>
+            <phase>generate-resources</phase>
+          </execution>
+          <execution>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <id>npm install</id>
+            <phase>generate-resources</phase>
+          </execution>
+          <execution>
+            <configuration>
+              <arguments>run-script build</arguments>
+            </configuration>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <id>prod</id>
+            <phase>generate-resources</phase>
+          </execution>
+        </executions>
+        <groupId>com.github.eirslett</groupId>
+        <version>${frontend.maven.plugin}</version>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>

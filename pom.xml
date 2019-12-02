@@ -18,6 +18,9 @@
 
   <properties>
     <java.version>1.8</java.version>
+    <frontend.maven.plugin>1.8.0</frontend.maven.plugin>
+    <node.version>v10.16.3</node.version>
+    <npm.version>6.12.0</npm.version>
   </properties>
 
   <modules>

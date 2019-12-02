@@ -35,4 +35,8 @@ export class NewPasswordComponent extends BaseComponent implements OnInit {
       newPassword: [''],
     })
   }
+
+  onSubmit(newPasswordForm: FormGroup) {
+
+  }
 }

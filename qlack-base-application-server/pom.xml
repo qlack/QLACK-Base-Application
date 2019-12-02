@@ -8,6 +8,7 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
+  <packaging>jar</packaging>
 
   <artifactId>qlack-base-application-server</artifactId>
 
@@ -122,6 +123,26 @@
             </annotationProcessorPath>
           </annotationProcessorPaths>
         </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <executions>
+          <execution>
+            <configuration>
+              <outputDirectory>${project.build.directory}/classes/resources/</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${project.parent.basedir}/qlack-base-application-ui/target/dist</directory>
+                </resource>
+              </resources>
+            </configuration>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <id>copy-resources</id>
+            <phase>validate</phase>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
