@@ -40,6 +40,6 @@
   <mat-card-actions>
     <button mat-button routerLink="new" routerLink="/users">CANCEL</button>
     <button mat-button color="primary" (click)="save()">SAVE</button>
-   <button mat-button color="warn" (click)="delete()" >DELETE</button> <!-- *ngIf="id != 0"-->
+   <button mat-button *ngIf="id != '0'" color="warn" (click)="delete()" >DELETE</button>
   </mat-card-actions>
 </mat-card>

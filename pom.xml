@@ -24,8 +24,9 @@
   </properties>
 
   <modules>
-    <module>qlack-base-application-server</module>
     <module>qlack-base-application-ui</module>
+    <module>qlack-base-application-server</module>
+
   </modules>
 
 </project>
