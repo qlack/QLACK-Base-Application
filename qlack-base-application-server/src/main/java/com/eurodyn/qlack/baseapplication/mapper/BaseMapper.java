@@ -1,9 +1,9 @@
 package com.eurodyn.qlack.baseapplication.mapper;
 
 import com.eurodyn.qlack.baseapplication.dto.BaseDTO;
-import com.eurodyn.qlack.util.data.optional.ReturnOptional;
 import com.eurodyn.qlack.baseapplication.model.BaseEntity;
 import com.eurodyn.qlack.baseapplication.repository.BaseRepository;
+import com.eurodyn.qlack.util.data.optional.ReturnOptional;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.springframework.beans.factory.annotation.Autowired;

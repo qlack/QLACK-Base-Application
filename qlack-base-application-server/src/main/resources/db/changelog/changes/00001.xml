@@ -5,6 +5,22 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
   <changeSet author="European Dynamics" id="15713129476666-1">
+    <createTable tableName="file">
+      <column name="id" type="VARCHAR(255)">
+        <constraints primaryKey="true"/>
+      </column>
+      <column name="created_by" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="created_on" type="datetime">
+        <constraints nullable="false"/>
+      </column>
+      <column name="modified_by" type="VARCHAR(255)"/>
+      <column name="modified_on" type="datetime"/>
+      <column name="version" type="BIGINT"/>
+      <column name="name" type="VARCHAR(255)"/>
+    </createTable>
+
     <createTable tableName="user">
       <column name="id" type="VARCHAR(255)">
         <constraints primaryKey="true"/>
@@ -22,13 +38,20 @@
       <column name="password" type="VARCHAR(255)">
         <constraints nullable="false"/>
       </column>
-      <column name="status" type="tinyint">
+      <column name="status" type="TINYINT(3)">
         <constraints nullable="false"/>
       </column>
+      <column name="profile_pic" type="VARCHAR(255)"/>
     </createTable>
   </changeSet>
 
-  <changeSet author="European Dynamics" id="1559547843560-8">
+  <changeSet author="European Dynamics" id="15713129476666-2">
+    <addForeignKeyConstraint baseColumnNames="profile_pic" baseTableName="user"
+      constraintName="FK_USER_PROFILE_PIC_ID" deferrable="false" initiallyDeferred="false"
+      onDelete="CASCADE" onUpdate="CASCADE" referencedColumnNames="id" referencedTableName="file"/>
+  </changeSet>
+
+  <changeSet author="European Dynamics" id="15713129476666-3">
     <insert tableName="user">
       <column name="id" value="20ac3cec-93a8-4fcb-a47b-2b8e87fbdeb4"/>
       <column name="version" value="1"/>
