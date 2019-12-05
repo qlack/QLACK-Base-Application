@@ -4,9 +4,9 @@ spring:
     default-property-inclusion: non_null
   datasource:
     name: qDS
-    url: jdbc:mysql://localhost:3306/sample?autoReconnect=true&createDatabaseIfNotExist=true&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: root
-    password: jijikos
+    url: url
+    username: username
+    password: password
     initialization-mode: always
     hikari:
       connection-test-query: SELECT 1
