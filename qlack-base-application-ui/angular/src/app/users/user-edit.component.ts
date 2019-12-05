@@ -57,7 +57,9 @@ export class UserEditComponent extends BaseComponent implements OnInit {
           this.form.get(('pic')).clearValidators();
           this.form.get('pic').updateValueAndValidity()
           this.imageURL = this.fileService.getImage(onNext.profilepic.id);
-        }
+        } else {
+            this.imageURL = '../assets/img/default.png';
+          }
       });
     }
   }

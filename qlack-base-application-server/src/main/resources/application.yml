@@ -18,4 +18,4 @@ spring:
       ddl-auto: none
     generate-ddl: true
 fs:
-    fs-root: "C:\\Users\\rgkol\\qlack-base-fs"
+    fs-root: <root_of_app_file_system>
