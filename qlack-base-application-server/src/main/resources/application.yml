@@ -3,10 +3,10 @@ spring:
   jackson:
     default-property-inclusion: non_null
   datasource:
-    name: qlackbaDS
-    url: <db-url>
-    username: <username>
-    password: <password>
+    name: qDS
+    url: jdbc:mysql://localhost:3306/sample?autoReconnect=true&createDatabaseIfNotExist=true&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: jijikos
     initialization-mode: always
     hikari:
       connection-test-query: SELECT 1
@@ -17,3 +17,5 @@ spring:
     hibernate:
       ddl-auto: none
     generate-ddl: true
+fs:
+    fs-root: "C:\\Users\\rgkol\\qlack-base-fs"
