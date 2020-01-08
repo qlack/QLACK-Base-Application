@@ -11,5 +11,6 @@ import org.mapstruct.NullValueCheckStrategy;
 public abstract class UserMapper extends BaseMapper<UserDTO, User> {
 
   @Mapping(ignore = true, target = "profilepic")
+  @Mapping(ignore = true, target = "extraInfo")
   public abstract void map(UserDTO dto, @MappingTarget User entity);
 }

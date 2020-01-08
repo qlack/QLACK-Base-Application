@@ -30,4 +30,8 @@ public class User extends BaseEntity {
   @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "profile_pic")
   private File profilepic;
+
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "extra_info")
+  private ExtraInfo extraInfo;
 }

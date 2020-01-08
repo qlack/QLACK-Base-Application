@@ -1,8 +1,8 @@
 package com.eurodyn.qlack.baseapplication.service;
 
-import com.eurodyn.qlack.baseapplication.dto.FileDTO;
+import com.eurodyn.qlack.baseapplication.dto.ExtraInfoDTO;
 import com.eurodyn.qlack.baseapplication.dto.UserDTO;
-import com.eurodyn.qlack.baseapplication.model.File;
+import com.eurodyn.qlack.baseapplication.model.ExtraInfo;
 import com.eurodyn.qlack.baseapplication.model.User;
 import com.eurodyn.qlack.baseapplication.repository.UserRepository;
 import com.eurodyn.qlack.common.exception.QAlreadyExistsException;
@@ -12,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-import org.springframework.web.multipart.MultipartFile;
 
 @Service
 @Transactional
@@ -25,16 +24,19 @@ public class UserService extends BaseService<UserDTO, User> {
   @Autowired
   private final FileService fileService;
 
-  public void upload(UserDTO userDTO, MultipartFile pic) {
+  @Autowired
+  private final ExtraInfoService extraInfoService;
+
+  public void upload(UserDTO userDTO) {
     if (isNewUser(userDTO) && repository.existsByEmail(userDTO.getEmail())) {
       throw new QAlreadyExistsException("Email is already in use.");
     }
 
     if (isNewUser(userDTO)) {
       userDTO.setId(null);
-      createUser(userDTO, pic);
+      createUser(userDTO);
     } else {
-      updateUser(userDTO, pic);
+      updateUser(userDTO);
     }
   }
 
@@ -42,17 +44,18 @@ public class UserService extends BaseService<UserDTO, User> {
     return userDTO.getId().equals("0");
   }
 
-  private void createUser(UserDTO userDTO, MultipartFile pic) {
-    FileDTO fileDTO = fileService.saveFile(pic);
-    File file = fileService.findEntityById(fileDTO.getId());
+  private void createUser(UserDTO userDTO) {
+    ExtraInfoDTO extraInfoDTO = extraInfoService.save(userDTO.getExtraInfo());
+    ExtraInfo extraInfo = extraInfoService.findEntityById(extraInfoDTO.getId());
 
     User newUser = mapper.map(userDTO);
-    newUser.setProfilepic(file);
+
+    newUser.setExtraInfo(extraInfo);
 
     repository.save(newUser);
   }
 
-  private void updateUser(UserDTO userDTO, MultipartFile pic) {
+  private void updateUser(UserDTO userDTO) {
     User user = ReturnOptional.r(repository.findById(userDTO.getId()));
 
     userDTO.setEmail(user.getEmail());
@@ -61,17 +64,5 @@ public class UserService extends BaseService<UserDTO, User> {
     }
 
     mapper.map(userDTO, user);
-
-    if (pic != null) {
-      FileDTO fileDTO = fileService.saveFile(pic);
-      File file = fileService.findEntityById(fileDTO.getId());
-
-      File previousPic = user.getProfilepic();
-      user.setProfilepic(file);
-
-      if (previousPic != null) {
-        fileService.deleteById(previousPic.getId());
-      }
-    }
   }
 }
