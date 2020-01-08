@@ -1,0 +1,8 @@
+{
+  "Email.userDTO.email": "Please enter a valid email address.",
+  "Pattern.userDTO.password": "Password mast follow the following rules -> length between 8-20 characters, at least 1 number, at least one capital letter, at least one special character.",
+  "Length.userDTO.firstname": "First name length must be between 10 and 60 characters.",
+  "Length.userDTO.lastname" :  "Last name length must be between 10 and 60 characters.",
+  "Min.userDTO.extraInfo.weight": "Weight must be at least 15.",
+  "Min.userDTO.extraInfo.age": "Age must be at least 10."
+}

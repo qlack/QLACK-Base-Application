@@ -18,6 +18,7 @@ import {MatTableModule} from '@angular/material/table';
 import {QFormsModule} from '@eurodyn/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 import {DisplayModule} from '../shared/component/display/display.module';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {DisplayModule} from '../shared/component/display/display.module';
     ReactiveFormsModule,
     MatSortModule,
     MatIconModule,
-    DisplayModule
+    DisplayModule,
+    MatTooltipModule
   ]
 })
 export class UsersModule {

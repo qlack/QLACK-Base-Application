@@ -3,7 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {CookieService} from 'ngx-cookie-service';
 import {routing} from './app.routes';
 import {LogoutComponent} from './auth/logout.component';
@@ -38,6 +38,9 @@ import {TextModalComponent} from './shared/component/display/text-modal/text-mod
 import {HomeComponent} from './home/home.component';
 import {FileuploadComponent} from './fileupload/fileupload.component';
 import {MatSelectModule} from '@angular/material/select';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {QLACKFormValidationModule} from '@qlack/form-validation';
 
 export function getJwtToken(): string {
   return localStorage.getItem(AppConstants.JWT_STORAGE_NAME);
@@ -90,7 +93,15 @@ export function getJwtToken(): string {
     }),
     NgProgressHttpModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
+    QLACKFormValidationModule
   ],
   exports: [],
   providers: [
@@ -103,4 +114,8 @@ export function getJwtToken(): string {
   entryComponents: [OkCancelModalComponent,TextModalComponent],
 })
 export class AppModule {
+}
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
 }

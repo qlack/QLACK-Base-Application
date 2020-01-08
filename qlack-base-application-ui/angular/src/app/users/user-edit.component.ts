@@ -7,8 +7,9 @@ import {MatDialog} from '@angular/material/dialog';
 import {BaseComponent} from '../shared/component/base-component';
 import {UtilityService} from '../shared/service/utility.service';
 import {OkCancelModalComponent} from '../shared/component/display/ok-cancel-modal/ok-cancel-modal.component';
-import {HttpEventType} from '@angular/common/http';
 import {FileService} from '../services/file.service';
+import {TranslateService} from '@ngx-translate/core';
+import {QLACKTypescriptFormValidationService} from '@qlack/form-validation';
 
 @Component({
   selector: 'app-user',
@@ -22,12 +23,12 @@ export class UserEditComponent extends BaseComponent implements OnInit {
   hide2 = true;
   isEdit = false;
   imageURL: string;
-  pic: ArrayBuffer | string;
+  persistedPassword: string;
 
   constructor(private fb: FormBuilder, private userService: UserService,
               private route: ActivatedRoute,
               private qForms: QFormsService, private router: Router, private dialog: MatDialog,
-              private utilityService: UtilityService, private fileService: FileService) {
+              private utilityService: UtilityService, private fileService: FileService, private validationService: QLACKTypescriptFormValidationService, private translateService: TranslateService) {
     super();
   }
 
@@ -38,48 +39,48 @@ export class UserEditComponent extends BaseComponent implements OnInit {
     // Setup the form.
     this.form = this.fb.group({
       id: ['0'],
-      email: [{value: '', disabled: this.isEdit}, [Validators.required, Validators.email]],
-      newPassword1: ['', [Validators.maxLength(1024)]],
-      newPassword2: ['', [Validators.maxLength(1024)]],
-      password: [],
+      email: [{value: '', disabled: this.isEdit}, [Validators.required]],
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
       status: ['', [Validators.required, Validators.maxLength(1024)]],
-      firstname: ['', [Validators.maxLength(1024)]],
-      lastname: ['', [Validators.maxLength(1024)]],
-      pic: [undefined, [Validators.required]]
+      password: ['', this.isEdit ? null : Validators.required],
+      repeatPassword: ['', this.isEdit ? null : Validators.required],
+      extraInfo: this.fb.group({
+        age: [0, Validators.required],
+        weight: [0, Validators.required],
+      })
     });
 
     // Fill-in the form with data if editing an existing item.
     if (this.isEdit) {
       this.userService.get(this.id).subscribe(onNext => {
         this.form.patchValue(onNext);
+        this.persistedPassword = onNext.password;
 
-        if (onNext.profilepic) {
-          this.form.get(('pic')).clearValidators();
-          this.form.get('pic').updateValueAndValidity()
-          this.imageURL = this.fileService.getImage(onNext.profilepic.id);
-        } else {
-            this.imageURL = '../assets/img/default.png';
-          }
       });
     }
   }
 
   save() {
-    if (this.form.controls['newPassword1'].value === this.form.controls['newPassword2'].value) {
-      this.form.controls['password'].setValue(this.form.controls['newPassword1'].value);
-      this.form.controls['newPassword1'].setValue(null);
-      this.form.controls['newPassword2'].setValue(null);
+    let formPassword = this.form.controls['password'].value;
+    if (this.persistedPassword === formPassword || formPassword === this.form.controls['repeatPassword'].value) {
+      this.form.controls['repeatPassword'].setValue(null);
+      this.userService.save(this.qForms.cleanupForm(this.form)).subscribe(onNext => {
+        this.utilityService.popupSuccess(
+          this.isEdit ? "User updated successfully." : "User created successfully.");
+        this.router.navigate(["/users"]);
+      }, error => {
 
-      this.userService.upload(this.form).subscribe(onEvent => {
-        if (onEvent.type == HttpEventType.Response) {
-          if (onEvent.status == 200) {
-            this.utilityService.popupSuccess(this.isEdit ? "User updated successfully." : "User" +
-              " created successfully.");
-            this.router.navigate(["/users"]);
+        if (error.status == 400) {
+          let validationErrors = error.error;
+          if (error.error) {
+            this.translateService.use('en');
+            this.validationService.validateForm(this.form, validationErrors, this.translateService);
           } else {
-            this.utilityService.popupError(
-              `There was a problem ${this.isEdit ? 'editing' : 'creating'} user.`);
+            this.utilityService.popupError("Something went wrong");
           }
+        } else {
+          this.utilityService.popupError(error.error);
         }
       });
     } else {
@@ -104,19 +105,5 @@ export class UserEditComponent extends BaseComponent implements OnInit {
         });
       }
     });
-  }
-
-  showPreview(event) {
-    const file = (event.target as HTMLInputElement).files[0];
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.imageURL = reader.result as string;
-    }
-    reader.readAsDataURL(file)
-
-    this.form.patchValue({
-      pic: file
-    });
-    this.form.get('pic').updateValueAndValidity()
   }
 }

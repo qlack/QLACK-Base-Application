@@ -4,6 +4,7 @@ import {Log} from 'ng2-logger/browser';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {MatDialog} from '@angular/material/dialog';
 import {BaseComponent} from './shared/component/base-component';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -17,10 +18,13 @@ export class AppComponent extends BaseComponent implements OnInit {
   // Controller for sidebar's visibility.
   sidebarVisibility = true;
 
-  constructor( private router: Router,
+  constructor(private router: Router,
               private jwtService: JwtHelperService,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+               private translate: TranslateService) {
+
     super();
+    translate.setDefaultLang('en');
 
     // // Check if an expired JWT exists and remove it.
     // const jwtString = localStorage.getItem(this.constants.JWT_STORAGE_NAME);

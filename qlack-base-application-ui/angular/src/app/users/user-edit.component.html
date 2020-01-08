@@ -3,23 +3,33 @@
   <mat-card-content>
     <form novalidate [formGroup]="form">
       <div fxLayout="column">
-        <label>Profile Picture</label>
-        <br>
-        <div class="imagePreview" *ngIf="imageURL && imageURL !== ''">
-          <img [src]="imageURL" width="150" height="150">
-        </div>
-        <br>
-        <input type="file" accept="image/*" (change)="showPreview($event)"/>
-        <br>
         <mat-form-field>
           <input matInput placeholder="Email"
                  formControlName="email" autocomplete="username email">
+          <mat-icon matSuffix color="warn" *ngIf="form.controls['email'].invalid &&
+          form.controls['email'].dirty"
+                    matTooltip="{{form.controls['email'].getError('message')}}"
+                    matTooltipPosition="above" matTooltipClass="error-tooltip"
+          >{{'warning'}}
+          </mat-icon>
         </mat-form-field>
         <mat-form-field>
           <input matInput placeholder="First Name" formControlName="firstname">
+          <mat-icon matSuffix color="warn" *ngIf="form.controls['firstname'].invalid &&
+          form.controls['firstname'].dirty"
+                    matTooltip="{{form.controls['firstname'].getError('message')}}"
+                    matTooltipPosition="above" matTooltipClass="error-tooltip"
+          >{{'warning'}}
+          </mat-icon>
         </mat-form-field>
         <mat-form-field>
           <input matInput placeholder="Last Name" formControlName="lastname">
+          <mat-icon matSuffix color="warn" *ngIf="form.controls['lastname'].invalid &&
+          form.controls['lastname'].dirty"
+                    matTooltip="{{form.controls['lastname'].getError('message')}}"
+                    matTooltipPosition="above" matTooltipClass="error-tooltip"
+          >{{'warning'}}
+          </mat-icon>
         </mat-form-field>
         <mat-form-field>
           <mat-select placeholder="Status" formControlName="status">
@@ -32,16 +42,47 @@
 
         <mat-form-field>
           <input matInput placeholder="New Password" [type]="hide1 ? 'password' :'text'"
-                 formControlName=newPassword1>
-          <mat-icon matSuffix (click)="hide1 = !hide1">{{hide1 ? 'visibility' : 'visibility_off'}}
+                 formControlName=password>
+          <mat-icon
+            *ngIf="!form.controls['password'].invalid" matSuffix (click)="hide1 = !hide1">{{hide1
+            ? 'visibility' : 'visibility_off'}}
+          </mat-icon>
+          <mat-icon matSuffix color="warn"
+                    *ngIf="form.controls['password'].invalid && form.controls['password'].dirty"
+                    matTooltip="{{form.controls['password'].getError('message')}}"
+                    matTooltipPosition="above" matTooltipClass="error-tooltip"
+          >{{'warning'}}
           </mat-icon>
         </mat-form-field>
         <mat-form-field>
           <input matInput placeholder="Repeat Password" [type]="hide2 ? 'password' :'text'"
-                 formControlName="newPassword2">
+                 formControlName="repeatPassword">
           <mat-icon matSuffix (click)="hide2 = !hide2">{{hide2 ? 'visibility' : 'visibility_off'}}
           </mat-icon>
         </mat-form-field>
+        <ng-container formGroupName="extraInfo">
+          <mat-form-field>
+            <input placeholder="Age" matInput formControlName="age">
+            <mat-icon matSuffix color="warn"
+                      *ngIf="form.controls['extraInfo'].get('age').invalid &&
+                      form.controls['extraInfo'].get('age').dirty"
+                      matTooltip="{{form.controls['extraInfo'].get('age').getError('message')}}"
+                      matTooltipPosition="above" matTooltipClass="error-tooltip"
+            >{{'warning'}}
+            </mat-icon>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input placeholder="Weight" matInput formControlName="weight">
+            <mat-icon matSuffix color="warn"
+                      *ngIf="form.controls['extraInfo'].get('weight').invalid &&
+                      form.controls['extraInfo'].get('weight').dirty"
+                      matTooltip="{{form.controls['extraInfo'].get('weight').getError('message')}}"
+                      matTooltipPosition="above" matTooltipClass="error-tooltip"
+            >{{'warning'}}
+            </mat-icon>
+          </mat-form-field>
+        </ng-container>
       </div>
     </form>
   </mat-card-content>
