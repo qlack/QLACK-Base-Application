@@ -1,4 +1,4 @@
-#QLACK-Base-Application
+# QLACK-Base-Application
 
 ## Running
 `npm start`
@@ -22,3 +22,7 @@ Filtering functionality is included and user status and e-mail can be used.
 
 Create new feature is used for creating a new user. Validation is provided using spring
  validation and the validation errors are shown using: @qlack/form-validation.
+ 
+## Single file upload
+
+A tool for uploading images.
