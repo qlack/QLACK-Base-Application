@@ -1,4 +1,4 @@
-#QLACK-Base-Application-UI
+#QLACK-Base-Application
 
 ## Running
 `npm start`
