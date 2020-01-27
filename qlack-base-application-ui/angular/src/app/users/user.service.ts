@@ -6,7 +6,7 @@ import {AppConstants} from '../app.constants';
 import {LoginInfoDto} from '../dto/login-info-dto';
 import {UserDto} from '../dto/user-dto';
 import {CrudService} from '../services/crud.service';
-import {QFormsService} from '@eurodyn/forms';
+import {QFormsService} from '@qlack/forms';
 import {FormGroup} from '@angular/forms';
 
 /**

@@ -22,9 +22,6 @@ public class UserService extends BaseService<UserDTO, User> {
   private final UserRepository repository;
 
   @Autowired
-  private final FileService fileService;
-
-  @Autowired
   private final ExtraInfoService extraInfoService;
 
   public void upload(UserDTO userDTO) {

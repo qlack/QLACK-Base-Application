@@ -48,8 +48,7 @@
                 element.status)}}</td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; let element; columns: displayedColumns;"
-            [routerLink]="element.id"></tr>
+        <tr mat-row *matRowDef="let row; let element; columns: displayedColumns;"></tr>
       </table>
       <mat-paginator #paginator (page)="changePage()"
                      [pageSize]="10"
@@ -60,6 +59,5 @@
   </mat-card-content>
   <mat-card-actions>
     <button mat-button routerLink="new" routerLink="/home">HOME</button>
-    <button mat-button routerLink="0">CREATE</button>
   </mat-card-actions>
 </mat-card>

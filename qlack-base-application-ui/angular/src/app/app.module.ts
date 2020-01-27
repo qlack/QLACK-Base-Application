@@ -27,7 +27,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgProgressHttpModule} from '@ngx-progressbar/http';
-import {QFormsModule} from '@eurodyn/forms';
+import {QFormsModule} from '@qlack/forms';
 import {HeaderComponent} from './shared/layout/header.component';
 import {FooterComponent} from './shared/layout/footer.component';
 import {SidenavComponent} from './shared/layout/sidenav.component';

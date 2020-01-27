@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-import {QFormsService} from '@eurodyn/forms';
+import {QFormsService} from '@qlack/forms';
 import {UserDto} from '../dto/user-dto';
 import {UserService} from './user.service';
 import 'rxjs/add/operator/debounceTime';

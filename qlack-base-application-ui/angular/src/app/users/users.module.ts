@@ -15,7 +15,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
-import {QFormsModule} from '@eurodyn/forms';
+import {QFormsModule} from '@qlack/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 import {DisplayModule} from '../shared/component/display/display.module';
 import {MatTooltipModule} from '@angular/material/tooltip';
@@ -23,7 +23,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 @NgModule({
   declarations: [
     UsersComponent,
-    UserEditComponent,
+    UserEditComponent
   ],
   imports: [
     CommonModule,

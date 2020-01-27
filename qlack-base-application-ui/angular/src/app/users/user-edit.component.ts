@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {QFormsService} from '@eurodyn/forms';
+import {QFormsService} from '@qlack/forms';
 import {UserService} from './user.service';
 import {MatDialog} from '@angular/material/dialog';
 import {BaseComponent} from '../shared/component/base-component';
