@@ -14,7 +14,6 @@ import {JwtModule} from '@auth0/angular-jwt';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {NgProgressModule} from '@ngx-progressbar/core';
 import {AppConstants} from './app.constants';
-import {RxStompService} from '@stomp/ng2-stompjs';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -107,7 +106,6 @@ export function getJwtToken(): string {
   providers: [
     CookieService,
     CanActivateGuard,
-    RxStompService,
     QFormsModule,
   ],
   bootstrap: [AppComponent],

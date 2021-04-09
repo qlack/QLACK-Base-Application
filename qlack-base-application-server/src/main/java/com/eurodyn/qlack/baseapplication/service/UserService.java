@@ -9,7 +9,6 @@ import com.eurodyn.qlack.common.exception.QAlreadyExistsException;
 import com.eurodyn.qlack.util.data.optional.ReturnOptional;
 import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -18,10 +17,7 @@ import org.springframework.util.StringUtils;
 @RequiredArgsConstructor
 public class UserService extends BaseService<UserDTO, User> {
 
-  @Autowired
   private final UserRepository repository;
-
-  @Autowired
   private final ExtraInfoService extraInfoService;
 
   public void upload(UserDTO userDTO) {

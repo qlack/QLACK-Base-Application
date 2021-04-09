@@ -27,7 +27,6 @@ public class LoginController {
   @Autowired
   private final LoginService loginService;
 
-
   @CrossOrigin(origins = "*")
   @PostMapping
   @ExceptionWrapper(wrapper = QExceptionWrapper.class,

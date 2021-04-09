@@ -4,18 +4,29 @@ spring:
     default-property-inclusion: non_null
   datasource:
     name: qDS
-    url: url
-    username: username
+    url: jdbc:h2:mem:testdb
+    username: sa
     password: password
     initialization-mode: always
     hikari:
       connection-test-query: SELECT 1
       connection-timeout: 60000
       maximum-pool-size: 100
-      register-mbeans: true
   jpa:
     hibernate:
       ddl-auto: none
-    generate-ddl: true
-fs:
+    generate-ddl: false
+    open-in-view: false
+
+server:
+  servlet:
+    context-path: /api
+
+qlack:
+  util:
+    jwt:
+      issuer: qlack_demo
+      validity: 1440
+
+baseapp:
     fs-root: <root_of_app_file_system>

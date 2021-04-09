@@ -6,9 +6,10 @@ import {LogoutComponent} from './auth/logout.component';
 import {HomeComponent} from './home/home.component';
 import {FileuploadComponent} from './fileupload/fileupload.component';
 import {CanActivateGuard} from './shared/guards/can-activate-guard';
+import {AppModule} from "./app.module";
 
 // Configuration of Router with all available AppConstants.Routes.
-export const routing: ModuleWithProviders = RouterModule.forRoot([
+export const routing: ModuleWithProviders<AppModule> = RouterModule.forRoot([
     // Redirect for empty path.
     {path: '', redirectTo: 'login', pathMatch: 'full'},
 
@@ -26,5 +27,6 @@ export const routing: ModuleWithProviders = RouterModule.forRoot([
     {path: '**', redirectTo: 'login'},
   ],
   {
-    enableTracing: false
-  });
+    enableTracing: false,
+    relativeLinkResolution: 'legacy'
+});

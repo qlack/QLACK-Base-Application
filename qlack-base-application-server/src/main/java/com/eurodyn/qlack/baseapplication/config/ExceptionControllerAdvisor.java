@@ -21,7 +21,9 @@ public class ExceptionControllerAdvisor {
 
   @ExceptionHandler(MethodArgumentNotValidException.class)
   public ResponseEntity handleValidationException(MethodArgumentNotValidException exception) {
-    return new ResponseEntity<>(JSONFilter.filterDefault(exception.getBindingResult().getAllErrors(), "defaultMessage,objectName,field,rejectedValue,code"),
+    return new ResponseEntity<>(JSONFilter
+        .filterDefault(exception.getBindingResult().getAllErrors(),
+            "defaultMessage,objectName,field,rejectedValue,code"),
         HttpStatus.BAD_REQUEST);
   }
 
