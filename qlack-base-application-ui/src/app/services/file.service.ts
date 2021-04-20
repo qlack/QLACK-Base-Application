@@ -15,18 +15,18 @@ import {QFormsService} from '@qlack/forms';
 export class FileService extends CrudService<FileDto>{
   private resource = `file`;
 
-  constructor(http: HttpClient, qForms: QFormsService) {
-    super(http, 'file', qForms);
+  constructor(http: HttpClient) {
+    super(http, 'file');
   }
 
   public upload(formData) {
-    return this.http.post<any>(AppConstants.API_SECURED_ROOT + `/${this.resource}`, formData, {
+    return this.http.post<any>(AppConstants.API_ROOT + `/${this.resource}`, formData, {
       reportProgress: true,
       observe: 'events'
     });
   }
 
   getImage(id: any) {
-    return AppConstants.API_SECURED_ROOT + '/' + this.resource +  `/${id}`;
+    return AppConstants.API_ROOT + '/' + this.resource +  `/${id}`;
   }
 }

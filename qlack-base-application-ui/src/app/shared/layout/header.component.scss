@@ -9,9 +9,20 @@
   }
 
   .logo-text {
-    padding-left: 10px;
-    font-size: 2em;
     color: #666666;
+    top: -0.15rem;
+    position: relative;
+    padding-left: 0.1rem;
+
+    .main {
+      padding-left: 0.5rem;
+      font-size: 1.8rem;
+      letter-spacing: 0.1rem;
+    }
+    .sub {
+      position: relative;
+      top: -0.45rem;
+      padding-left: 0.6rem;
+    }
   }
-  background-color: #ffffff;
 }

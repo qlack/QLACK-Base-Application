@@ -1,3 +1,9 @@
 databaseChangeLog:
+  - include:
+      file: /db/changelog/qlack-fuse-aaa/qlack.fuse.aaa.changelog.xml
+  - include:
+      file: /db/changelog/qlack-fuse-audit/qlack.fuse.audit.changelog.xml
+  - include:
+      file: /db/changelog/qlack-fuse-lexicon/qlack.fuse.lexicon.changelog.xml
   - includeAll:
       path: /db/changelog/changes

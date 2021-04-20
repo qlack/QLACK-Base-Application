@@ -12,16 +12,19 @@
             <mat-icon matSuffix>email</mat-icon>
           </mat-form-field>
           <mat-form-field>
-            <input matInput placeholder="Enter your password" [type]="hidePassword ? 'password' : 'text'"
+            <input matInput placeholder="Enter your password"
+                   [type]="hidePassword ? 'password' : 'text'"
                    formControlName="password">
-            <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility' : 'visibility_off'}}
+            <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility'
+              : 'visibility_off'}}
             </mat-icon>
           </mat-form-field>
           <button mat-button type="submit" color="primary" [disabled]="loginForm.invalid">LOGIN
           </button>
-<!--          <a mat-button-->
-<!--             routerLink="/forgot-password">Forgot your password?-->
-<!--          </a>-->
+          <div class="demo-legend">
+            Username: admin@qlack.com
+            Password: admin
+          </div>
         </div>
       </form>
     </mat-card-content>

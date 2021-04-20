@@ -1,0 +1,34 @@
+<mat-card>
+  <mat-card-title>Forms validation</mat-card-title>
+  <mat-card-content>
+    <form novalidate [formGroup]="form">
+      <div fxLayout="row" fxLayoutGap="1rem">
+        <div fxLayout="column" fxFill>
+          <mat-form-field>
+            <input matInput placeholder="Name" formControlName="name" required>
+            <mat-icon matSuffix color="warn" *ngIf="form.controls['name'].invalid
+                      && form.controls['name'].dirty"
+                      matTooltip="{{form.controls['name'].getError('message')}}"
+                      matTooltipPosition="left" matTooltipClass="error-tooltip"
+                      style="cursor: help">warning</mat-icon>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Age" formControlName="age" required>
+            <mat-icon matSuffix color="warn" *ngIf="form.controls['age'].invalid
+                      && form.controls['age'].dirty"
+                      matTooltip="{{form.controls['age'].getError('message')}}"
+                      matTooltipPosition="left" matTooltipClass="error-tooltip"
+                      style="cursor: help">warning</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <div>
+      <mat-icon>info</mat-icon> Name must be greater than 2 characters, Age must be greater than 18.
+    </div>
+    <button mat-button color="primary" (click)="save()" [disabled]="form.invalid">SAVE</button>
+  </mat-card-actions>
+</mat-card>

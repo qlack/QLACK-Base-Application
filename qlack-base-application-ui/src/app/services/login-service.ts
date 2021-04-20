@@ -8,11 +8,11 @@ import {AppConstants} from '../app.constants';
 })
 export class LoginService {
 
-  constructor(http: HttpClient, private localHttp: HttpClient) {}
-
+  constructor(http: HttpClient, private localHttp: HttpClient) {
+  }
 
   login(loginInfoDTO: LoginInfoDto) {
-    return this.localHttp.post(AppConstants.API_ROOT + '/login', JSON.stringify(loginInfoDTO), {
+    return this.localHttp.post(AppConstants.API_ROOT + '/users/auth', JSON.stringify(loginInfoDTO), {
       headers: {
         'Content-Type': 'application/json'
       },

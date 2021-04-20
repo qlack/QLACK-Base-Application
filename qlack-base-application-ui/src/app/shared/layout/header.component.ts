@@ -1,6 +1,7 @@
-import {Component} from '@angular/core';
+import { Component} from '@angular/core';
 import {BaseComponent} from '../component/base-component';
 import {AppConstants} from '../../app.constants';
+import {AuthService} from "../../auth/auth.service";
 
 @Component({
   selector: 'app-header',
@@ -9,14 +10,14 @@ import {AppConstants} from '../../app.constants';
 })
 export class HeaderComponent extends BaseComponent {
   // The user email extracted from JWT.
-  public userEmail: string;
+  public userEmail: string | undefined;
 
-  constructor() {
+  constructor(private authService: AuthService) {
     super();
   }
 
-  getUserEmail(): string {
-    return localStorage.getItem(AppConstants.JWT_STORAGE_NAME);
+  getUserEmail(): string | null {
+    return this.authService.getJWTClaim(AppConstants.jwt.claims.EMAIL);
   }
 
 }

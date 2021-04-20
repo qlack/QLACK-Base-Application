@@ -1,0 +1,10 @@
+<mat-card>
+  <mat-card-title>Http</mat-card-title>
+  <mat-card-content>
+    <div>Processing state: {{process}}</div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="primary" (click)="longRequestPB()">CALCULATE WITH PROGRESS BAR</button>
+    <button mat-button color="primary" (click)="longRequest()">CALCULATE WITHOUT PROGRESS BAR</button>
+  </mat-card-actions>
+</mat-card>

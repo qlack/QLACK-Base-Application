@@ -59,8 +59,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "qlack-base-application-ui:build",
-            "port": 4201
+            "browserTarget": "qlack-base-application-ui:build"
           },
           "configurations": {
             "production": {

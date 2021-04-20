@@ -1,16 +1,17 @@
 package com.eurodyn.qlack.baseapplication.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import javax.validation.constraints.NotEmpty;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
-@Getter
-@Setter
-@EqualsAndHashCode
-@JsonIgnoreProperties(ignoreUnknown = true)
+@Data
+@NoArgsConstructor
+@Accessors(chain = true)
+@EqualsAndHashCode(callSuper = true)
 public class FileDTO extends BaseDTO {
-  @NotEmpty
-  String name;
+
+  private String description;
+  private long fileSize;
+  private String fileName;
 }

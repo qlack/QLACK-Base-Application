@@ -17,16 +17,19 @@ spring:
       ddl-auto: none
     generate-ddl: false
     open-in-view: false
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
 
 server:
   servlet:
     context-path: /api
+  error:
+    include-stacktrace: never
 
 qlack:
   util:
     jwt:
       issuer: qlack_demo
       validity: 1440
-
-baseapp:
-    fs-root: <root_of_app_file_system>

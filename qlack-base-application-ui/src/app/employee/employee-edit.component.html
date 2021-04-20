@@ -1,0 +1,33 @@
+<mat-card>
+  <mat-card-title>Employee</mat-card-title>
+  <mat-card-content>
+    <form novalidate [formGroup]="form">
+      <input type="hidden" formControlName="id">
+      <div fxLayout="row" fxLayoutGap="1rem">
+        <div fxLayout="column" fxFill>
+          <mat-form-field>
+            <input matInput placeholder="First name" formControlName="firstName" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Last Name" formControlName="lastName" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Department" formControlName="department" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Hiring date" formControlName="hiringDate"
+                   [matDatepicker]="hdPicker">
+            <mat-datepicker-toggle matSuffix [for]="hdPicker"></mat-datepicker-toggle>
+            <mat-datepicker #hdPicker disabled="false"></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-button color="accent" (click)="delete()" [disabled]="!this.id">DELETE</button>
+    <button mat-button routerLink="/employee">CANCEL</button>
+    <button mat-button color="primary" (click)="save()" [disabled]="form.invalid">SAVE</button>
+  </mat-card-actions>
+</mat-card>

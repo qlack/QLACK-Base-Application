@@ -21,6 +21,7 @@ html, body {
   padding-bottom: 0 !important;
   margin-bottom: 0 !important;
 }
+
 .inline-subheader {
   font-size: 0.9rem;
   font-weight: 100;
@@ -33,7 +34,7 @@ html, body {
 }
 
 .button-left {
-  padding-left: 0px;
+  padding-left: 0;
   width: 100px;
   text-align: left;
 }
@@ -42,7 +43,41 @@ html, body {
   margin-bottom: 2rem;
 }
 
-.error-tooltip {
-  background-color: darkred;
-  font-size: 0.9rem;
+.refresh-button {
+  float: right;
+  background-color: $e-color-blue-light !important;
+}
+
+.snackbar-red {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+
+  .mat-button-wrapper {
+    color: #721c24;
+    font-weight: bold;
+  }
+
+}
+
+.snackbar-blue {
+  color: #004085;
+  background-color: #cce5ff;
+  border-color: #b8daff;
+
+  .mat-button-wrapper {
+    color: #004085;
+    font-weight: bold;
+  }
+}
+
+.snackbar-green {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+
+  .mat-button-wrapper {
+    color: #155724;
+    font-weight: bold;
+  }
 }

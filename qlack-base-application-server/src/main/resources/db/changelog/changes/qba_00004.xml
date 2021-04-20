@@ -1,0 +1,31 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd"
+  logicalFilePath="qba_00004.xml">
+  <changeSet author="European Dynamics" id="qba_00004">
+    <createTable tableName="file_storage">
+      <column name="id" type="VARCHAR(36)">
+        <constraints primaryKey="true"/>
+      </column>
+
+      <column name="created_by" type="varchar(36)"/>
+      <column defaultValueComputed="NULL" name="created_on" type="DATETIME"/>
+      <column name="modified_by" type="varchar(36)"/>
+      <column defaultValueComputed="NULL" name="modified_on" type="DATETIME"/>
+      <column defaultValueComputed="NULL" name="version" type="INT"/>
+
+      <column name="content_id" type="VARCHAR(36)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="file_size" type="BIGINT UNSIGNED">
+        <constraints nullable="false"/>
+      </column>
+
+      <column name="file_name" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="description" type="VARCHAR(255)"/>
+    </createTable>
+  </changeSet>
+</databaseChangeLog>

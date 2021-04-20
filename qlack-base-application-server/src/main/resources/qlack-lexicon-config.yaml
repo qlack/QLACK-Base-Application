@@ -1,0 +1,25 @@
+languages:
+  - name: English
+    locale: en
+  - name: Français
+    locale: fr
+
+groups:
+  - name: ui
+    description: UI translations
+
+translations:
+  # English
+  - group: ui
+    locale: en
+    keys:
+      - hello: Hello
+      - good_morning: Good morning
+      - good_night: Good night
+  # French
+  - group: ui
+    locale: fr
+    keys:
+      - hello: Salut
+      - good_morning: Bonjour
+      - good_night: Bonne nuit

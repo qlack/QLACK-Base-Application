@@ -2,42 +2,72 @@ package com.eurodyn.qlack.baseapplication.service;
 
 import com.eurodyn.qlack.baseapplication.dto.BaseDTO;
 import com.eurodyn.qlack.baseapplication.mapper.BaseMapper;
+import com.eurodyn.qlack.baseapplication.model.BaseContentEntity;
 import com.eurodyn.qlack.baseapplication.model.BaseEntity;
 import com.eurodyn.qlack.baseapplication.repository.BaseRepository;
 import com.eurodyn.qlack.util.data.optional.ReturnOptional;
 import com.querydsl.core.types.Predicate;
+import java.io.InputStream;
+import java.util.List;
+import lombok.Getter;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.content.commons.repository.ContentStore;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
-import java.util.List;
-
 @Service
 @Validated
 @Transactional
-public abstract class BaseService<D extends BaseDTO, E extends BaseEntity> {
+abstract class BaseService<D extends BaseDTO, E extends BaseEntity> {
 
   @Autowired
-  protected BaseRepository<E> repository;
+  @Getter
+  private BaseRepository<E> repository;
 
   @Autowired
   @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-  protected BaseMapper<D, E> mapper;
+  private BaseMapper<D, E> mapper;
 
-  public D save(D dto) {
-    if (dto.getId() != null) {
+  @Autowired(required = false)
+  @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
+  private ContentStore<E, String> contentStore;
+
+  public D save(D dto, InputStream file) {
+    if (StringUtils.isNotEmpty(dto.getId())) {
       final E entity = ReturnOptional.r(repository.findById(dto.getId()));
       mapper.map(dto, entity);
       return dto;
     } else {
       E entity = mapper.map(dto);
+      contentStore.setContent(entity, file);
       entity = repository.save(entity);
       return mapper.map(entity);
     }
+  }
+
+  public void saveAll(List<D> dto) {
+    for (D d : dto) {
+      save(d);
+    }
+  }
+
+  public D save(D dto) {
+    E entity;
+
+    if (StringUtils.isNotEmpty(dto.getId())) {
+      entity = ReturnOptional.r(repository.findById(dto.getId()));
+      mapper.map(dto, entity);
+    } else {
+      entity = mapper.map(dto);
+      entity = repository.save(entity);
+    }
+
+    return mapper.map(entity);
   }
 
   public Page<D> findAll(Predicate predicate, Pageable pageable) {
@@ -46,15 +76,12 @@ public abstract class BaseService<D extends BaseDTO, E extends BaseEntity> {
     return mapper.map(all);
   }
 
-  public List<D> findAll(Predicate predicate, Sort sort) {
-    final Iterable<E> all = repository.findAll(predicate, sort);
-    return mapper.map(all);
+  public List<D> findAll() {
+    return mapper.map(repository.findAll());
   }
 
   public D findById(String id) {
-    final E entity = ReturnOptional.r(repository.findById(id));
-
-    return mapper.map(entity);
+    return mapper.map(ReturnOptional.r(repository.findById(id)));
   }
 
   public E findEntityById(String id) {
@@ -65,12 +92,21 @@ public abstract class BaseService<D extends BaseDTO, E extends BaseEntity> {
     final E entity = findEntityById(id);
     final D dto = mapper.map(entity);
 
+    // Check and remove any file associated with this entity.
+    if (entity instanceof BaseContentEntity) {
+      contentStore.unsetContent(entity);
+    }
     repository.deleteById(id);
 
     return dto;
   }
 
-  public long count(Predicate predicate) {
-    return repository.count(predicate);
+  public void deleteByIdIn(List<String> ids) {
+    repository.deleteAll(repository.findAllById(ids));
+  }
+
+  public String getUserId() {
+    return SecurityContextHolder.getContext().getAuthentication().getPrincipal()
+        .toString();
   }
 }

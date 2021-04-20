@@ -1,16 +1,19 @@
 <div fxLayout="row" class="top-line" fxLayoutAlign="left center">
-  <div fxFlex fxGrow="0">
-    <a href="https://admin.qlack-base-application-ui.io"><img src="/assets/img/logo.svg" class="logo"></a>
+  <div fxGrow="0">
+    <img src="/assets/img/logo.png" class="logo" alt="esthesis logo">
   </div>
   <div fxFlex fxGrow="1" class="logo-text">
-    QLACK-Base-Application-UI
+    <div fxLayout="column">
+      <div class="main">QLACK Base app</div>
+      <div class="sub">Angular + Spring Boot blueprint</div>
+    </div>
   </div>
   <div fxFlex fxGrow="0" *ngIf="isLoggedIn()">
     <div>{{ getUserEmail() }}</div>
   </div>
   <div fxFlex fxGrow="0" *ngIf="isLoggedIn()">
     <mat-menu #appMenu="matMenu">
-      <button mat-menu-item [routerLink]="['/' + 'logout']">Sign out</button>
+      <button mat-menu-item [routerLink]="['/logout']">Sign out</button>
     </mat-menu>
     <button mat-icon-button [matMenuTriggerFor]="appMenu">
       <mat-icon>account_box</mat-icon>

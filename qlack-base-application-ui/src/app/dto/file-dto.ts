@@ -1,5 +1,6 @@
-import {BaseDto} from './base-dto';
-
-export class FileDto extends BaseDto{
-  name: string;
+export interface FileDto {
+  id: string;
+  description: string;
+  fileSize: number;
+  fileName: string;
 }

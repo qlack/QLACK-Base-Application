@@ -15,10 +15,10 @@ export class UtilityService {
    * @param message The message to display.
    */
   popupSuccess(message: string) {
-    this.snackBar.open(message, '', {
+    this.snackBar.open(message, 'CLOSE', {
       duration: 5000,
       verticalPosition: 'top',
-      panelClass: 'bg-green'
+      panelClass: 'snackbar-green'
     });
   }
 
@@ -27,10 +27,10 @@ export class UtilityService {
    * @param message The message to display.
    */
   popupError(message: string) {
-    this.snackBar.open(message, '', {
-      duration: 5000,
+    this.snackBar.open(message, 'CLOSE', {
+      duration: 10000,
       verticalPosition: 'top',
-      panelClass: 'bg-red'
+      panelClass: 'snackbar-red'
     });
   }
 
@@ -39,10 +39,10 @@ export class UtilityService {
    * @param message The message to display.
    */
   popupInfo(message: string) {
-    this.snackBar.open(message, '', {
-      duration: 5000,
+    this.snackBar.open(message, 'CLOSE', {
+      duration: 10000,
       verticalPosition: 'top',
-      panelClass: 'bg-blue'
+      panelClass: 'snackbar-blue'
     });
   }
 

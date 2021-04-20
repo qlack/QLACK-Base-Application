@@ -1,0 +1,20 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd"
+  logicalFilePath="qba_00002.xml">
+  <changeSet id="qba_00002" author="European Dynamics" labels="ignorable">
+    <sql>
+      insert into aaa_user(id, dbversion, username, pswd, salt, status, external)
+      VALUES (1, 0, 'admin@qlack.com',
+      '$2y$10$SlJnteO26Hq.PiaDp1UzA.bh8q6d9MZLeMd1y0sSuv1RnUm8iCl/C',
+      'salt', 1, 0);
+
+      INSERT INTO `al_audit_level`
+      (`id`,
+      `name`)
+      VALUES ('4',
+      'Security');
+    </sql>
+  </changeSet>
+</databaseChangeLog>
