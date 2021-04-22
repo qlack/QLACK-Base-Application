@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  ui:
+    build: qlack-base-application-ui
+    image: qlack/qba-ui:1.0.0
+    container_name: qba-ui
+    restart: unless-stopped
+    depends_on:
+      - services
+    ports:
+      - "6565:80"
+  server:
+    build: qlack-base-application-server
+    image: qlack/qba-server:1.0.0
+    container_name: qba-server
+    restart: unless-stopped
+    environment:
+      - server.port=46000

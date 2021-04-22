@@ -1,28 +1,74 @@
 # QLACK-Base-Application
 
-## Running
-`npm start`
+The QLACK Base Application is a full-stack blueprint, featuring Angular and Spring Boot. You can
+start your new project by cloning this repo and then built on top of the blueprint.
 
-## Logging in
-[http://localhost:4201/login](http://localhost:4201/login)
+## Features
 
-With User:<BR>
-`admin@sample.com`<BR>
-pass:<BR>
-`admin`
+### Login/Logout with JWT integration
 
-## Table and Pagination
+![](doc/1.png)
 
-The application is using angular material table and pagination to show it's users. Three users
- have already been defined. 
-Filtering functionality is included and user status and e-mail can be used.
+### Tables with sorting, pagination, and filtering
 
+![](doc/2.png)
 
-## Create new users
+### CRUD
 
-Create new feature is used for creating a new user. Validation is provided using spring
- validation and the validation errors are shown using: @qlack/form-validation.
- 
-## Single file upload
+![](doc/3.png)
 
-A tool for uploading images.
+### HTTP progress bars
+
+![](doc/4.png)
+
+### File upload/download
+
+![](doc/5.png)
+
+### Form back-end validation
+
+![](doc/6.png)
+
+### Annotation-based content filtering
+
+![](doc/7.png)
+
+### Standardised popups
+
+![](doc/8.png)
+
+### Internationalisation
+
+![](doc/9.png)
+
+## Development setup
+
+To start the back-end component, issue:
+
+`mvn spring-boot:run`
+
+To start the front-end component, issue:
+
+`ng serve --host 0.0.0.0 --disable-host-check --proxy-config proxy.conf.json`
+
+## Containers support
+
+Both the front-end and the back-end component come with a `Dockerfile` allowing you to build Docker
+images.
+
+The supplied build scripts provide two interesting features:
+
+* The application is built within a Docker container, so no local Java or Angular/NodeJS environment
+  is necessary. This allows anyone to clone your project and build Docker containers for it without
+  any additional setup.
+
+* Image building follows a multi-stage approach. Expensive operations (such as downloading Maven
+  artifacts or NodeJS packages) takes place in a previous phase of your build, allowing you to skip
+  those phases in future builds (provided your dependencies remain the same).
+  
+A top-level Docker Compose file is also provided, allowing you to build and run the complete application
+stack in just a single command:
+
+`docker compose up --build`
+
+The application becomes accessible on port 6565, i.e. http://localhost:6565. 
