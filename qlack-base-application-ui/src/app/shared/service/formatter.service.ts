@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
-import {AppConstants} from '../../app.constants';
+import {Injectable} from "@angular/core";
+import {AppConstants} from "../../app.constants";
 import * as moment from "moment";
 import * as hd from "human-duration";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class FormatterService {
 

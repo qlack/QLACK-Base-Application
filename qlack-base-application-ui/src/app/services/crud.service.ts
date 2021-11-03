@@ -1,9 +1,9 @@
-import {AppConstants} from '../app.constants';
-import {HttpClient, HttpEvent, HttpRequest, HttpResponse} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {FormGroup} from '@angular/forms';
-import {QPageableReply} from '@qlack/forms';
-import * as fs from 'file-saver';
+import {AppConstants} from "../app.constants";
+import {HttpClient, HttpEvent, HttpRequest, HttpResponse} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {FormGroup} from "@angular/forms";
+import {QPageableReply} from "@qlack/forms";
+import * as fs from "file-saver";
 
 /**
  * A convenience CRUD service to be extended by concrete services to provide default CRUD methods.
@@ -47,7 +47,7 @@ export class CrudService<T> {
       formData.append(formField, form.value[formField]);
     }
     const req = new HttpRequest(
-      'POST',
+      "POST",
       url ? url : `${AppConstants.API_ROOT}/${this.endpoint}`,
       formData, {
         reportProgress: reportProgress,
@@ -58,8 +58,8 @@ export class CrudService<T> {
   }
 
   saveAs(onNext: HttpResponse<Blob>) {
-    const blob = new Blob([onNext.body!], {type: 'application/octet-stream'});
-    const filename = onNext.headers.get('Content-Disposition')!.split(';')[1].split('=')[1];
+    const blob = new Blob([onNext.body!], {type: "application/octet-stream"});
+    const filename = onNext.headers.get("Content-Disposition")!.split(";")[1].split("=")[1];
     fs.saveAs(blob, filename);
   }
 

@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import {Injectable} from "@angular/core";
+import {MatDialog} from "@angular/material/dialog";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class UtilityService {
 
@@ -15,10 +15,10 @@ export class UtilityService {
    * @param message The message to display.
    */
   popupSuccess(message: string) {
-    this.snackBar.open(message, 'CLOSE', {
+    this.snackBar.open(message, "CLOSE", {
       duration: 5000,
-      verticalPosition: 'top',
-      panelClass: 'snackbar-green'
+      verticalPosition: "top",
+      panelClass: "snackbar-green"
     });
   }
 
@@ -27,10 +27,10 @@ export class UtilityService {
    * @param message The message to display.
    */
   popupError(message: string) {
-    this.snackBar.open(message, 'CLOSE', {
+    this.snackBar.open(message, "CLOSE", {
       duration: 10000,
-      verticalPosition: 'top',
-      panelClass: 'snackbar-red'
+      verticalPosition: "top",
+      panelClass: "snackbar-red"
     });
   }
 
@@ -39,10 +39,10 @@ export class UtilityService {
    * @param message The message to display.
    */
   popupInfo(message: string) {
-    this.snackBar.open(message, 'CLOSE', {
+    this.snackBar.open(message, "CLOSE", {
       duration: 10000,
-      verticalPosition: 'top',
-      panelClass: 'snackbar-blue'
+      verticalPosition: "top",
+      panelClass: "snackbar-blue"
     });
   }
 

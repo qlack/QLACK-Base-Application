@@ -1,14 +1,14 @@
-import {Injectable} from '@angular/core';
-import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
-import {JwtHelperService} from '@auth0/angular-jwt';
-import {Log} from 'ng2-logger/browser';
-import {BaseComponent} from '../component/base-component';
+import {Injectable} from "@angular/core";
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from "@angular/router";
+import {Observable} from "rxjs/Observable";
+import {JwtHelperService} from "@auth0/angular-jwt";
+import {Log} from "ng2-logger/browser";
+import {BaseComponent} from "../component/base-component";
 
 @Injectable()
 export class CanActivateGuard extends BaseComponent implements CanActivate {
   // Logger.
-  private log = Log.create('CanActivateGuard');
+  private log = Log.create("CanActivateGuard");
 
   constructor(private jwtService: JwtHelperService, private router: Router) {
     super();
@@ -22,7 +22,7 @@ export class CanActivateGuard extends BaseComponent implements CanActivate {
     } else {
       const redirect = window.location.href;
       this.log.info(`Did not find a JWT. Proceeding to login with a redirect back to ${redirect}.`);
-      this.router.navigate(['login', {redirect: redirect}]);
+      this.router.navigate(["login", {redirect: redirect}]);
       return false;
     }
   }

@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
 
-import { HttpRoutingModule } from './http-routing.module';
-import { HttpComponent } from './http.component';
+import { HttpRoutingModule } from "./http-routing.module";
+import { HttpComponent } from "./http.component";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 

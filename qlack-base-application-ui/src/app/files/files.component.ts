@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from "@angular/core";
 import {MatTableDataSource} from "@angular/material/table";
 import {FileDto} from "../dto/file-dto";
 import {MatSort} from "@angular/material/sort";
@@ -6,12 +6,12 @@ import {MatPaginator} from "@angular/material/paginator";
 import {FilesService} from "./files.service";
 
 @Component({
-  selector: 'app-files',
-  templateUrl: './files.component.html',
-  styleUrls: ['./files.component.scss']
+  selector: "app-files",
+  templateUrl: "./files.component.html",
+  styleUrls: ["./files.component.scss"]
 })
 export class FilesComponent implements AfterViewInit {
-  columns = ['fileName', 'description', 'size', 'actions'];
+  columns = ["fileName", "description", "size", "actions"];
   datasource = new MatTableDataSource<FileDto>();
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;

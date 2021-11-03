@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
 
-import { FormsRoutingModule } from './forms-routing.module';
-import { FormComponent } from './form.component';
+import { FormsRoutingModule } from "./forms-routing.module";
+import { FormComponent } from "./form.component";
 import {MatCardModule} from "@angular/material/card";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";

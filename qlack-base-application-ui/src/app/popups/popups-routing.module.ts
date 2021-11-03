@@ -1,9 +1,9 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import {NgModule} from "@angular/core";
+import {RouterModule, Routes} from "@angular/router";
 import {PopupsComponent} from "./popups.component";
 
 const routes: Routes = [
-  {path: '', component: PopupsComponent},
+  {path: "", component: PopupsComponent},
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
-import {BaseDto} from './base-dto';
-import {FileDto} from './file-dto';
-import {ExtraInfoDto} from './extra-info-dto';
+import {BaseDto} from "./base-dto";
+import {FileDto} from "./file-dto";
+import {ExtraInfoDto} from "./extra-info-dto";
 
 export class UserDto extends BaseDto {
   email: string;

@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from "@angular/core";
 import {BaseComponent} from "../shared/component/base-component";
 import {MatTableDataSource} from "@angular/material/table";
 import {EmployeeDto} from "../dto/employee-dto";
@@ -7,15 +7,15 @@ import {MatPaginator} from "@angular/material/paginator";
 import {QFormsService} from "@qlack/forms";
 import {EmployeeService} from "./employee.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import 'rxjs/add/operator/debounceTime';
+import "rxjs/add/operator/debounceTime";
 
 @Component({
-  selector: 'app-employee',
-  templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.scss']
+  selector: "app-employee",
+  templateUrl: "./employee.component.html",
+  styleUrls: ["./employee.component.scss"]
 })
 export class EmployeeComponent extends BaseComponent implements AfterViewInit, OnInit {
-  columns = ['firstName', 'lastName', 'department', 'hiringDate'];
+  columns = ["firstName", "lastName", "department", "hiringDate"];
   datasource = new MatTableDataSource<EmployeeDto>();
   filterForm: FormGroup;
 
@@ -26,8 +26,8 @@ export class EmployeeComponent extends BaseComponent implements AfterViewInit, O
               private fb: FormBuilder) {
     super();
     this.filterForm = this.fb.group({
-      firstName: ['', null],
-      lastName: ['', null],
+      firstName: ["", null],
+      lastName: ["", null],
     });
   }
 

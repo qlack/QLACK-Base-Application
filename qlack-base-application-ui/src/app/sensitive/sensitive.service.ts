@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import {CrudService} from "../services/crud.service";
 import {EmployeeDto} from "../dto/employee-dto";
 import {HttpClient} from "@angular/common/http";
@@ -7,12 +7,12 @@ import {AppConstants} from "../app.constants";
 import {QPageableReply} from "@qlack/forms";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class SensitiveService extends CrudService<EmployeeDto> {
 
   constructor(http: HttpClient) {
-    super(http, 'sensitive');
+    super(http, "sensitive");
   }
 
   getUnfiltered(id: any): Observable<EmployeeDto> {

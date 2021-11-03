@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import {HttpService} from "./http.service";
 
 @Component({
-  selector: 'app-http',
-  templateUrl: './http.component.html',
-  styleUrls: ['./http.component.scss']
+  selector: "app-http",
+  templateUrl: "./http.component.html",
+  styleUrls: ["./http.component.scss"]
 })
 export class HttpComponent implements OnInit {
   process = "NOT STARTED";
@@ -18,13 +18,13 @@ export class HttpComponent implements OnInit {
     this.process = "STARTED";
     this.httpService.longRequestPB().subscribe(onNext => {
       this.process = "FINISHED";
-    })
+    });
   }
 
   longRequest() {
     this.process = "STARTED";
     this.httpService.longRequest().subscribe(onNext => {
       this.process = "FINISHED";
-    })
+    });
   }
 }

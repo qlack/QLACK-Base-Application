@@ -1,10 +1,10 @@
-import {HttpClient} from '@angular/common/http';
-import {Injectable} from '@angular/core';
-import {LoginInfoDto} from '../dto/login-info-dto';
-import {AppConstants} from '../app.constants';
+import {HttpClient} from "@angular/common/http";
+import {Injectable} from "@angular/core";
+import {LoginInfoDto} from "../dto/login-info-dto";
+import {AppConstants} from "../app.constants";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class LoginService {
 
@@ -12,11 +12,11 @@ export class LoginService {
   }
 
   login(loginInfoDTO: LoginInfoDto) {
-    return this.localHttp.post(AppConstants.API_ROOT + '/users/auth', JSON.stringify(loginInfoDTO), {
+    return this.localHttp.post(AppConstants.API_ROOT + "/users/auth", JSON.stringify(loginInfoDTO), {
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json"
       },
-      observe: 'response'
+      observe: "response"
     });
   }
 }

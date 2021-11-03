@@ -1,9 +1,9 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import {NgModule} from "@angular/core";
+import {RouterModule, Routes} from "@angular/router";
 import {SensitiveComponent} from "./sensitive.component";
 
 const routes: Routes = [
-  {path: '', component: SensitiveComponent},
+  {path: "", component: SensitiveComponent},
 ];
 
 @NgModule({

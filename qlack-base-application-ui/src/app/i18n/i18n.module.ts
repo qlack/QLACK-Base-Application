@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
 
-import { I18nRoutingModule } from './i18n-routing.module';
-import { I18nComponent } from './i18n.component';
+import { I18nRoutingModule } from "./i18n-routing.module";
+import { I18nComponent } from "./i18n.component";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {FlexModule} from "@angular/flex-layout";

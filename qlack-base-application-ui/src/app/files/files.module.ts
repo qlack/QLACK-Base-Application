@@ -1,10 +1,10 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {FilesComponent} from './files.component';
+import {NgModule} from "@angular/core";
+import {CommonModule} from "@angular/common";
+import {FilesComponent} from "./files.component";
 import {FilesRoutingModule} from "./files-routing.module";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
-import { FilesUploadComponent } from './files-upload.component';
+import { FilesUploadComponent } from "./files-upload.component";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {BaseComponent} from "../shared/component/base-component";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {QFormsService} from "@qlack/forms";
@@ -11,9 +11,9 @@ import {OkCancelModalComponent} from "../shared/component/display/ok-cancel-moda
 import {AppConstants} from "../app.constants";
 
 @Component({
-  selector: 'app-employee-edit',
-  templateUrl: './employee-edit.component.html',
-  styleUrls: ['./employee-edit.component.scss']
+  selector: "app-employee-edit",
+  templateUrl: "./employee-edit.component.html",
+  styleUrls: ["./employee-edit.component.scss"]
 })
 export class EmployeeEditComponent extends BaseComponent implements OnInit {
   form!: FormGroup;
@@ -28,15 +28,15 @@ export class EmployeeEditComponent extends BaseComponent implements OnInit {
 
   ngOnInit() {
     // Check if an edit is performed and fetch data.
-    this.id = this.route.snapshot.paramMap.get('id');
+    this.id = this.route.snapshot.paramMap.get("id");
 
     // Setup the form.
     this.form = this.fb.group({
-      id: [''],
-      firstName: ['', [Validators.required, Validators.maxLength(256)]],
-      lastName: ['', [Validators.required, Validators.maxLength(256)]],
-      department: ['', []],
-      hiringDate: ['', []]
+      id: [""],
+      firstName: ["", [Validators.required, Validators.maxLength(256)]],
+      lastName: ["", [Validators.required, Validators.maxLength(256)]],
+      department: ["", []],
+      hiringDate: ["", []]
     });
 
     // Fill-in the form with data if editing an existing item.
@@ -50,16 +50,16 @@ export class EmployeeEditComponent extends BaseComponent implements OnInit {
   save() {
     this.employeeService.save(
       this.qForms.cleanupData(this.form.getRawValue()) as EmployeeDto).subscribe(onNext => {
-      this.utilityService.popupSuccess('Employee successfully saved.');
-      this.router.navigate(['employee']);
+      this.utilityService.popupSuccess("Employee successfully saved.");
+      this.router.navigate(["employee"]);
     });
   }
 
   delete() {
     const dialogRef = this.dialog.open(OkCancelModalComponent, {
       data: {
-        title: 'Delete employee',
-        question: 'Do you really want to delete this employee?',
+        title: "Delete employee",
+        question: "Do you really want to delete this employee?",
         buttons: {
           ok: true, cancel: true, reload: false
         }
@@ -68,8 +68,8 @@ export class EmployeeEditComponent extends BaseComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.employeeService.delete(this.id).subscribe(onNext => {
-          this.utilityService.popupSuccess('Employee successfully deleted.');
-          this.router.navigate(['employee']);
+          this.utilityService.popupSuccess("Employee successfully deleted.");
+          this.router.navigate(["employee"]);
         });
       }
     });

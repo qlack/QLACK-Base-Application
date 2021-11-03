@@ -1,9 +1,9 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import {NgModule} from "@angular/core";
+import {RouterModule, Routes} from "@angular/router";
 import {I18nComponent} from "./i18n.component";
 
 const routes: Routes = [
-  {path: '', component: I18nComponent},
+  {path: "", component: I18nComponent},
 ];
 
 @NgModule({

@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import {SensitiveService} from "./sensitive.service";
 import {EmployeeDto} from "../dto/employee-dto";
 
 @Component({
-  selector: 'app-sensitive',
-  templateUrl: './sensitive.component.html',
-  styleUrls: ['./sensitive.component.scss']
+  selector: "app-sensitive",
+  templateUrl: "./sensitive.component.html",
+  styleUrls: ["./sensitive.component.scss"]
 })
 export class SensitiveComponent implements OnInit {
   oneUnfiltered: EmployeeDto;

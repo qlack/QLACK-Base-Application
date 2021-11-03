@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import {TranslateService} from "@ngx-translate/core";
 
 @Component({
-  selector: 'app-i18n',
-  templateUrl: './i18n.component.html',
-  styleUrls: ['./i18n.component.scss']
+  selector: "app-i18n",
+  templateUrl: "./i18n.component.html",
+  styleUrls: ["./i18n.component.scss"]
 })
 export class I18nComponent implements OnInit {
 
@@ -14,10 +14,10 @@ export class I18nComponent implements OnInit {
   }
 
   switchEN() {
-    this.translateService.use('en');
+    this.translateService.use("en");
   }
 
   switchFR() {
-    this.translateService.use('fr');
+    this.translateService.use("fr");
   }
 }

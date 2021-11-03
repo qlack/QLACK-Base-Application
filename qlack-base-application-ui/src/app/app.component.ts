@@ -1,22 +1,22 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {Log} from 'ng2-logger/browser';
-import {JwtHelperService} from '@auth0/angular-jwt';
-import {MatDialog} from '@angular/material/dialog';
-import {BaseComponent} from './shared/component/base-component';
+import {Component, OnInit} from "@angular/core";
+import {Router} from "@angular/router";
+import {Log} from "ng2-logger/browser";
+import {JwtHelperService} from "@auth0/angular-jwt";
+import {MatDialog} from "@angular/material/dialog";
+import {BaseComponent} from "./shared/component/base-component";
 import {AppConstants} from "./app.constants";
 import {OkCancelModalComponent} from "./shared/component/display/ok-cancel-modal/ok-cancel-modal.component";
 import {AuthService} from "./auth/auth.service";
 import {TranslateService} from "@ngx-translate/core";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"]
 })
 export class AppComponent extends BaseComponent implements OnInit {
   // Logger.
-  private log = Log.create('AppComponent');
+  private log = Log.create("AppComponent");
   // Expose application constants.
   constants = AppConstants;
 
@@ -37,25 +37,25 @@ export class AppComponent extends BaseComponent implements OnInit {
     if (jwtString) {
       try {
         if (this.jwtService.isTokenExpired(jwtString)) {
-          this.log.data('Removing expired JWT.');
+          this.log.data("Removing expired JWT.");
           localStorage.removeItem(this.constants.JWT_STORAGE_NAME);
         }
       } catch (err) {
-        this.log.data('Could not decode JWT, removing it.');
+        this.log.data("Could not decode JWT, removing it.");
         localStorage.removeItem(this.constants.JWT_STORAGE_NAME);
       }
     } else {
-      this.log.data('Did not find a JWT.');
+      this.log.data("Did not find a JWT.");
     }
   }
 
   ngOnInit() {
-    this.log.info('Initialising application.');
+    this.log.info("Initialising application.");
     if (!this.isLoggedIn()) {
-      this.log.data('User is not logged in (JWT not found). Redirecting to login.');
-      this.router.navigate(['login']);
+      this.log.data("User is not logged in (JWT not found). Redirecting to login.");
+      this.router.navigate(["login"]);
     } else {
-      this.log.data('User is logged in (JWT found).');
+      this.log.data("User is logged in (JWT found).");
 
       // Check for token expiration.
       const checkInterval: any = setInterval(() => {
@@ -75,8 +75,8 @@ export class AppComponent extends BaseComponent implements OnInit {
           this.dialog.open(OkCancelModalComponent, {
             disableClose: true,
             data: {
-              title: 'Session expired',
-              question: 'Your session has expired. Reload the page to refresh it.',
+              title: "Session expired",
+              question: "Your session has expired. Reload the page to refresh it.",
               buttons: {
                 ok: false,
                 cancel: false,

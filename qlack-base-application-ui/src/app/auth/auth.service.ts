@@ -1,25 +1,25 @@
-import {HttpClient} from '@angular/common/http';
-import {Injectable} from '@angular/core';
-import {JwtHelperService} from '@auth0/angular-jwt';
-import {Observable} from 'rxjs';
-import {AppConstants} from '../app.constants';
-import {LoginInfoDto} from '../dto/login-info-dto';
-import {UserDto} from '../dto/user-dto';
-import {CrudService} from '../services/crud.service';
-import {JwtDto} from '../dto/jwt-dto';
+import {HttpClient} from "@angular/common/http";
+import {Injectable} from "@angular/core";
+import {JwtHelperService} from "@auth0/angular-jwt";
+import {Observable} from "rxjs";
+import {AppConstants} from "../app.constants";
+import {LoginInfoDto} from "../dto/login-info-dto";
+import {UserDto} from "../dto/user-dto";
+import {CrudService} from "../services/crud.service";
+import {JwtDto} from "../dto/jwt-dto";
 
 /**
  * A service providing functionality for the user of the application, including authentication,
  * authorisation and session management.
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class AuthService extends CrudService<UserDto> {
   private resource = `users`;
 
   constructor(http: HttpClient, private jwtService: JwtHelperService) {
-    super(http, 'users');
+    super(http, "users");
   }
 
   // Returns the JWT.
@@ -31,7 +31,7 @@ export class AuthService extends CrudService<UserDto> {
   login(loginInfoDTO: LoginInfoDto): Observable<JwtDto> {
     return this.http.post<JwtDto>(AppConstants.API_ROOT + `/${this.resource}/auth`,
       JSON.stringify(loginInfoDTO),
-      {headers: {'Content-Type': 'application/json'}});
+      {headers: {"Content-Type": "application/json"}});
   }
 
   // Return a claim from JWT.
@@ -52,7 +52,7 @@ export class AuthService extends CrudService<UserDto> {
   // Save user
   save(user: UserDto) {
     return this.http.post(AppConstants.API_ROOT + `/${this.resource}`, JSON.stringify(user),
-      {headers: {'Content-Type': 'application/json'}});
+      {headers: {"Content-Type": "application/json"}});
   }
 
 }

@@ -1,6 +1,6 @@
-import * as _ from 'lodash-es';
-import {AppConstants} from '../../app.constants';
-import {AppSettings} from '../../app.settings';
+import * as _ from "lodash-es";
+import {AppConstants} from "../../app.constants";
+import {AppSettings} from "../../app.settings";
 
 export class BaseComponent {
 
@@ -27,7 +27,7 @@ export class BaseComponent {
    * @param val The value to search for.
    */
   lookupByValue(obj: any, val: any): any {
-    return _.startCase((_.invert(obj))[val].replace('_', ' ').toLowerCase());
+    return _.startCase((_.invert(obj))[val].replace("_", " ").toLowerCase());
   }
 
   /**
@@ -41,6 +41,6 @@ export class BaseComponent {
   }
 
   isArrayEmpty(array: any[]): boolean {
-    return array === undefined || array.length == 0
+    return array === undefined || array.length == 0;
   }
 }
