@@ -7,7 +7,7 @@ import {MatPaginator} from "@angular/material/paginator";
 import {QFormsService} from "@qlack/forms";
 import {EmployeeService} from "./employee.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import "rxjs/add/operator/debounceTime";
+import {debounceTime, distinctUntilChanged} from "rxjs/operators";
 
 @Component({
   selector: "app-employee",
@@ -33,7 +33,9 @@ export class EmployeeComponent extends BaseComponent implements AfterViewInit, O
 
   ngOnInit(): void {
     // Listen for filter changes to fetch new data.
-    this.filterForm.valueChanges.debounceTime(500).subscribe(onNext => {
+    this.filterForm.valueChanges
+    .pipe(debounceTime(500), distinctUntilChanged())
+    .subscribe(onNext => {
       this.fetchData(this.paginator.pageIndex, this.paginator.pageSize, this.sort.active,
         this.sort.start);
     });
