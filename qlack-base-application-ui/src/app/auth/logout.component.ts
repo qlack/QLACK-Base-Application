@@ -3,6 +3,7 @@ import {Log} from "ng2-logger/browser";
 import {BaseComponent} from "../shared/component/base-component";
 import {AppConstants} from "../app.constants";
 import {AuthService} from "./auth.service";
+import {JwtTrackerService} from "../services/jwt-tracker-service";
 
 @Component({
   selector: "app-logout",
@@ -14,7 +15,8 @@ export class LogoutComponent extends BaseComponent implements OnInit {
   // Expose application constants.
   constants = AppConstants;
 
-  constructor(private authService: AuthService, private renderer: Renderer2) {
+  constructor(private authService: AuthService, private renderer: Renderer2,
+              private jwtTrackerService: JwtTrackerService) {
     super();
   }
 
@@ -27,9 +29,11 @@ export class LogoutComponent extends BaseComponent implements OnInit {
     this.authService.logout().subscribe(onNext => {
       this.log.data("Successfully terminated session.");
       localStorage.removeItem(this.constants.JWT_STORAGE_NAME);
+      this.jwtTrackerService.stopTracking();
     }, onError => {
       this.log.error("Could not terminate session.");
       localStorage.removeItem(this.constants.JWT_STORAGE_NAME);
+      this.jwtTrackerService.stopTracking();
     });
   }
 }

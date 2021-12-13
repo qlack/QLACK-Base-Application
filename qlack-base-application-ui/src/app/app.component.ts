@@ -2,12 +2,11 @@ import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {Log} from "ng2-logger/browser";
 import {JwtHelperService} from "@auth0/angular-jwt";
-import {MatDialog} from "@angular/material/dialog";
 import {BaseComponent} from "./shared/component/base-component";
 import {AppConstants} from "./app.constants";
-import {OkCancelModalComponent} from "./shared/component/display/ok-cancel-modal/ok-cancel-modal.component";
 import {AuthService} from "./auth/auth.service";
 import {TranslateService} from "@ngx-translate/core";
+import {JwtTrackerService} from "./services/jwt-tracker-service";
 
 @Component({
   selector: "app-root",
@@ -24,8 +23,8 @@ export class AppComponent extends BaseComponent implements OnInit {
   sidebarVisibility = true;
 
   constructor(private authService: AuthService, private router: Router,
-              private jwtService: JwtHelperService, private dialog: MatDialog,
-              private translate: TranslateService) {
+              private jwtService: JwtHelperService, private translate: TranslateService,
+              private jwtTrackerService: JwtTrackerService) {
     super();
 
     // Initialise translations.
@@ -57,35 +56,8 @@ export class AppComponent extends BaseComponent implements OnInit {
     } else {
       this.log.data("User is logged in (JWT found).");
 
-      // Check for token expiration.
-      const checkInterval: any = setInterval(() => {
-        let tokenExpired = false;
-        const jwtString = localStorage.getItem(this.constants.JWT_STORAGE_NAME);
-        if (jwtString) {
-          try {
-            tokenExpired = this.jwtService.isTokenExpired(jwtString);
-          } catch (err) {
-            // Ignore error, user does not have a JWT.
-          }
-        }
-
-        if (tokenExpired) {
-          // Setup a timer to check for token expiration.
-          window.clearInterval(checkInterval);
-          this.dialog.open(OkCancelModalComponent, {
-            disableClose: true,
-            data: {
-              title: "Session expired",
-              question: "Your session has expired. Reload the page to refresh it.",
-              buttons: {
-                ok: false,
-                cancel: false,
-                reload: true
-              }
-            }
-          });
-        }
-      }, 1000);
+      // Monitor token expiration.
+      this.jwtTrackerService.startTracking();
     }
   }
 

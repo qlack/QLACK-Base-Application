@@ -7,6 +7,7 @@ import {LoginInfoDto} from "../dto/login-info-dto";
 import {BaseComponent} from "../shared/component/base-component";
 import {UtilityService} from "../shared/service/utility.service";
 import {AuthService} from "./auth.service";
+import {JwtTrackerService} from "../services/jwt-tracker-service";
 
 @Component({
   selector: "app-login",
@@ -30,7 +31,8 @@ export class LoginComponent extends BaseComponent implements OnInit {
   errorMessage: string | undefined;
 
   constructor(private router: Router, private authService: AuthService, private fb: FormBuilder,
-              private utilityService: UtilityService, private renderer: Renderer2) {
+              private utilityService: UtilityService, private renderer: Renderer2,
+              private jwtTrackerService: JwtTrackerService) {
     super();
   }
 
@@ -58,6 +60,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
         this.renderer.removeAttribute(document.body, "style");
         // Save the JWT to be used in future requests.
         localStorage.setItem(AppConstants.JWT_STORAGE_NAME, onNext.jwt);
+        this.jwtTrackerService.startTracking();
         this.router.navigate(["home"]);
       }, onError => {
         console.log(onError);
