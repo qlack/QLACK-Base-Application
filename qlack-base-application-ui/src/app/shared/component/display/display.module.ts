@@ -9,22 +9,21 @@ import {BooleanCheckboxComponent} from "./boolean-checkbox/boolean-checkbox.comp
 import {TextModalComponent} from "./text-modal/text-modal.component";
 
 @NgModule({
-  declarations: [
-    OkCancelModalComponent,
-    BooleanCheckboxComponent,
-    TextModalComponent
-  ],
-  imports: [
-    CommonModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatCheckboxModule,
-    MatIconModule
-  ],
-  entryComponents: [OkCancelModalComponent],
-  exports: [
-    BooleanCheckboxComponent
-  ]
+    declarations: [
+        OkCancelModalComponent,
+        BooleanCheckboxComponent,
+        TextModalComponent
+    ],
+    imports: [
+        CommonModule,
+        MatDialogModule,
+        MatButtonModule,
+        MatCheckboxModule,
+        MatIconModule
+    ],
+    exports: [
+        BooleanCheckboxComponent
+    ]
 })
 export class DisplayModule {
 }
