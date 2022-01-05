@@ -5,7 +5,7 @@
 ####################################################################################################
 # Cache NPM mobuldes.
 ####################################################################################################
-FROM node:13.10-alpine as npm
+FROM node:16.13.1-alpine as npm
 MAINTAINER qlack@eurodyn.com
 
 # Set working directory
@@ -16,15 +16,13 @@ ENV PATH /app/node_modules/.bin:$PATH
 
 # Install and cache app dependencies
 COPY package.json /app/package.json
-RUN npm install
-
-# Download NPM modules.
+COPY package-lock.json /app/package-lock.json
 RUN npm install
 
 ####################################################################################################
 # Build application.
 ####################################################################################################
-FROM node:13.10-alpine as build
+FROM node:16.13.1-alpine as build
 MAINTAINER qlack@eurodyn.com
 
 # Set working directory
@@ -35,20 +33,17 @@ ENV PATH /app/node_modules/.bin:$PATH
 
 # Install and cache app dependencies
 COPY --from=npm /app/node_modules /app/node_modules
-COPY package.json /app/package.json
-RUN npm install
-RUN npm install -g @angular/cli
 
 # Add app
 COPY . /app
 
 # Generate build
-RUN ng build --prod --output-path=dist
+RUN ng build --output-path=dist
 
 ####################################################################################################
 # Create runtime container.
 ####################################################################################################
-FROM nginx:1.19.1-alpine
+FROM nginx:1.21.5-alpine
 MAINTAINER qlack@eurodyn.com
 
 # Copy artifact build from the 'build environment'.

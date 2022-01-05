@@ -8,10 +8,10 @@ import {EmployeeDto} from "../dto/employee-dto";
   styleUrls: ["./sensitive.component.scss"]
 })
 export class SensitiveComponent implements OnInit {
-  oneUnfiltered: EmployeeDto;
-  oneFiltered: EmployeeDto;
-  multipleUnfiltered: EmployeeDto;
-  multipleFiltered: EmployeeDto;
+  oneUnfiltered?: EmployeeDto;
+  oneFiltered?: EmployeeDto;
+  multipleUnfiltered?: EmployeeDto;
+  multipleFiltered?: EmployeeDto;
 
   constructor(private sensitiveService: SensitiveService) { }
 

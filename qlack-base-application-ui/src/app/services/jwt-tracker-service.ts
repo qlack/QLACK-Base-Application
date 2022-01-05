@@ -10,7 +10,7 @@ import {MatDialog} from "@angular/material/dialog";
   providedIn: "root"
 })
 export class JwtTrackerService {
-  private checkInterval: number;
+  private checkInterval: number | undefined;
 
   constructor(private jwtService: JwtHelperService, private dialog: MatDialog) {
   }

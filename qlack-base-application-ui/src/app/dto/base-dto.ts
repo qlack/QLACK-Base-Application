@@ -1,4 +1,4 @@
 export class BaseDto {
-  id: string;
-  createdOn: Date;
+  id?: string;
+  createdOn?: Date;
 }

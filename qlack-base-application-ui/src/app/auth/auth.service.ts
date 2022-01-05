@@ -50,7 +50,7 @@ export class AuthService extends CrudService<UserDto> {
   }
 
   // Save user
-  save(user: UserDto) {
+  override save(user: UserDto) {
     return this.http.post(AppConstants.API_ROOT + `/${this.resource}`, JSON.stringify(user),
       {headers: {"Content-Type": "application/json"}});
   }

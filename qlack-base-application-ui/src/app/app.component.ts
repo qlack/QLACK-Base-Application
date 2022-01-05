@@ -16,8 +16,6 @@ import {JwtTrackerService} from "./services/jwt-tracker-service";
 export class AppComponent extends BaseComponent implements OnInit {
   // Logger.
   private log = Log.create("AppComponent");
-  // Expose application constants.
-  constants = AppConstants;
 
   // Controller for sidebar's visibility.
   sidebarVisibility = true;

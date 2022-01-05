@@ -1,9 +1,9 @@
 import {Injectable} from "@angular/core";
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from "@angular/router";
-import {Observable} from "rxjs/Observable";
 import {JwtHelperService} from "@auth0/angular-jwt";
 import {Log} from "ng2-logger/browser";
 import {BaseComponent} from "../component/base-component";
+import {Observable} from "rxjs";
 
 @Injectable()
 export class CanActivateGuard extends BaseComponent implements CanActivate {

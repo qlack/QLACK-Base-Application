@@ -1,7 +1,6 @@
 import {Component, OnInit, Renderer2} from "@angular/core";
 import {Log} from "ng2-logger/browser";
 import {BaseComponent} from "../shared/component/base-component";
-import {AppConstants} from "../app.constants";
 import {AuthService} from "./auth.service";
 import {JwtTrackerService} from "../services/jwt-tracker-service";
 
@@ -12,8 +11,6 @@ import {JwtTrackerService} from "../services/jwt-tracker-service";
 })
 export class LogoutComponent extends BaseComponent implements OnInit {
   private log = Log.create("LogoutComponent");
-  // Expose application constants.
-  constants = AppConstants;
 
   constructor(private authService: AuthService, private renderer: Renderer2,
               private jwtTrackerService: JwtTrackerService) {

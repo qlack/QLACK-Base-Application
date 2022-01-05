@@ -36,7 +36,7 @@ export class BaseComponent {
    * @param o1 The first value to compare.
    * @param o2 The second value to compare.
    */
-  compareByStringValue(o1, o2): boolean {
+  compareByStringValue(o1: any, o2: any): boolean {
     return String(o1) == String(o2);
   }
 

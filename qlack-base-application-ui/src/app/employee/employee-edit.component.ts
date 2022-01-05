@@ -17,7 +17,7 @@ import {AppConstants} from "../app.constants";
 })
 export class EmployeeEditComponent extends BaseComponent implements OnInit {
   form!: FormGroup;
-  id: string;
+  id?: string | null;
 
   constructor(private fb: FormBuilder, private dialog: MatDialog,
               private qForms: QFormsService, private route: ActivatedRoute,
