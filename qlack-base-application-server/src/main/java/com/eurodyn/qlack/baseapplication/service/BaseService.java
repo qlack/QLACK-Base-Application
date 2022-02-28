@@ -56,7 +56,7 @@ abstract class BaseService<D extends BaseDTO, E extends BaseEntity> {
     }
   }
 
-  public D save(D dto) {
+  public E saveEntity(D dto) {
     E entity;
 
     if (StringUtils.isNotEmpty(dto.getId())) {
@@ -67,7 +67,11 @@ abstract class BaseService<D extends BaseDTO, E extends BaseEntity> {
       entity = repository.save(entity);
     }
 
-    return mapper.map(entity);
+    return entity;
+  }
+
+  public D save(D dto) {
+    return mapper.map(saveEntity(dto));
   }
 
   public Page<D> findAll(Predicate predicate, Pageable pageable) {
