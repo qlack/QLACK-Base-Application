@@ -1,7 +1,7 @@
 # QLACK-Base-Application
 
 The QLACK Base Application is a full-stack blueprint, featuring Angular and Spring Boot. You can
-start your new project by cloning this repo and then built on top of the blueprint.
+start your new project by cloning this repo and then built on top of it.
 
 ## Features
 
