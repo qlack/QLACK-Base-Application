@@ -1,0 +1,37 @@
+image: gitpod/workspace-full
+
+vscode:
+  extensions:
+    - ms-azuretools.vscode-docker
+    - Pivotal.vscode-boot-dev-pack
+    - redhat.vscode-xml
+    - pivotal.vscode-spring-boot
+    - vscjava.vscode-java-pack
+    - GabrielBB.vscode-lombok
+    - bajdzis.vscode-database
+
+tasks:
+  - name: Prepare env
+    init: |
+      yes | sdk install java 17.0.2-tem && \
+        cd /workspace/qlack-base-application-server && mvn clean install
+      cd /workspace/qlack-base-application-ui && \
+        npm install && \
+        npx -y @angular/cli build
+    command: gp-sync-done env
+  - name: Backend
+    # Until we create a custom Docker image with all tools/version we need, we have to reinstall java on `before`.
+    before: yes | sdk install java 17.0.2-tem
+    command: |
+      gp sync-await env
+      sdk use java 17.0.2-tem
+      cd /workspace/qlack-base-application-server
+      mvn spring-boot:run \
+        -Dspring-boot.run.jvmArguments="-Xdebug -XX:+ShowCodeDetailsInExceptionMessages \
+          -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8081" \
+        -Dspring-boot.run.arguments="--server.port=8080"
+  - name: Frontend
+    command: |
+      gp sync-await env
+      cd /workspace/qlack-base-application-ui
+      npx -y @angular/cli serve --host 0.0.0.0 --disable-host-check --proxy-config proxy.conf.json
