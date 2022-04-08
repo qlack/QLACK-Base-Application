@@ -9,6 +9,7 @@ vscode:
     - vscjava.vscode-java-pack
     - GabrielBB.vscode-lombok
     - bajdzis.vscode-database
+    - vivaxy.vscode-conventional-commits
 
 tasks:
   - name: Prepare env
@@ -17,7 +18,7 @@ tasks:
       cd /workspace/qlack-base-application-ui && npm install && npx -y @angular/cli build
     command: gp-sync-done env
   - name: Backend
-    # Until we create a custom Docker image with all tools/version we need, we have to reinstall java on `before`.
+# Until we create a custom Docker image with all tools/version we need, we have to reinstall java on `before`.
     before: yes | sdk install java 17.0.2-tem
     command: |
       gp sync-await env
@@ -27,5 +28,5 @@ tasks:
   - name: Frontend
     command: |
       gp sync-await env
-      cd /workspace/qlack-base-application-ui
+      cd /workspace/QLACK-Base-Application/qlack-base-application-ui
       npx -y @angular/cli serve --host 0.0.0.0 --disable-host-check --proxy-config proxy.conf.json
