@@ -29,3 +29,8 @@ tasks:
       gp sync-await env
       cd /workspace/QLACK-Base-Application/qlack-base-application-ui
       npx -y @angular/cli serve --host 0.0.0.0 --disable-host-check --proxy-config proxy.conf.json
+
+ports:
+  - port: 4200
+    visibility: private
+    onOpen: open-preview
