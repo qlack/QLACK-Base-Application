@@ -16,9 +16,8 @@ tasks:
     init: |
       yes | sdk install java 17.0.2-tem && cd /workspace/QLACK-Base-Application/qlack-base-application-server && mvn clean install
       cd /workspace/QLACK-Base-Application/qlack-base-application-ui && npm install && npx -y @angular/cli build
-    command: gp-sync-done env
+    command: gp sync-done env
   - name: Backend
-# Until we create a custom Docker image with all tools/version we need, we have to reinstall java on `before`.
     before: yes | sdk install java 17.0.2-tem
     command: |
       gp sync-await env
