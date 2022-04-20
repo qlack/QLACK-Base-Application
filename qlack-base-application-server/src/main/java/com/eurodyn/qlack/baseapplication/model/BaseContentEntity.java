@@ -1,7 +1,7 @@
 package com.eurodyn.qlack.baseapplication.model;
 
 import com.querydsl.core.annotations.QuerySupertype;
-import javax.persistence.MappedSuperclass;
+import jakarta.persistence.MappedSuperclass;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.OptimisticLockType;

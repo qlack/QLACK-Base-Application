@@ -1,8 +1,8 @@
 package com.eurodyn.qlack.baseapplication.model;
 
 import java.time.Instant;
-import javax.persistence.Entity;
-import javax.validation.constraints.NotNull;
+import jakarta.persistence.Entity;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

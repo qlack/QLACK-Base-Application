@@ -4,7 +4,7 @@ spring:
     default-property-inclusion: non_null
   datasource:
     name: qDS
-    url: jdbc:h2:mem:testdb
+    url: jdbc:h2:mem:testdb;NON_KEYWORDS=value;DATABASE_TO_LOWER=true;DB_CLOSE_ON_EXIT=FALSE
     username: sa
     password: password
     initialization-mode: always
@@ -33,3 +33,8 @@ qlack:
     jwt:
       issuer: qlack_demo
       validity: 1440
+
+logging:
+  level:
+    root: error
+    com.eurodyn.qlack: info

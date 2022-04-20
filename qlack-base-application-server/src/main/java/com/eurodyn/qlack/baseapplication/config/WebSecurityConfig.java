@@ -1,16 +1,17 @@
 package com.eurodyn.qlack.baseapplication.config;
 
 import com.eurodyn.qlack.util.jwt.filter.JwtAuthenticationFilter;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
-@EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+//@EnableWebSecurity
+public class WebSecurityConfig {
 
   private static final String[] PUBLIC_URIS =
     {"/users/auth", "/ping", "/i18n/*"};
@@ -20,16 +21,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     this.jwtAuthenticationFilter = jwtAuthenticationFilter;
   }
 
-  @Override
-  protected void configure(HttpSecurity http) throws Exception {
+  @Bean
+  public SecurityFilterChain configure(HttpSecurity http) throws Exception {
     http
-      .csrf().disable()
-      .authorizeRequests()
-      .antMatchers(PUBLIC_URIS).permitAll()
-      .anyRequest().authenticated()
-      .and()
-      .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-      .sessionManagement()
-      .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        .csrf(AbstractHttpConfigurer::disable)
+        .authorizeHttpRequests((requests) -> requests
+            .requestMatchers(PUBLIC_URIS).permitAll()
+            .anyRequest().authenticated())
+        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+
+    return http.build();
+
   }
 }

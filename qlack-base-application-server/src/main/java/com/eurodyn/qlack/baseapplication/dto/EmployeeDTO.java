@@ -1,7 +1,7 @@
 package com.eurodyn.qlack.baseapplication.dto;
 
 import java.time.Instant;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;

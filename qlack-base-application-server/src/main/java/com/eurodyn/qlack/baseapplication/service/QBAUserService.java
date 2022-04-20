@@ -11,7 +11,7 @@ import com.eurodyn.qlack.util.jwt.dto.JwtDTO;
 import com.eurodyn.qlack.util.jwt.dto.JwtGenerateRequestDTO;
 import com.eurodyn.qlack.util.jwt.service.JwtService;
 import java.text.MessageFormat;
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;

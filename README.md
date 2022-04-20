@@ -52,7 +52,7 @@ To start the back-end component, issue:
 
 To start the front-end component, issue:
 
-`ng serve --host 0.0.0.0 --disable-host-check --proxy-config proxy.conf.json`
+`ng start`
 
 ## Containers support
 

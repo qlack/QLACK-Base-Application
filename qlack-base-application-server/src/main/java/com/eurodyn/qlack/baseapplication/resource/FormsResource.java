@@ -3,7 +3,7 @@ package com.eurodyn.qlack.baseapplication.resource;
 import com.eurodyn.qlack.baseapplication.dto.FormDTO;
 import com.eurodyn.qlack.common.exception.QExceptionWrapper;
 import com.eurodyn.qlack.util.data.exceptions.ExceptionWrapper;
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
