@@ -35,7 +35,7 @@ RUN mvn clean package spring-boot:repackage -Pprod
 ####################################################################################################
 # Create application image.
 ####################################################################################################
-FROM adoptopenjdk:15.0.2_7-jre-hotspot
+FROM eclipse-temurin:17-jre-alpine
 MAINTAINER qlack@eurodyn.com
 
 # Set working directory
