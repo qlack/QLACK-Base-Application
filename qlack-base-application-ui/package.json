@@ -41,7 +41,7 @@
     "ng2-logger": "8.0.20",
     "ngx-cookie-service": "13.1.2",
     "@angular/material-moment-adapter": "13.1.1",
-    "moment": "2.29.1",
+    "moment": "2.29.4",
     "ngx-moment": "6.0.1"
   },
   "devDependencies": {
