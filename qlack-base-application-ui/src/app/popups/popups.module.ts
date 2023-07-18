@@ -5,7 +5,6 @@ import { PopupsRoutingModule } from "./popups-routing.module";
 import { PopupsComponent } from "./popups.component";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
-import {FlexModule} from "@angular/flex-layout";
 
 
 @NgModule({
@@ -17,7 +16,6 @@ import {FlexModule} from "@angular/flex-layout";
     PopupsRoutingModule,
     MatCardModule,
     MatButtonModule,
-    FlexModule
   ]
 })
 export class PopupsModule { }

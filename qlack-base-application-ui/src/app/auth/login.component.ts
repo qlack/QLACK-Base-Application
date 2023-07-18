@@ -1,6 +1,6 @@
 import {Component, OnInit, Renderer2} from "@angular/core";
 import {Router} from "@angular/router";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {Log} from "ng2-logger/browser";
 import {AppConstants} from "../app.constants";
 import {LoginInfoDto} from "../dto/login-info-dto";
@@ -19,7 +19,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
   private log = Log.create("LoginComponent");
 
   // Form control.
-  loginForm!: FormGroup;
+  loginForm!: UntypedFormGroup;
 
   // Show/hidePassword password
   hidePassword = true;
@@ -30,7 +30,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
   // Error message to display in form.
   errorMessage: string | undefined;
 
-  constructor(private router: Router, private authService: AuthService, private fb: FormBuilder,
+  constructor(private router: Router, private authService: AuthService, private fb: UntypedFormBuilder,
               private utilityService: UtilityService, private renderer: Renderer2,
               private jwtTrackerService: JwtTrackerService) {
     super();

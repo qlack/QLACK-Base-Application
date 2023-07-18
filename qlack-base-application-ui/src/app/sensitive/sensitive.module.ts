@@ -3,9 +3,8 @@ import { CommonModule } from "@angular/common";
 
 import { SensitiveRoutingModule } from "./sensitive-routing.module";
 import { SensitiveComponent } from "./sensitive.component";
-import {MatCardModule} from "@angular/material/card";
-import {FlexModule} from "@angular/flex-layout";
 import {MatIconModule} from "@angular/material/icon";
+import {MatCardModule} from "@angular/material/card";
 
 
 @NgModule({
@@ -16,7 +15,6 @@ import {MatIconModule} from "@angular/material/icon";
     CommonModule,
     SensitiveRoutingModule,
     MatCardModule,
-    FlexModule,
     MatIconModule
   ]
 })

@@ -9,17 +9,8 @@ import {routing} from "./app.routes";
 import {LogoutComponent} from "./auth/logout.component";
 import {LoginComponent} from "./auth/login.component";
 import {JwtModule} from "@auth0/angular-jwt";
-import {FlexLayoutModule} from "@angular/flex-layout";
 import {AppConstants} from "./app.constants";
-import {MatButtonModule} from "@angular/material/button";
-import {MatCardModule} from "@angular/material/card";
-import {MatDialogModule} from "@angular/material/dialog";
-import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatIconModule} from "@angular/material/icon";
-import {MatInputModule} from "@angular/material/input";
-import {MatListModule} from "@angular/material/list";
-import {MatMenuModule} from "@angular/material/menu";
-import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {QFormsModule} from "@qlack/forms";
@@ -27,12 +18,20 @@ import {HeaderComponent} from "./shared/layout/header.component";
 import {SidenavComponent} from "./shared/layout/sidenav.component";
 import {DisplayModule} from "./shared/component/display/display.module";
 import {CanActivateGuard} from "./shared/guards/can-activate-guard";
-import {MatSelectModule} from "@angular/material/select";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {QFormValidationModule} from "@qlack/form-validation";
 import {NgProgressModule} from "ngx-progressbar";
 import {NgProgressHttpModule} from "ngx-progressbar/http";
+import {MatListModule} from "@angular/material/list";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatCardModule} from "@angular/material/card";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatButtonModule} from "@angular/material/button";
+import {MatSelectModule} from "@angular/material/select";
+import {MatMenuModule} from "@angular/material/menu";
 
 // AoT exported function for factories.
 export function getJwtToken(): string | null {
@@ -54,7 +53,6 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   imports: [
     BrowserModule,
-    FlexLayoutModule,
     BrowserAnimationsModule,
     routing,
     HttpClientModule,

@@ -15,7 +15,7 @@ export class CanActivateGuard extends BaseComponent implements CanActivate {
   }
 
   // The default guard for all routes.
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+  canActivate(_route: ActivatedRouteSnapshot, _state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     const jwtString = localStorage.getItem(this.constants.JWT_STORAGE_NAME);
     if (jwtString) {
       return true;

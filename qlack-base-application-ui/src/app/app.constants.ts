@@ -1,6 +1,6 @@
 export const AppConstants = {
   // The name of the JWT key in local storage.
-  JWT_STORAGE_NAME: "qlack-base-application-ui_platform",
+  JWT_STORAGE_NAME: "qlack-base-application-ui",
 
   // The date format to use.
   DATETIME_FORMAT: "yyyy-MM-dd HH:mm:ss",

@@ -1,9 +1,9 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from "@angular/core";
-import {MatTableDataSource} from "@angular/material/table";
 import {FileDto} from "../dto/file-dto";
 import {MatSort} from "@angular/material/sort";
-import {MatPaginator} from "@angular/material/paginator";
 import {FilesService} from "./files.service";
+import {MatTableDataSource} from "@angular/material/table";
+import {MatPaginator} from "@angular/material/paginator";
 
 @Component({
   selector: "app-files",

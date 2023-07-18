@@ -7,7 +7,6 @@ import {HttpClient} from "@angular/common/http";
 import {AppConstants} from "../app.constants";
 import {FileDto} from "../dto/file-dto";
 import {CrudService} from "./crud.service";
-import {QFormsService} from "@qlack/forms";
 
 @Injectable({
   providedIn: "root"

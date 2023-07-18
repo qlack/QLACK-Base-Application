@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {MatDialog} from "@angular/material/dialog";
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {QFormsService} from "@qlack/forms";
 import {HttpClient, HttpEventType} from "@angular/common/http";
 import {UtilityService} from "../shared/service/utility.service";
 import {FilesService} from "./files.service";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: "app-files-upload",
@@ -13,9 +13,9 @@ import {FilesService} from "./files.service";
   styleUrls: ["./files-upload.component.scss"]
 })
 export class FilesUploadComponent implements OnInit {
-  form!: FormGroup;
+  form!: UntypedFormGroup;
 
-  constructor(private fb: FormBuilder, private dialog: MatDialog,
+  constructor(private fb: UntypedFormBuilder, private dialog: MatDialog,
               private qForms: QFormsService, private route: ActivatedRoute,
               private router: Router, private http: HttpClient,
               private utilityService: UtilityService, private filesService: FilesService) { }

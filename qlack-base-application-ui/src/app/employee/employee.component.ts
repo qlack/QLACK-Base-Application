@@ -1,13 +1,13 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from "@angular/core";
 import {BaseComponent} from "../shared/component/base-component";
-import {MatTableDataSource} from "@angular/material/table";
 import {EmployeeDto} from "../dto/employee-dto";
 import {MatSort} from "@angular/material/sort";
-import {MatPaginator} from "@angular/material/paginator";
 import {QFormsService} from "@qlack/forms";
 import {EmployeeService} from "./employee.service";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormGroup} from "@angular/forms";
 import {debounceTime, distinctUntilChanged} from "rxjs/operators";
+import {MatTableDataSource} from "@angular/material/table";
+import {MatPaginator} from "@angular/material/paginator";
 
 @Component({
   selector: "app-employee",
@@ -17,13 +17,13 @@ import {debounceTime, distinctUntilChanged} from "rxjs/operators";
 export class EmployeeComponent extends BaseComponent implements AfterViewInit, OnInit {
   columns = ["firstName", "lastName", "department", "hiringDate"];
   datasource = new MatTableDataSource<EmployeeDto>();
-  filterForm: FormGroup;
+  filterForm: UntypedFormGroup;
 
   @ViewChild(MatSort, {static: true}) sort!: MatSort;
   @ViewChild(MatPaginator, {static: true}) paginator!: MatPaginator;
 
   constructor(private employeeService: EmployeeService, private qForms: QFormsService,
-              private fb: FormBuilder) {
+              private fb: UntypedFormBuilder) {
     super();
     this.filterForm = this.fb.group({
       firstName: ["", null],

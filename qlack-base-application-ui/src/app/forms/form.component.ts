@@ -1,6 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {EmployeeDto} from "../dto/employee-dto";
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {FormsService} from "./forms.service";
 import {QFormsService} from "@qlack/forms";
 import {UtilityService} from "../shared/service/utility.service";
@@ -13,15 +12,15 @@ import {FormDto} from "../dto/form-dto";
   styleUrls: ["./form.component.scss"]
 })
 export class FormComponent implements OnInit {
-  form!: FormGroup;
+  form!: UntypedFormGroup;
 
-  constructor(private fb: FormBuilder, private formsService: FormsService,
+  constructor(private fb: UntypedFormBuilder, private formsService: FormsService,
               private qForms: QFormsService, private utilityService: UtilityService,
               private qFormValidationService: QFormValidationService) {
   }
 
   ngOnInit(): void {
-    // Setup the form.
+    // Set up the form.
     this.form = this.fb.group({
       name: ["", [Validators.required]],
       age: ["", [Validators.required]]

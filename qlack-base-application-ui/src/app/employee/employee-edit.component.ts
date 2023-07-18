@@ -1,14 +1,14 @@
 import {Component, OnInit} from "@angular/core";
 import {BaseComponent} from "../shared/component/base-component";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {QFormsService} from "@qlack/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UtilityService} from "../shared/service/utility.service";
-import {MatDialog} from "@angular/material/dialog";
 import {EmployeeService} from "./employee.service";
 import {EmployeeDto} from "../dto/employee-dto";
 import {OkCancelModalComponent} from "../shared/component/display/ok-cancel-modal/ok-cancel-modal.component";
 import {AppConstants} from "../app.constants";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: "app-employee-edit",
@@ -16,10 +16,10 @@ import {AppConstants} from "../app.constants";
   styleUrls: ["./employee-edit.component.scss"]
 })
 export class EmployeeEditComponent extends BaseComponent implements OnInit {
-  form!: FormGroup;
+  form!: UntypedFormGroup;
   id?: string | null;
 
-  constructor(private fb: FormBuilder, private dialog: MatDialog,
+  constructor(private fb: UntypedFormBuilder, private dialog: MatDialog,
               private qForms: QFormsService, private route: ActivatedRoute,
               private router: Router, private utilityService: UtilityService,
               private employeeService: EmployeeService) {

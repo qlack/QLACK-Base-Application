@@ -1,7 +1,7 @@
 import {AppConstants} from "../app.constants";
 import {HttpClient, HttpEvent, HttpRequest, HttpResponse} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {FormGroup} from "@angular/forms";
+import {UntypedFormGroup} from "@angular/forms";
 import {QPageableReply} from "@qlack/forms";
 import * as fs from "file-saver";
 
@@ -41,7 +41,7 @@ export class CrudService<T> {
     return this.http.delete(`${AppConstants.API_ROOT}/${this.endpoint}`);
   }
 
-  upload(form: FormGroup, url?: string, reportProgress?: boolean): Observable<HttpEvent<{}>> {
+  upload(form: UntypedFormGroup, url?: string, reportProgress?: boolean): Observable<HttpEvent<{}>> {
     const formData = new FormData();
     for (const formField in form.value) {
       formData.append(formField, form.value[formField]);
