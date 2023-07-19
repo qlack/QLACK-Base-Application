@@ -17,8 +17,12 @@ export const AppConstants = {
   },
 
   // A reserved word to be used in place of an ID to indicate a new record creation.
-  NEW_RECORD_KEYWORD: "new",
+  NEW_RECORD_ID: "new",
 
   // Language settings.
-  DEFAULT_LANGUAGE: "en"
+  DEFAULT_LANGUAGE: "en",
+
+  // Local storage keys.
+  LOCAL_STORAGE_THEME: "theme",
+  LOCAL_STORAGE_SIDEBAR: "sidebar"
 };

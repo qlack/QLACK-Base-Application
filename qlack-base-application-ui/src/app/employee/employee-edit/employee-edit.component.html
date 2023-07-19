@@ -1,0 +1,39 @@
+<div class="card w-full rounded-b-none">
+  <div class="card-body">
+    <h2 class="card-title text-2xl flex flex-row justify-between">
+      <div class="flex flex-row gap-2">
+        <fa-icon icon="table-list"></fa-icon>
+        <div>Employee edit</div>
+      </div>
+    </h2>
+    <div>
+      <form novalidate [formGroup]="form" class="mt-5">
+        <div class="flex flex-col">
+          <mat-form-field>
+            <mat-label>First name</mat-label>
+            <input matInput formControlName="firstName" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Last name</mat-label>
+            <input matInput formControlName="lastName" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Department</mat-label>
+            <input matInput formControlName="department" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Hiring date</mat-label>
+            <input matInput formControlName="hiringDate" [matDatepicker]="hdPicker">
+            <mat-datepicker-toggle matSuffix [for]="hdPicker"></mat-datepicker-toggle>
+            <mat-datepicker #hdPicker disabled="false"></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </form>
+    </div>
+    <div class="card-actions justify-start mt-10">
+      <button class="btn btn-sm btn-accent" (click)="delete()" [disabled]="!this.id">DELETE</button>
+      <button class="btn btn-sm btn-secondary" routerLink="/employee">CANCEL</button>
+      <button class="btn btn-sm btn-primary" (click)="save()" [disabled]="form.invalid">SAVE</button>
+    </div>
+  </div>
+</div>

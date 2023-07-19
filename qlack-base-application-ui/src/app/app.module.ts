@@ -6,17 +6,14 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {CookieService} from "ngx-cookie-service";
 import {routing} from "./app.routes";
-import {LogoutComponent} from "./auth/logout.component";
-import {LoginComponent} from "./auth/login.component";
+import {LogoutComponent} from "./auth/logout/logout.component";
+import {LoginComponent} from "./auth/login/login.component";
 import {JwtModule} from "@auth0/angular-jwt";
 import {AppConstants} from "./app.constants";
 import {MatIconModule} from "@angular/material/icon";
 import {MatToolbarModule} from "@angular/material/toolbar";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from "@angular/forms";
 import {QFormsModule} from "@qlack/forms";
-import {HeaderComponent} from "./shared/layout/header.component";
-import {SidenavComponent} from "./shared/layout/sidenav.component";
-import {DisplayModule} from "./shared/component/display/display.module";
 import {CanActivateGuard} from "./shared/guards/can-activate-guard";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
@@ -32,6 +29,29 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatButtonModule} from "@angular/material/button";
 import {MatSelectModule} from "@angular/material/select";
 import {MatMenuModule} from "@angular/material/menu";
+import {NgOptimizedImage} from "@angular/common";
+import {FaConfig, FaIconLibrary, FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {
+  faBars,
+  faChevronDown,
+  faDashboard,
+  faEnvelope,
+  faEye,
+  faEyeSlash,
+  faFilter,
+  faGlobe,
+  faHome, faInfo,
+  faMessage, faRectangleList,
+  faSearch,
+  faServer,
+  faSwatchbook,
+  faTableList, faTriangleExclamation,
+  faUpload,
+  faUser
+} from "@fortawesome/free-solid-svg-icons";
+import {LayoutModule} from "./layout/layout.module";
+import {ComponentsModule} from "./shared/component/components.module";
+import {faWpforms} from "@fortawesome/free-brands-svg-icons";
 
 // AoT exported function for factories.
 export function getJwtToken(): string | null {
@@ -46,8 +66,6 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    SidenavComponent,
     LoginComponent,
     LogoutComponent
   ],
@@ -72,7 +90,6 @@ export function createTranslateLoader(http: HttpClient) {
     MatSnackBarModule,
     MatInputModule,
     MatButtonModule,
-    DisplayModule,
     NgProgressModule.withConfig({
       trickleSpeed: 500,
       debounceTime: 500,
@@ -83,7 +100,6 @@ export function createTranslateLoader(http: HttpClient) {
     }),
     NgProgressHttpModule,
     MatSelectModule,
-    FormsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -92,6 +108,10 @@ export function createTranslateLoader(http: HttpClient) {
       }
     }),
     MatMenuModule,
+    NgOptimizedImage,
+    FontAwesomeModule,
+    LayoutModule,
+    ComponentsModule,
   ],
   exports: [],
   providers: [
@@ -103,5 +123,11 @@ export function createTranslateLoader(http: HttpClient) {
   bootstrap: [AppComponent]
 })
 export class AppModule {
+  constructor(library: FaIconLibrary, faConfig: FaConfig) {
+    faConfig.fixedWidth = true;
+    library.addIcons(faUser, faEye, faEyeSlash, faEnvelope, faDashboard, faBars, faSwatchbook,
+      faChevronDown, faHome, faSearch, faTableList, faServer, faUpload, faFilter, faRectangleList,
+      faMessage, faGlobe, faInfo, faTriangleExclamation);
+  }
 }
 

@@ -1,0 +1,47 @@
+<div class="card w-full rounded-b-none">
+  <div class="card-body">
+    <h2 class="card-title text-2xl flex flex-row justify-between">
+      <div class="flex flex-row gap-2">
+        <fa-icon icon="table-list"></fa-icon>
+        <div>Files</div>
+      </div>
+    </h2>
+    <div class="mt-5">
+      <!-- Table -->
+      <table cdk-table [dataSource]="datasource" class="table w-full"
+             matSort matSortActive="fileName" matSortDirection="asc"
+             matSortStart="asc" matSortDisableClear aria-describedby="List of files">
+        <ng-container cdkColumnDef="fileName">
+          <th cdk-header-cell *matHeaderCellDef mat-sort-header scope="col"> Filename</th>
+          <td cdk-cell *cdkCellDef="let element">{{element.fileName}}</td>
+        </ng-container>
+        <ng-container cdkColumnDef="description">
+          <th cdk-header-cell *matHeaderCellDef mat-sort-header scope="col"> Description</th>
+          <td cdk-cell *cdkCellDef="let element">{{element.description}}</td>
+        </ng-container>
+        <ng-container cdkColumnDef="size">
+          <th cdk-header-cell *matHeaderCellDef mat-sort-header scope="col"> Size</th>
+          <td cdk-cell *cdkCellDef="let element">{{element.fileSize}} bytes</td>
+        </ng-container>
+        <ng-container cdkColumnDef="actions">
+          <th cdk-header-cell *matHeaderCellDef mat-sort-header scope="col"></th>
+          <td cdk-cell *cdkCellDef="let element">
+            <button class="btn btn-sm btn-ghost" (click)="download(element.id)">DOWNLOAD</button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns; let element;"></tr>
+      </table>
+      <mat-paginator #paginator (page)="changePage()"
+                     [pageSizeOptions]="[10, 30, 50]"
+                     [pageSize]="10"
+                     [showFirstLastButtons]="true">
+      </mat-paginator>
+    </div>
+    <div class="card-actions justify-start mt-10">
+      <button class="btn btn-sm btn-primary" routerLink="upload">
+        UPLOAD
+      </button>
+    </div>
+  </div>
+</div>

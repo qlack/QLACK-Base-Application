@@ -1,9 +1,9 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
-import {FormComponent} from "./form.component";
+import {FormViewComponent} from "./form-view/form-view.component";
 
 const routes: Routes = [
-  {path: "", component: FormComponent},
+  {path: "", component: FormViewComponent, data: {breadcrumb: ""}},
 ];
 
 @NgModule({

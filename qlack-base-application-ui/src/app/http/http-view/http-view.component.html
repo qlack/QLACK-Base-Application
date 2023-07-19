@@ -1,0 +1,15 @@
+<div class="card w-full rounded-b-none">
+  <div class="card-body">
+    <h2 class="card-title text-2xl flex flex-row justify-between">
+      <div class="flex flex-row gap-2">
+        <fa-icon icon="table-list"></fa-icon>
+        <div>HTTP</div>
+      </div>
+    </h2>
+      <div>Processing state: {{process}}</div>
+    <div class="mt-5 flex flex-row gap-2">
+      <button class="btn btn-sm btn-primary" (click)="longRequestPB()">CALCULATE WITH PROGRESS BAR</button>
+      <button class="btn btn-sm btn-primary" (click)="longRequest()">CALCULATE WITHOUT PROGRESS BAR</button>
+    </div>
+  </div>
+</div>

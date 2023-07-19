@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {CrudService} from "../services/crud.service";
 import {HttpClient} from "@angular/common/http";
-import {FormDto} from "../dto/form-dto";
+import {FormDto} from "./dto/form-dto";
 
 @Injectable({
   providedIn: "root"

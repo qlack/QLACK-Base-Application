@@ -1,0 +1,57 @@
+<div class="flex flex-row justify-end mt-4 items-center">
+  <form novalidate [formGroup]="form">
+    <div class="relative focus-within:text-gray-400">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+            <fa-icon icon="search"></fa-icon>
+          </span>
+      <input type="text" formControlName="searchTerm"
+             class="input py-2 text-sm text-white rounded-2xl pl-10 focus:text-inherit bg-inherit
+                    hover:bg-base-200 w-32 focus:w-64 transition-all ease-in"
+             (blur)="closeSearchResults()"
+             placeholder="Search..." autocomplete="off">
+    </div>
+  </form>
+
+  <div title="Change Theme" matTooltip="Themes" class="dropdown dropdown-end ">
+    <div tabindex="0" class="btn gap-1 normal-case btn-ghost">
+      <fa-icon icon="swatchbook" size="xl"></fa-icon>
+      <fa-icon icon="chevron-down"></fa-icon>
+    </div>
+    <div
+      class="dropdown-content bg-base-200 text-base-content rounded-t-box rounded-b-box top-px max-h-96 h-[70vh] w-52 overflow-y-auto shadow-2xl mt-16">
+      <div class="grid grid-cols-1 gap-3 p-3" tabindex="0">
+        <a class="outline-base-content overflow-hidden rounded-lg" *ngFor="let theme of themes"
+           (click)="selectTheme(theme)">
+          <div class="outline-base-content overflow-hidden rounded-lg outline-2 outline-offset-2"
+               [attr.data-set-theme]="theme" data-act-class="outline">
+            <div [attr.data-theme]="theme"
+                 class="bg-base-100 text-base-content w-full cursor-pointer font-sans">
+              <div class="grid grid-cols-5 grid-rows-3">
+                <div class="col-span-5 row-span-3 row-start-1 flex gap-1 py-3 px-4">
+                  <div class="flex-grow text-sm font-bold">{{theme}}</div>
+                  <div class="flex flex-shrink-0 flex-wrap gap-1">
+                    <div class="bg-primary w-2 rounded"></div>
+                    <div class="bg-secondary w-2 rounded"></div>
+                    <div class="bg-accent w-2 rounded"></div>
+                    <div class="bg-neutral w-2 rounded"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div title="Change Theme" class="dropdown dropdown-end">
+    <div tabindex="0" class="btn gap-1 normal-case btn-ghost">
+      <fa-icon icon="user" size="xl"></fa-icon>
+      <fa-icon icon="chevron-down"></fa-icon>
+    </div>
+    <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-300 rounded-box w-52">
+      <li><a routerLink="/logout">Sign out</a></li>
+    </ul>
+  </div>
+
+</div>

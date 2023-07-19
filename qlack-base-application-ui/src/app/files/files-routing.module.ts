@@ -1,11 +1,11 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
-import {FilesComponent} from "./files.component";
-import {FilesUploadComponent} from "./files-upload.component";
+import {FilesListComponent} from "./files-list/files-list.component";
+import {FilesUploadComponent} from "./files-upload/files-upload.component";
 
 const routes: Routes = [
-  {path: "", component: FilesComponent},
-  {path: "upload", component: FilesUploadComponent},
+  {path: "", component: FilesListComponent, data: {breadcrumb: ""}},
+  {path: "upload", component: FilesUploadComponent, data: {breadcrumb: "Upload"}},
 ];
 
 @NgModule({

@@ -1,10 +1,10 @@
 import {Injectable} from "@angular/core";
 import {AppConstants} from "../app.constants";
-import {
-  OkCancelModalComponent
-} from "../shared/component/display/ok-cancel-modal/ok-cancel-modal.component";
 import {JwtHelperService} from "@auth0/angular-jwt";
 import {MatDialog} from "@angular/material/dialog";
+import {
+  OkCancelModalComponent
+} from "../shared/component/ok-cancel-modal/ok-cancel-modal.component";
 
 @Injectable({
   providedIn: "root"

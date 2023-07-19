@@ -10,8 +10,7 @@ import {JwtTrackerService} from "./services/jwt-tracker-service";
 
 @Component({
   selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"]
+  templateUrl: "./app.component.html"
 })
 export class AppComponent extends BaseComponent implements OnInit {
   // Logger.
@@ -24,6 +23,14 @@ export class AppComponent extends BaseComponent implements OnInit {
               private jwtService: JwtHelperService, private translate: TranslateService,
               private jwtTrackerService: JwtTrackerService) {
     super();
+
+    // Check if a specific theme has already been saved for this user.
+    // tslint:disable-next-line:no-unused-expression
+    var theme = localStorage.getItem(this.constants.LOCAL_STORAGE_THEME);
+    if (theme) {
+      this.log.info(`Setting theme to '${theme}'.`);
+      document.querySelector("html")!.setAttribute("data-theme", theme);
+    }
 
     // Initialise translations.
     translate.setDefaultLang(AppConstants.DEFAULT_LANGUAGE);

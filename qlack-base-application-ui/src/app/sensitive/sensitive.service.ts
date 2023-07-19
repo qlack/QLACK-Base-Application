@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
 import {CrudService} from "../services/crud.service";
-import {EmployeeDto} from "../dto/employee-dto";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {AppConstants} from "../app.constants";
 import {QPageableReply} from "@qlack/forms";
+import {EmployeeDto} from "../employee/dto/employee-dto";
 
 @Injectable({
   providedIn: "root"

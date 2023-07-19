@@ -1,0 +1,19 @@
+<div class="card w-full rounded-b-none">
+  <div class="card-body">
+    <h2 class="card-title text-2xl flex flex-row justify-between">
+      <div class="flex flex-row gap-2">
+        <fa-icon icon="table-list"></fa-icon>
+        <div>Internationalisation</div>
+      </div>
+    </h2>
+    <div class="mt-5">
+      <div>{{ 'hello' | translate }}</div>
+      <div>{{ 'good_morning' | translate }}</div>
+      <div>{{ 'good_night' | translate }}</div>
+    </div>
+    <div class="mt-5 flex flex-row gap-2">
+      <button class="btn btn-sm btn-primary" (click)="switchEN()">SWITCH TO ENGLISH</button>
+      <button class="btn btn-sm btn-primary" (click)="switchFR()">SWITCH TO FRENCH</button>
+    </div>
+  </div>
+</div>

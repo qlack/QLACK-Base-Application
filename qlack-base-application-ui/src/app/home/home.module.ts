@@ -4,6 +4,7 @@ import { HomeComponent } from "./home.component";
 import {HomeRoutingModule} from "./home-routing.module";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import {MatButtonModule} from "@angular/material/button";
     HomeRoutingModule,
     CommonModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    FontAwesomeModule
   ]
 })
 export class HomeModule { }

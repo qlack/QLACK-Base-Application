@@ -1,0 +1,36 @@
+<div class="card grid h-screen place-items-center -ml-52">
+  <div class="card-body bg-base-100 text-base">
+    <h2 class="card-title text-2xl flex flex-row justify-between mb-10">
+      <div class="flex flex-row gap-2">
+        <fa-icon icon="user"></fa-icon>
+        <div>Welcome, ready to authenticate?</div>
+      </div>
+    </h2>
+    <div>
+      <form novalidate [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
+        <div class="flex flex-col content-center">
+          <div *ngIf="errorMessage != null" class="text-red-900">
+            {{ errorMessage }}
+          </div>
+          <mat-form-field>
+            <input matInput placeholder="Enter your email" formControlName="email" autofocus>
+            <fa-icon icon="envelope" matSuffix class="pr-2"/>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Enter your password"
+                   [type]="hidePassword ? 'password' : 'text'"
+                   formControlName="password">
+            <fa-icon matSuffix (click)="hidePassword = !hidePassword" [icon]="hidePassword ? 'eye'
+              : 'eye-slash'" class="pr-2 cursor-pointer"/>
+          </mat-form-field>
+          <button class="btn btn-sm btn-primary" type="submit" [disabled]="loginForm.invalid">LOGIN
+          </button>
+          <div class="text-base-content/50 mt-2 italic text-center">
+            Username: admin@qlack.com
+            Password: admin
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="flex flex-row ml-1 mb-5 items-center">
+  <fa-icon icon="home" class="mr-2"></fa-icon>
+  <div class="text-sm breadcrumbs ml-1">
+    <ul>
+      <li><a routerLink="/dashboard">Home</a></li>
+      <li *ngFor="let breadcrumb of (breadcrumbs$ | async)">
+        <a [href]="breadcrumb.url">{{ breadcrumb.label }}</a>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,46 +1,295 @@
 /** Material Design elements customization */
 @import 'styles-variables.scss';
 
-// Card title's style.
-.mat-card-title {
-  font-weight: 300 !important;
-  font-size: 22px !important;
-}
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// PAGINATOR
+////////////////////////////////////////////////////////////////////////////////////////////////////
+mat-paginator {
+  @apply bg-inherit font-inter #{!important};
+  font-size: inherit #{!important};
+  color: inherit #{!important};
 
-// Add some bottom margin in inline tabs.
-.mat-tab-nav-bar {
-  margin-bottom: 1rem;
-}
-
-// No styling for href inside tables.
-.mat-table {
-  a {
-    text-decoration: none;
+  .mat-mdc-icon-button[disabled] .mat-mdc-paginator-icon {
+    @apply fill-base-content/30 #{!important};
   }
-  a:hover {
-    text-decoration: underline;
+
+  .mat-mdc-icon-button[ng-reflect-disabled=false] .mat-mdc-paginator-icon {
+    @apply fill-base-content #{!important};
+  }
+
+  .mdc-notched-outline__leading, .mdc-notched-outline__trailing {
+    border: 0;
+  }
+
+  .mat-mdc-select-value {
+    font-size: inherit !important;
+    @apply text-base-content #{!important};
+  }
+
+  .mat-mdc-select-arrow svg {
+    @apply fill-base-content;
   }
 }
 
-// Tab's icons.
-.mat-tab-group {
-  .mat-icon {
-    margin-right: 0.3rem;
-    color: $e-color-blue-light;
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// TABS
+////////////////////////////////////////////////////////////////////////////////////////////////////
+mat-tab-body {
+  @apply mt-5;
+}
+
+mat-tab-group {
+  @apply bg-inherit font-inter #{!important};
+  font-size: inherit #{!important};
+  color: inherit #{!important};
+
+  .mdc-tab {
+    .mdc-tab__text-label {
+      @apply text-base-content #{!important};
+    }
+  }
+
+  .mdc-tab--active {
+    .mdc-tab__text-label {
+      @apply text-base-content #{!important};
+    }
+  }
+
+  .mdc-tab-indicator__content--underline {
+    @apply border-accent #{!important};
   }
 }
 
-// Allow some space below tabs (before tab's content starts).
-.mat-tab-header {
-  margin-bottom: 1rem;
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// FORM FIELDS
+////////////////////////////////////////////////////////////////////////////////////////////////////
+mat-form-field {
+  * {
+    @apply bg-inherit font-inter #{!important};
+    @apply text-inherit #{!important};
+  }
+
+  :has(mat-hint) {
+    @apply mb-5 #{!important};
+  }
+
+  .mdc-line-ripple::before, .mdc-line-ripple::after {
+    @apply border-b-base-content/20 #{!important};
+  }
+
+  .mat-mdc-input-element {
+    @apply text-base-content #{!important};
+  }
+
+  mat-label {
+    @apply text-accent #{!important};
+  }
+
+  ::placeholder {
+    @apply text-base-content/50  #{!important};
+  }
+
+  .mat-mdc-form-field-hint-wrapper:has(mat-hint) {
+    @apply text-sm #{!important};
+    @apply text-base-content/70 #{!important};
+    @apply mb-8 #{!important};
+    @apply ml-0 #{!important};
+    @apply pl-0 #{!important};
+  }
+
+  .mat-mdc-form-field-required-marker {
+    @apply text-secondary #{!important};
+    @apply ml-1;
+  }
+
+  .mat-mdc-text-field-wrapper {
+    @apply pl-0 #{!important};
+  }
+
+  :has(app-field-error[ng-reflect-display-error="true"]) {
+    .mat-mdc-form-field-flex {
+      @apply border-b-secondary border-b-2 #{!important};
+    }
+  }
+
 }
 
-// Pad tab's content, so that material elements with animations (e.g. radio button) do not clip the animation.
-.mat-tab-body-content {
-  padding-left: 1rem;
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// SELECT
+////////////////////////////////////////////////////////////////////////////////////////////////////
+.mat-mdc-select-panel {
+  @apply bg-base-300 #{!important};
+  @apply shadow-none #{!important};
+  @apply text-base-content #{!important};
+
+  .mat-mdc-option.mdc-list-item .mdc-list-item__primary-text {
+    @apply text-base-content #{!important};
+  }
+
+  .mat-mdc-option.mdc-list-item:hover {
+    @apply bg-base-100 #{!important};
+  }
+
+  .mat-mdc-option.mdc-list-item--selected .mdc-list-item__primary-text {
+    @apply text-accent #{!important};
+  }
+
+  mat-pseudo-checkbox {
+    @apply text-base-content #{!important};
+  }
+
+  mat-pseudo-checkbox.mat-pseudo-checkbox-checked {
+    @apply bg-accent #{!important};
+  }
 }
 
-// Enlarge tooltips.
-.mat-tooltip {
-  font-size: 0.8rem !important;
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// LIST
+////////////////////////////////////////////////////////////////////////////////////////////////////
+mat-selection-list {
+  .mat-mdc-list-item .mdc-list-item__primary-text {
+    @apply text-base-content;
+  }
+
+  .mdc-checkbox__background {
+    @apply border-base-content #{!important};
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// MENU
+////////////////////////////////////////////////////////////////////////////////////////////////////
+.mat-mdc-menu-panel {
+  @apply bg-base-300 #{!important};
+  .mdc-list-item__primary-text {
+    @apply text-base-content #{!important};
+  }
+
+  .mat-mdc-menu-item:hover {
+    @apply bg-base-100 #{!important};
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// AUTOCOMPLETE
+////////////////////////////////////////////////////////////////////////////////////////////////////
+.mat-mdc-autocomplete-panel {
+  @apply bg-base-300 #{!important};
+  .mdc-list-item__primary-text {
+    @apply text-base-content #{!important};
+  }
+
+  .mat-mdc-option:hover {
+    @apply bg-base-100 #{!important};
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// DIALOG
+////////////////////////////////////////////////////////////////////////////////////////////////////
+mat-dialog-container {
+  //@apply bg-base-300 #{!important};
+
+  .mat-mdc-dialog-surface {
+    @apply bg-inherit #{!important};
+    @apply shadow-none #{!important};
+
+    .mat-mdc-dialog-title {
+      @apply text-base-content font-bold p-0 m-0;
+    }
+
+    .mat-mdc-dialog-content {
+      @apply text-base-content pt-5;
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// EXPANSION PANEL
+////////////////////////////////////////////////////////////////////////////////////////////////////
+mat-expansion-panel {
+  @apply bg-inherit #{!important};
+  @apply shadow-none #{!important};
+
+  .mat-expansion-panel-header {
+    @apply pl-0;
+    .mat-expansion-panel-header-title {
+      @apply text-base-content;
+      @apply text-base;
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// DATEPICKER
+////////////////////////////////////////////////////////////////////////////////////////////////////
+mat-datepicker-content {
+  @apply bg-base-300 #{!important};
+  .mat-calendar-body-cell-content, .mat-calendar-table-header {
+    @apply text-base-content #{!important};
+  }
+
+  .mat-calendar-body-label, .mdc-button__label {
+    @apply text-base-content font-bold #{!important};
+  }
+
+  svg {
+    @apply fill-primary #{!important};
+  }
+
+  .mat-mdc-icon-button {
+    @apply text-primary #{!important};
+  }
+
+  .mat-calendar-body-today {
+    @apply border-secondary #{!important};
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// CHECKBOX
+////////////////////////////////////////////////////////////////////////////////////////////////////
+mat-checkbox {
+  .mdc-form-field label {
+    @apply text-base-content #{!important};
+  }
+
+  .mdc-checkbox__background {
+    @apply border-base-content #{!important};
+  }
+
+  .mdc-checkbox:has(.mdc-checkbox--selected) {
+    .mdc-checkbox__background {
+      @apply bg-accent border-accent text-base-content #{!important};
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// RADIO
+////////////////////////////////////////////////////////////////////////////////////////////////////
+mat-radio-group {
+  @apply font-normal;
+  //@apply bg-inherit font-inter #{!important};
+  .mdc-form-field {
+    @apply font-bold text-base text-base-content #{!important};
+  }
+
+  .mdc-radio__outer-circle, .mdc-radio__inner-circle {
+    @apply border-base-content #{!important};
+  }
+
+  .mdc-radio:has(.mdc-radio__native-control[tabindex="0"]) {
+    .mdc-radio__inner-circle {
+      @apply border-accent #{!important};
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// OTHER
+////////////////////////////////////////////////////////////////////////////////////////////////////
+.cdk-dialog-container {
+  @apply bg-base-300 py-5 px-10 shadow-2xl;
+  border-radius: 8px;
 }

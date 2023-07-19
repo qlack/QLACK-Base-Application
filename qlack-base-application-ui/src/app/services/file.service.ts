@@ -5,7 +5,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {AppConstants} from "../app.constants";
-import {FileDto} from "../dto/file-dto";
+import {FileDto} from "../files/dto/file-dto";
 import {CrudService} from "./crud.service";
 
 @Injectable({

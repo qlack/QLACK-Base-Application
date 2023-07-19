@@ -1,0 +1,57 @@
+<div class="card w-full rounded-b-none">
+  <div class="card-body">
+    <h2 class="card-title text-2xl flex flex-row justify-between">
+      <div class="flex flex-row gap-2">
+        <fa-icon icon="table-list"></fa-icon>
+        <div>Employees</div>
+      </div>
+    </h2>
+    <div>
+      <!-- Filters -->
+      <div [formGroup]="filterForm" class="mb-10 mt-5 flex flex-row gap-2">
+        <fa-icon class="mr-5 ml-1 mt-3" icon="search"></fa-icon>
+        <input class="input w-full max-w-xs placeholder-primary-content/30" formControlName="firstName"
+               placeholder="First name" type="text"/>
+        <input class="input w-full max-w-xs placeholder-primary-content/30" formControlName="lastName"
+               placeholder="Last name" type="text"/>
+        <button (click)="clearFilter()" class="btn btn-secondary btn-ghost ml-2">CLEAR</button>
+      </div>
+
+      <!-- Table -->
+      <table cdk-table [dataSource]="datasource" class="table w-full"
+             matSort matSortActive="lastName" matSortDirection="asc"
+             matSortStart="asc" matSortDisableClear aria-describedby="List of Employees">
+        <ng-container cdkColumnDef="firstName">
+          <th *cdkHeaderCellDef cdk-header-cell mat-sort-header scope="col"> First name</th>
+          <td *cdkCellDef="let element" cdk-cell>{{element.firstName}}</td>
+        </ng-container>
+        <ng-container cdkColumnDef="lastName">
+          <th *cdkHeaderCellDef cdk-header-cell mat-sort-header scope="col"> Last name</th>
+          <td *cdkCellDef="let element" cdk-cell>{{element.lastName}}</td>
+        </ng-container>
+        <ng-container cdkColumnDef="department">
+          <th *cdkHeaderCellDef cdk-header-cell mat-sort-header scope="col"> Department</th>
+          <td *cdkCellDef="let element" cdk-cell>{{element.department}}</td>
+        </ng-container>
+        <ng-container cdkColumnDef="hiringDate">
+          <th *cdkHeaderCellDef cdk-header-cell mat-sort-header scope="col"> Hiring date</th>
+          <td *cdkCellDef="let element" cdk-cell>{{element.hiringDate| date: constants.DATE_FORMAT}}</td>
+        </ng-container>
+        <tr cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
+        <tr cdk-row *cdkRowDef="let row; columns: displayedColumns; let element;"
+            [routerLink]="element.id" class="hover hover:cursor-pointer"></tr>
+      </table>
+      <mat-paginator #paginator (page)="changePage()"
+                     [pageSizeOptions]="[10, 30, 50]"
+                     [pageSize]="10"
+                     [showFirstLastButtons]="true">
+      </mat-paginator>
+    </div>
+    <div class="card-actions justify-start mt-10">
+      <button [routerLink]="constants.NEW_RECORD_ID" class="btn btn-sm btn-primary">
+        CREATE
+      </button>
+    </div>
+  </div>
+</div>
+

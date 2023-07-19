@@ -3,10 +3,10 @@ import {Injectable} from "@angular/core";
 import {JwtHelperService} from "@auth0/angular-jwt";
 import {Observable} from "rxjs";
 import {AppConstants} from "../app.constants";
-import {LoginInfoDto} from "../dto/login-info-dto";
-import {UserDto} from "../dto/user-dto";
+import {LoginInfoDto} from "./dto/login-info-dto";
+import {UserDto} from "./dto/user-dto";
 import {CrudService} from "../services/crud.service";
-import {JwtDto} from "../dto/jwt-dto";
+import {JwtDto} from "./dto/jwt-dto";
 
 /**
  * A service providing functionality for the user of the application, including authentication,

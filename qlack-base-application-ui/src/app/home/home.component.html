@@ -1,14 +1,23 @@
-<mat-card>
-  <mat-card-title>Home</mat-card-title>
-  <mat-card-content>
-    <div>Welcome to QLACK Base App!</div>
-
-    <div>This is the content of your page</div>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button color="warn">WARN BUTTON</button>
-    <button mat-button color="accent">ACCENT BUTTON</button>
-    <button mat-button>DEFAULT BUTTON</button>
-    <button mat-button color="primary">PRIMARY BUTTON</button>
-  </mat-card-actions>
-</mat-card>
+<div class="card w-full rounded-b-none">
+  <div class="card-body">
+    <h2 class="card-title text-2xl flex flex-row justify-between mb-10">
+      <div class="flex flex-row gap-2">
+        <fa-icon icon="home"></fa-icon>
+        <div>Home</div>
+      </div>
+    </h2>
+    <div>
+      <p>Welcome to QLACK Base App!</p>
+      <p>This is the content of your page</p>
+    </div>
+    <div class="card-actions justify-start mt-10">
+      <button class="btn">Button</button>
+      <button class="btn btn-neutral">Neutral</button>
+      <button class="btn btn-primary">Button</button>
+      <button class="btn btn-secondary">Button</button>
+      <button class="btn btn-accent">Button</button>
+      <button class="btn btn-ghost">Button</button>
+      <button class="btn btn-link">Button</button>
+    </div>
+  </div>
+</div>

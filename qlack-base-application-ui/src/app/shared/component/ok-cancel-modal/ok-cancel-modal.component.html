@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>{{ data.title }}</h2>
+<mat-dialog-content>{{ data.question }}</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="gap-2">
+  <button class="btn btn-sm btn-secondary" tabindex="-1" (click)="dialogRef.close(false)"
+          *ngIf="data.buttons.cancel">{{data.cancelValue ? data.cancelValue : "CANCEL"}}</button>
+  <button class="btn btn-sm btn-secondary" tabindex="-1" (click)="reload()"
+          *ngIf="data.buttons.reload">RELOAD
+  </button>
+  <button class="btn btn-sm btn-primary" color="primary" tabindex="-1"
+          (click)="dialogRef.close(true)"
+          *ngIf="data.buttons.ok">{{data.okValue ? data.okValue : "OK"}}</button>
+</mat-dialog-actions>

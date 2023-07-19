@@ -1,0 +1,40 @@
+<div class="card w-full rounded-b-none">
+  <div class="card-body">
+    <h2 class="card-title text-2xl flex flex-row justify-between">
+      <div class="flex flex-row gap-2">
+        <fa-icon icon="rectangle-list"/>
+        <div>Forms</div>
+      </div>
+    </h2>
+    <div class="mt-5">
+      <form novalidate [formGroup]="form">
+        <div class="flex flex-col">
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" required>
+            <fa-icon icon="triangle-exclamation" matSuffix
+                     *ngIf="form.controls['name'].invalid && form.controls['name'].dirty"
+                     matTooltip="{{form.controls['name'].getError('message')}}"
+                     matTooltipPosition="left" class="cursor-help"/>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Age</mat-label>
+            <input matInput formControlName="age" required>
+            <fa-icon icon="triangle-exclamation" matSuffix
+                     *ngIf="form.controls['age'].invalid && form.controls['age'].dirty"
+                     matTooltip="{{form.controls['age'].getError('message')}}"
+                     matTooltipPosition="left" class="text-warning cursor-help"/>
+          </mat-form-field>
+        </div>
+      </form>
+      <div>
+        <fa-icon icon="info"/>
+        Name must be greater than 2 characters, Age must be greater than 18.
+      </div>
+    </div>
+    <div class="card-actions justify-start mt-10">
+      <button class="btn btn-sm btn-primary" (click)="save()" [disabled]="form.invalid">SAVE
+      </button>
+    </div>
+  </div>
+</div>
