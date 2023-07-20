@@ -7,7 +7,7 @@ services:
     container_name: qba-ui
     restart: unless-stopped
     depends_on:
-      - services
+      - server
     ports:
       - "6565:80"
   server:
