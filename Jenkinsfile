@@ -47,7 +47,7 @@ pipeline {
                     cat > payload.json <<__HERE__
                     {
                         "project": "737536ae-e12c-4144-b4b1-b5caa30f4099",
-                        "bom": "$(cat cd qlack-base-application-server/bom.xml |base64 -w 0 -)"
+                        "bom": "$(cat qlack-base-application-server/target/bom.xml |base64 -w 0 -)"
                     }
                     __HERE__
                 '''
@@ -63,7 +63,7 @@ pipeline {
                     cat > payload.json <<__HERE__
                     {
                         "project": "395b4dd1-552b-4647-b443-c3bac142b5c1",
-                        "bom": "$(cat cd qlack-base-application-ui/bom.xml |base64 -w 0 -)"
+                        "bom": "$(cat qlack-base-application-ui/bom.xml |base64 -w 0 -)"
                     }
                     __HERE__
                 '''
