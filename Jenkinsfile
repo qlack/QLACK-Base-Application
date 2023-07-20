@@ -27,22 +27,18 @@ pipeline {
                 }
             }
         }
-        stage('Produce bom.xml'){
-            parallel {
-                stage('Produce bom.xml for service-user') {
-                    steps{
-                        sh 'mvn -f qlack-base-application-server/pom.xml org.cyclonedx:cyclonedx-maven-plugin:makeAggregateBom'
-                    }
-                }
-                stage('Produce bom.xml for frontend') {
-                    steps{
-                        sh '''
-                            cd qlack-base-application-ui
-                            npm install --global @cyclonedx/cyclonedx-npm
-                            cyclonedx-npm --ignore-npm-errors --output-format xml --output-file bom.xml
-                        '''
-                    }
-                }
+        stage('Produce bom.xml for service-user') {
+            steps{
+                sh 'mvn -f qlack-base-application-server/pom.xml org.cyclonedx:cyclonedx-maven-plugin:makeAggregateBom'
+            }
+        }
+        stage('Produce bom.xml for frontend') {
+            steps{
+                sh '''
+                    cd qlack-base-application-ui
+                    npm install --global @cyclonedx/cyclonedx-npm
+                    cyclonedx-npm --ignore-npm-errors --output-format xml --output-file bom.xml
+                '''
             }
         }
         stage('Dependency-Track Analysis for backend') {
@@ -78,4 +74,42 @@ pipeline {
             }
         }
    }
+    post {
+        changed {
+            emailext subject: '$DEFAULT_SUBJECT',
+                body: '$DEFAULT_CONTENT',
+                to: 'qlack@eurodyn.com'
+            script {
+                if (currentBuild.result == 'SUCCESS') {
+                    rocketSend avatar: "http://d2-np.eurodyn.com/jenkins/jenkins.png", channel: 'qlack', message: ":white_check_mark: | ${BUILD_URL} \n\nBuild succeeded. *${env.BRANCH_NAME}* \nChangelog: ${getChangeString(10)}", rawMessage: true
+                }
+                if (currentBuild.result == 'FAILURE') {
+                   rocketSend avatar: "http://d2-np.eurodyn.com/jenkins/jenkins.png", channel: 'qlack', message: ":x: | ${BUILD_URL} \n\nBuild failed. *${env.BRANCH_NAME}* \nChangelog: ${getChangeString(10)}", rawMessage: true
+                }
+            }
+        }
+    }
+}
+
+@NonCPS
+def getChangeString(maxMessages) {
+    MAX_MSG_LEN = 100
+    def changeString = ""
+
+    def changeLogSets = currentBuild.changeSets
+
+    for (int i = 0; i < changeLogSets.size(); i++) {
+        def entries = changeLogSets[i].items
+        for (int j = 0; j < entries.length && i + j < maxMessages; j++) {
+            def entry = entries[j]
+            truncated_msg = entry.msg.take(MAX_MSG_LEN)
+            changeString += "*${truncated_msg}* _by author ${entry.author}_\n"
+        }
+    }
+
+    if (!changeString) {
+        changeString = " There have not been any changes since the last build"
+    }
+
+    return changeString
 }
