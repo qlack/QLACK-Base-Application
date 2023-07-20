@@ -14,8 +14,8 @@ export class FormViewComponent implements OnInit {
   form!: FormGroup;
 
   constructor(private fb: UntypedFormBuilder, private formsService: FormsService,
-              private qForms: QFormsService, private utilityService: UtilityService,
-              private qFormValidationService: QFormValidationService) {
+    private qForms: QFormsService, private utilityService: UtilityService,
+    private qFormValidationService: QFormValidationService) {
   }
 
   ngOnInit(): void {
@@ -28,11 +28,10 @@ export class FormViewComponent implements OnInit {
 
   save() {
     this.formsService.save(
-      this.qForms.cleanupData(this.form.getRawValue()) as FormDto).subscribe(
-        onNext => {
+      this.qForms.cleanupData(this.form.getRawValue()) as FormDto).subscribe({
+        next: () => {
           this.utilityService.popupSuccess("Form successfully saved.");
-        },
-        onError => {
+        }, error: (onError) => {
           if (onError.status == 400) {
             const validationErrors = onError.error;
             if (validationErrors) {
@@ -42,7 +41,7 @@ export class FormViewComponent implements OnInit {
             }
           }
         }
-      );
+      }
+    );
   }
-
 }

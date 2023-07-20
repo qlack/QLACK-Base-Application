@@ -22,14 +22,16 @@ export class LogoutComponent extends BaseComponent implements OnInit {
       " 30%, rgba(255,255,255,0.62) 64%, rgba(255,255,255,1) 89%), url(/assets/img/bg.jpg);" +
       " background-size: cover;");
 
-    this.authService.logout().subscribe(onNext => {
-      this.log.data("Successfully terminated session.");
-      localStorage.removeItem(this.constants.JWT_STORAGE_NAME);
-      this.jwtTrackerService.stopTracking();
-    }, onError => {
-      this.log.error("Could not terminate session.");
-      localStorage.removeItem(this.constants.JWT_STORAGE_NAME);
-      this.jwtTrackerService.stopTracking();
+    this.authService.logout().subscribe({
+      next: () => {
+        this.log.data("Successfully terminated session.");
+        localStorage.removeItem(this.constants.JWT_STORAGE_NAME);
+        this.jwtTrackerService.stopTracking();
+      }, error: () => {
+        this.log.error("Could not terminate session.");
+        localStorage.removeItem(this.constants.JWT_STORAGE_NAME);
+        this.jwtTrackerService.stopTracking();
+      }
     });
   }
 }

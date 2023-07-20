@@ -34,17 +34,19 @@ export class FilesUploadComponent implements OnInit {
   }
 
   save() {
-    this.filesService.upload(this.form).subscribe(onEvent => {
-      if (onEvent.type === HttpEventType.Response) {
-        if (onEvent.status === 200) {
-          this.utilityService.popupSuccess("File successfully saved.");
-          this.router.navigate(["files"]);
-        } else {
-          this.utilityService.popupError("There was a problem uploading this file.");
+    this.filesService.upload(this.form).subscribe({
+      next: data => {
+        if (data.type === HttpEventType.Response) {
+          if (data.status === 200) {
+            this.utilityService.popupSuccess("File successfully saved.");
+            this.router.navigate(["files"]);
+          } else {
+            this.utilityService.popupError("There was a problem uploading this file.");
+          }
         }
+      }, error: error => {
+        this.utilityService.popupError("There was a problem uploading this file.");
       }
-    }, onError => {
-      this.utilityService.popupError("There was a problem uploading this file.");
     });
   }
 }

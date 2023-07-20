@@ -12,10 +12,11 @@ import {MatPaginator} from "@angular/material/paginator";
 export class FilesListComponent implements AfterViewInit {
   columns = ["fileName", "description", "size", "actions"];
   datasource = new MatTableDataSource<FileDto>();
-  @ViewChild(MatSort, { static: true }) sort!: MatSort;
-  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort!: MatSort;
+  @ViewChild(MatPaginator, {static: true}) paginator!: MatPaginator;
 
-  constructor(private filesService: FilesService) { }
+  constructor(private filesService: FilesService) {
+  }
 
   ngAfterViewInit(): void {
     // Initial fetch of data.
@@ -43,8 +44,7 @@ export class FilesListComponent implements AfterViewInit {
   }
 
   download(id: string) {
-    console.log(id);
-      this.filesService.download(id);
+    this.filesService.download(id);
   }
 }
 

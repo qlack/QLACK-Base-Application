@@ -53,20 +53,21 @@ export class LoginComponent extends BaseComponent implements OnInit {
   }
 
   onSubmit({value}: { value: LoginInfoDto }) {
-    this.authService.login(value).subscribe(
-      onNext => {
+    this.authService.login(value).subscribe({
+      next: onNext => {
         this.hideLoginForm = true;
         this.renderer.removeAttribute(document.body, "style");
         // Save the JWT to be used in future requests.
         localStorage.setItem(AppConstants.JWT_STORAGE_NAME, onNext.jwt);
         this.jwtTrackerService.startTracking();
         this.router.navigate(["home"]);
-      }, onError => {
-        console.log(onError);
+      }, error: onError => {
+        this.log.error("Authentication was unsuccessful.", onError)
         this.utilityService.popupError("Authentication was unsuccessful.");
         this.errorMessage = "Authentication was unsuccessful."
         this.hideLoginForm = false;
-      });
+      }
+    });
   }
 
 }

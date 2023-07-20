@@ -37,7 +37,7 @@ export class EmployeeListComponent extends BaseComponent implements AfterViewIni
     // Listen for filter changes to fetch new data.
     this.filterForm.valueChanges
     .pipe(debounceTime(500), distinctUntilChanged())
-    .subscribe(onNext => {
+    .subscribe(() => {
       this.fetchData(this.paginator.pageIndex, this.paginator.pageSize, this.sort.active,
         this.sort.start);
     });
@@ -61,9 +61,9 @@ export class EmployeeListComponent extends BaseComponent implements AfterViewIni
       next: (onNext) => {
         this.datasource.data = onNext.content;
         this.paginator.length = onNext.totalElements;
-      }, error: (onError: any) => {
+      }, error: (() => {
         this.utilityService.popupError("Could not fetch employees.");
-      }
+      })
     });
   }
 

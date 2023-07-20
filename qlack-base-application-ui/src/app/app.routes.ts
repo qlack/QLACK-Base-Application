@@ -19,7 +19,7 @@ export const routing: ModuleWithProviders<AppModule> = RouterModule.forRoot([
       path: "home",
       loadChildren: () => import("./home/home.module").then(m => m.HomeModule),
       canActivate: [CanActivateGuard],
-      data: {breadcrumb: "Home"}
+      data: {breadcrumb: ""}
     },
     {
       path: "employee",
@@ -37,7 +37,7 @@ export const routing: ModuleWithProviders<AppModule> = RouterModule.forRoot([
       path: "files",
       loadChildren: () => import("./files/files.module").then(m => m.FilesModule),
       canActivate: [CanActivateGuard],
-      data: {breadcrumb: "File upload/download"}
+      data: {breadcrumb: "Files"}
     },
     {
       path: "forms",

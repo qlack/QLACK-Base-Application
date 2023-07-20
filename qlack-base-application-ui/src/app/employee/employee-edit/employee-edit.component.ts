@@ -50,7 +50,7 @@ export class EmployeeEditComponent extends BaseComponent implements OnInit {
 
   save() {
     this.employeeService.save(
-      this.qForms.cleanupData(this.form.getRawValue()) as EmployeeDto).subscribe(onNext => {
+      this.qForms.cleanupData(this.form.getRawValue()) as EmployeeDto).subscribe(() => {
       this.utilityService.popupSuccess("Employee successfully saved.");
       this.router.navigate(["employee"]);
     });
@@ -68,7 +68,7 @@ export class EmployeeEditComponent extends BaseComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.employeeService.delete(this.id).subscribe(onNext => {
+        this.employeeService.delete(this.id).subscribe(() => {
           this.utilityService.popupSuccess("Employee successfully deleted.");
           this.router.navigate(["employee"]);
         });

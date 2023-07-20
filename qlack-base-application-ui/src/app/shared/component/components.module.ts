@@ -15,6 +15,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {RouterLink} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
     MatInputModule,
     MatTooltipModule,
     FontAwesomeModule,
+    RouterLink,
   ],
   exports: [
     FieldErrorComponent,
