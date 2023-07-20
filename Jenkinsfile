@@ -2,7 +2,7 @@ pipeline {
    agent {
         docker {
             image 'eddevopsd2/maven-java-npm-docker:mvn3.8.5-jdk17-node18.16-go1.20-docker'
-            args '-v /root/.m2/QLACK-Java:/root/.m2 -v /root/sonar-scanner:/root/sonar-scanner'
+            args '-v /root/.m2/Qlack-Java:/root/.m2 -v /root/sonar-scanner:/root/sonar-scanner'
         }
    }
    options {
