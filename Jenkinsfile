@@ -2,7 +2,7 @@ pipeline {
    agent {
         docker {
             image 'eddevopsd2/maven-java-npm-docker:mvn3.8.5-jdk17-node18.16-go1.20-docker'
-            args '-v /root/.m2/QLACK-Base-Application:/root/.m2'
+            args '-v /root/.m2/QLACK-Base-Application:/root/.m2 -v /root/sonar-scanner:/root/sonar-scanner'
         }
    }
    options {
@@ -23,7 +23,7 @@ pipeline {
         stage('Sonar Analysis') {
             steps {
                 withSonarQubeEnv('sonar'){
-                    sh 'mvn sonar:sonar -Dsonar.projectName=QLACK-Base-Application -Dsonar.host.url=${SONAR_HOST_URL} -Dsonar.login=${SONAR_KEY_QLACK_BASE_APPLICATION}'
+                    sh '/root/sonar-scanner/bin/sonar-scanner -Dsonar.projectName=QLACK-Base-Application -Dsonar.host.url=${SONAR_HOST_URL} -Dsonar.login=${SONAR_KEY_QLACK_BASE_APPLICATION}'
                 }
             }
         }
