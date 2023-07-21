@@ -30,12 +30,9 @@ pipeline {
                 usernameVariable: 'Username',
                 passwordVariable: 'Password')]){
                     sh '''
-                        git remote set-url origin https://$Username:$Password@github.com/qlack/QLACK-Base-Application.git
                         git config --global user.email "devops-d2@eurodyn.com"
                         git config --global user.name "$Username"
-                        git fetch --tags --force
-                        mvn -f qlack-base-application-server/pom.xml versions:set -DnewVersion=$RELEASE_VERSION
-                        mvn -f qlack-base-application-server/pom.xml versions:commit
+                        git clone https://$Username:$Password@github.com/qlack/QLACK-Base-Application.git
                     '''
                 }
             }
@@ -44,8 +41,8 @@ pipeline {
             steps{
                 sh '''
                     cd QLACK-Base-Application/qlack-base-application-server
-                    mvn -f qlack-base-application-server/pom.xml versions:set -DnewVersion=$RELEASE_VERSION
-                    mvn -f qlack-base-application-server/pom.xml versions:commit
+                    mvn versions:set -DnewVersion=$RELEASE_VERSION
+                    mvn versions:commit
 
                     cd ../qlack-base-application-ui
                     sed -i 's|\"version\":.*$|\"version\": \"'$RELEASE_VERSION'\",|' package.json
@@ -76,8 +73,8 @@ pipeline {
             steps{
                 sh '''
                     cd QLACK-Base-Application/qlack-base-application-server
-                    mvn -f qlack-base-application-server/pom.xml versions:set -DnewVersion=$NEXT_DEV_VERSION
-                    mvn -f qlack-base-application-server/pom.xml versions:commit
+                    mvn versions:set -DnewVersion=$NEXT_DEV_VERSION
+                    mvn versions:commit
 
                     cd ../qlack-base-application-ui
                     sed -i 's|\"version\":.*$|\"version\": \"'$NEXT_DEV_VERSION'\",|' package.json
@@ -92,6 +89,7 @@ pipeline {
                 passwordVariable: 'Password')]){
                     sh '''
                         cd QLACK-Base-Application
+                        git remote set-url origin https://$Username:$Password@github.com/qlack/QLACK-Base-Application.git
                         git commit -a -m "release: prepare for next development iteration $NEXT_DEV_VERSION for QLACK-Base-Application"
                         git push https://$Username:$Password@github.com/qlack/QLACK-Base-Application.git HEAD:master
                     '''
@@ -100,14 +98,8 @@ pipeline {
         }
     }
     post {
-        changed {
-            script {
-                if (currentBuild.result == 'SUCCESS') {
-                        rocketSend avatar: "http://d2-np.eurodyn.com/jenkins/jenkins.png", channel: 'qlack', message: ":white_check_mark: | ${BUILD_URL} \n\nRelease succeeded on branch *${env.BRANCH_NAME}* \nChangelog: ${getChangeString(10)}", rawMessage: true
-                } else {
-                        rocketSend avatar: "http://d2-np.eurodyn.com/jenkins/jenkins.png", channel: 'qlack', message: ":x: | ${BUILD_URL} \n\nRelease failed on branch *${env.BRANCH_NAME}* \nChangelog: ${getChangeString(10)}", rawMessage: true
-                }
-            }
+        success {
+            rocketSend avatar: "http://d2-np.eurodyn.com/jenkins/jenkins.png", channel: 'qlack', message: "Version ${env.RELEASE_VERSION} of QLACK-Base-Application has been released :rocket:", rawMessage: true
         }
     }
 }
