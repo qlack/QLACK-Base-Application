@@ -47,8 +47,8 @@ export class LoginComponent extends BaseComponent implements OnInit {
 
     // Prepare login form.
     this.loginForm = this.fb.group({
-      email: ["admin@qlack.com", [Validators.required, Validators.email]],
-      password: ["admin", [Validators.required]]
+      email: ["", [Validators.required, Validators.email]],
+      password: ["", [Validators.required]]
     });
   }
 

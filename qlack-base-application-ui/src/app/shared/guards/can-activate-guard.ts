@@ -1,22 +1,19 @@
-import {Injectable} from "@angular/core";
-import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from "@angular/router";
-import {JwtHelperService} from "@auth0/angular-jwt";
+import {inject, Injectable} from "@angular/core";
 import {Log} from "ng2-logger/browser";
-import {BaseComponent} from "../component/base-component";
-import {Observable} from "rxjs";
+import {AppConstants} from "../../app.constants";
+import {ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot} from "@angular/router";
 
-@Injectable()
-export class CanActivateGuard extends BaseComponent implements CanActivate {
-  // Logger.
-  private log = Log.create("CanActivateGuard");
+@Injectable({
+  providedIn: 'root'
+})
+class GuardService {
+  log = Log.create("GuardService");
 
-  constructor(private jwtService: JwtHelperService, private router: Router) {
-    super();
+  constructor(private router: Router) {
   }
 
-  // The default guard for all routes.
-  canActivate(_route: ActivatedRouteSnapshot, _state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    const jwtString = localStorage.getItem(this.constants.JWT_STORAGE_NAME);
+  canActivate(): boolean {
+    const jwtString = localStorage.getItem(AppConstants.JWT_STORAGE_NAME);
     if (jwtString) {
       return true;
     } else {
@@ -26,5 +23,8 @@ export class CanActivateGuard extends BaseComponent implements CanActivate {
       return false;
     }
   }
+}
 
+export const authGuard: CanActivateFn = (_next: ActivatedRouteSnapshot, _state: RouterStateSnapshot): boolean => {
+  return inject(GuardService).canActivate();
 }

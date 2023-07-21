@@ -14,7 +14,6 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {ReactiveFormsModule} from "@angular/forms";
 import {QFormsModule} from "@qlack/forms";
-import {CanActivateGuard} from "./shared/guards/can-activate-guard";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {QFormValidationModule} from "@qlack/form-validation";
@@ -115,7 +114,6 @@ export function createTranslateLoader(http: HttpClient) {
   exports: [],
   providers: [
     CookieService,
-    CanActivateGuard,
     QFormsModule,
     QFormValidationModule
   ],
