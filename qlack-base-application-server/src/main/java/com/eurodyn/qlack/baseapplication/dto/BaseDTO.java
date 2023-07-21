@@ -9,7 +9,7 @@ import java.time.Instant;
 @Data
 public abstract class BaseDTO {
 
-//  @SuppressWarnings("java:S1068")
+  @SuppressWarnings("java:S1068")
   private String id;
 
   @JsonProperty(access = Access.READ_ONLY)

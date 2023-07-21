@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {QFormsService} from "@qlack/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
@@ -17,10 +17,10 @@ import {EmployeeDto} from "../dto/employee-dto";
   templateUrl: "./employee-edit.component.html"
 })
 export class EmployeeEditComponent extends BaseComponent implements OnInit {
-  form!: UntypedFormGroup;
+  form!: FormGroup;
   id?: string | null;
 
-  constructor(private fb: UntypedFormBuilder, private dialog: MatDialog,
+  constructor(private fb: FormBuilder, private dialog: MatDialog,
               private qForms: QFormsService, private route: ActivatedRoute,
               private router: Router, private utilityService: UtilityService,
               private employeeService: EmployeeService) {

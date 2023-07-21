@@ -43,7 +43,7 @@ export class FilesListComponent implements AfterViewInit {
 
   changePage() {
     this.fetchData(this.paginator.pageIndex, this.paginator.pageSize, this.sort.active,
-      this.sort!.start);
+      this.sort.start);
   }
 
   download(id: string) {

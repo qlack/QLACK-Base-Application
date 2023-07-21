@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from "@angular/core";
 import {MatSort} from "@angular/material/sort";
 import {QFormsService} from "@qlack/forms";
-import {FormGroup, UntypedFormBuilder} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {debounceTime, distinctUntilChanged} from "rxjs/operators";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
@@ -25,7 +25,7 @@ export class EmployeeListComponent extends BaseComponent implements AfterViewIni
   filterForm: FormGroup;
 
   constructor(private employeeService: EmployeeService, private qForms: QFormsService,
-              private fb: UntypedFormBuilder, private utilityService: UtilityService) {
+              private fb: FormBuilder, private utilityService: UtilityService) {
     super();
     this.filterForm = this.fb.group({
       firstName: [],

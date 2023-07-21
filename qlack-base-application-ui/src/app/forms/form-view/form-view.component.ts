@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {FormGroup, UntypedFormBuilder, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {FormsService} from "../forms.service";
 import {QFormsService} from "@qlack/forms";
 import {UtilityService} from "../../shared/service/utility.service";
@@ -13,7 +13,7 @@ import {FormDto} from "../dto/form-dto";
 export class FormViewComponent implements OnInit {
   form!: FormGroup;
 
-  constructor(private fb: UntypedFormBuilder, private formsService: FormsService,
+  constructor(private fb: FormBuilder, private formsService: FormsService,
     private qForms: QFormsService, private utilityService: UtilityService,
     private qFormValidationService: QFormValidationService) {
   }

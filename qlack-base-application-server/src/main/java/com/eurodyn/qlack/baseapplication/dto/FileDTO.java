@@ -9,6 +9,7 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = true)
+@SuppressWarnings("java:S1068")
 public class FileDTO extends BaseDTO {
 
   private String description;

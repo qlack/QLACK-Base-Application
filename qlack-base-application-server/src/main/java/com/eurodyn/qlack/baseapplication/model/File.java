@@ -22,6 +22,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = true)
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@SuppressWarnings("java:S1068")
 public class File extends BaseContentEntity {
 
   private String description;

@@ -1,24 +1,22 @@
-import { Component, OnInit } from "@angular/core";
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
-import {QFormsService} from "@qlack/forms";
-import {HttpClient, HttpEventType} from "@angular/common/http";
+import {Component, OnInit} from "@angular/core";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
+import {HttpEventType} from "@angular/common/http";
 import {UtilityService} from "../../shared/service/utility.service";
 import {FilesService} from "../files.service";
-import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: "app-files-upload",
   templateUrl: "./files-upload.component.html"
 })
 export class FilesUploadComponent implements OnInit {
-  form!: UntypedFormGroup;
+  form!: FormGroup;
 
   // NOSONAR
-  constructor(private fb: UntypedFormBuilder, private dialog: MatDialog,
-              private qForms: QFormsService, private route: ActivatedRoute,
-              private router: Router, private http: HttpClient,
-              private utilityService: UtilityService, private filesService: FilesService) { }
+  constructor(private fb: FormBuilder,
+    private router: Router, private utilityService: UtilityService,
+    private filesService: FilesService) {
+  }
 
   ngOnInit(): void {
     this.form = this.fb.group({

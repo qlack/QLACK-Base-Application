@@ -1,7 +1,6 @@
 import {Component} from "@angular/core";
 import {SidebarItemDto, SidebarItemType} from "./sidebar-item.dto";
 import {
-  faDashboard,
   faFilter,
   faGlobe,
   faHome,
@@ -11,7 +10,6 @@ import {
   faTableList,
   faUpload,
 } from "@fortawesome/free-solid-svg-icons";
-import {faWpforms} from "@fortawesome/free-brands-svg-icons";
 import {BaseComponent} from "../../shared/component/base-component";
 import {AppConstants} from "../../app.constants";
 
