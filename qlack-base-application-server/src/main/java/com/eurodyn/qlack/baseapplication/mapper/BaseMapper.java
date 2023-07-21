@@ -6,7 +6,6 @@ import com.eurodyn.qlack.baseapplication.repository.BaseRepository;
 import com.eurodyn.qlack.util.data.optional.ReturnOptional;
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
@@ -25,7 +24,7 @@ public abstract class BaseMapper<D extends BaseDTO, E extends BaseEntity> {
   // The Spring Data Repository to use for Entities. This is a dynamic parametrised type resolved
   // in runtime.
   @Autowired
-  @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
+//  @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
   BaseRepository<E> repository;
 
   /**
@@ -78,8 +77,7 @@ public abstract class BaseMapper<D extends BaseDTO, E extends BaseEntity> {
    * @return Returns an {@link Iterable} of Entity classes mapped after the given DTOs.
    */
   public Iterable<E> mapDTOs(Collection<D> collection) {
-    return collection.parallelStream().map(this::map)
-        .collect(Collectors.toList());
+    return collection.parallelStream().map(this::map).toList();
   }
 
   /**
@@ -90,8 +88,7 @@ public abstract class BaseMapper<D extends BaseDTO, E extends BaseEntity> {
    * @return Returns an {@link Iterable} of DTOs mapped after their given Entity classes.
    */
   public Iterable<D> mapModels(Collection<E> collection) {
-    return collection.parallelStream().map(this::map)
-        .collect(Collectors.toList());
+    return collection.parallelStream().map(this::map).toList();
   }
 
   /**
@@ -101,7 +98,7 @@ public abstract class BaseMapper<D extends BaseDTO, E extends BaseEntity> {
    * @return Returns a {@link List} of DTOs mapped after their respective Entity class.
    */
   public List<D> map(List<E> list) {
-    return list.stream().map(this::map).collect(Collectors.toList());
+    return list.stream().map(this::map).toList();
   }
 
   /**
@@ -111,8 +108,7 @@ public abstract class BaseMapper<D extends BaseDTO, E extends BaseEntity> {
    * @return Returns a list of DTOs mapped after their respective Entity class.
    */
   public List<D> map(Iterable<E> list) {
-    return StreamSupport.stream(list.spliterator(), false).map(this::map)
-        .collect(Collectors.toList());
+    return StreamSupport.stream(list.spliterator(), false).map(this::map).toList();
   }
 
   /**

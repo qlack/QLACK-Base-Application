@@ -43,7 +43,7 @@ export class EmployeeEditComponent extends BaseComponent implements OnInit {
     // Fill-in the form with data if editing an existing item.
     if (this.id && this.id !== AppConstants.NEW_RECORD_ID) {
       this.employeeService.get(this.id).subscribe(onNext => {
-        this.form!.patchValue(onNext);
+        this.form.patchValue(onNext);
       });
     }
   }

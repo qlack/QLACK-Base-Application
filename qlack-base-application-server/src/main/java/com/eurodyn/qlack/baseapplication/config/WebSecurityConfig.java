@@ -10,7 +10,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
-//@EnableWebSecurity
 public class WebSecurityConfig {
 
   private static final String[] PUBLIC_URIS =
@@ -25,7 +24,7 @@ public class WebSecurityConfig {
   public SecurityFilterChain configure(HttpSecurity http) throws Exception {
     http
         .csrf(AbstractHttpConfigurer::disable)
-        .authorizeHttpRequests((requests) -> requests
+        .authorizeHttpRequests(requests -> requests
             .requestMatchers(PUBLIC_URIS).permitAll()
             .anyRequest().authenticated())
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

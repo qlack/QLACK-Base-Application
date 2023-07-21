@@ -14,6 +14,7 @@ import {MatDialog} from "@angular/material/dialog";
 export class FilesUploadComponent implements OnInit {
   form!: UntypedFormGroup;
 
+  // NOSONAR
   constructor(private fb: UntypedFormBuilder, private dialog: MatDialog,
               private qForms: QFormsService, private route: ActivatedRoute,
               private router: Router, private http: HttpClient,
@@ -44,7 +45,7 @@ export class FilesUploadComponent implements OnInit {
             this.utilityService.popupError("There was a problem uploading this file.");
           }
         }
-      }, error: error => {
+      }, error: () => {
         this.utilityService.popupError("There was a problem uploading this file.");
       }
     });

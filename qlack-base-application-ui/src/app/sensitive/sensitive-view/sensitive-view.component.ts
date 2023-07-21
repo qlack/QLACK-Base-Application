@@ -17,11 +17,11 @@ export class SensitiveViewComponent implements OnInit {
   ngOnInit(): void {
     this.sensitiveService.getAll().subscribe(onNext => {
       this.multipleFiltered = onNext.content[0];
-      this.sensitiveService.get(onNext.content[0].id).subscribe(onNext => {
-        this.oneFiltered = onNext;
+      this.sensitiveService.get(onNext.content[0].id).subscribe(filteredData => {
+        this.oneFiltered = filteredData;
       });
-      this.sensitiveService.getUnfiltered(onNext.content[0].id).subscribe(onNext => {
-        this.oneUnfiltered = onNext;
+      this.sensitiveService.getUnfiltered(onNext.content[0].id).subscribe(unfilteredData => {
+        this.oneUnfiltered = unfilteredData;
       });
     });
 

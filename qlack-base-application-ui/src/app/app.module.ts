@@ -51,7 +51,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import {LayoutModule} from "./layout/layout.module";
 import {ComponentsModule} from "./shared/component/components.module";
-import {faWpforms} from "@fortawesome/free-brands-svg-icons";
 
 // AoT exported function for factories.
 export function getJwtToken(): string | null {
@@ -77,7 +76,7 @@ export function createTranslateLoader(http: HttpClient) {
     JwtModule.forRoot({
       config: {
         tokenGetter: getJwtToken,
-        allowedDomains: new Array(new RegExp("^null$"))
+        allowedDomains: new Array(/^null$/)
       }
     }),
     MatDialogModule,

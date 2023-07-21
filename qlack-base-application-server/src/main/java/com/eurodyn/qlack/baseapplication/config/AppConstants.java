@@ -1,5 +1,6 @@
 package com.eurodyn.qlack.baseapplication.config;
 
+@SuppressWarnings("squid:S1118")
 public class AppConstants {
 
   public static class Audit {

@@ -40,8 +40,8 @@ public class EmployeeResource {
 
   @ExceptionWrapper(wrapper = QExceptionWrapper.class, logMessage = "Could not save employee.")
   @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-  public EmployeeDTO save(@Valid @RequestBody EmployeeDTO EmployeeDTO) {
-    return employeeService.save(EmployeeDTO);
+  public EmployeeDTO save(@Valid @RequestBody EmployeeDTO employeeDTO) {
+    return employeeService.save(employeeDTO);
   }
 
   @GetMapping(path = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)

@@ -6,7 +6,7 @@ import * as _ from "lodash";
 })
 export class TitlelisePipe implements PipeTransform {
 
-  transform(value: unknown, ...args: unknown[]): unknown {
+  transform(value: unknown, ..._args: unknown[]): unknown {
     let retval = (value as string).replace("_", " ");
     retval = _.startCase(_.camelCase(retval));
 

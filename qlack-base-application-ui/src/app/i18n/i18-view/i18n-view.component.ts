@@ -1,15 +1,13 @@
-import { Component, OnInit } from "@angular/core";
+import {Component} from "@angular/core";
 import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: "app-i18n",
   templateUrl: "./i18n-view.component.html"
 })
-export class I18nViewComponent implements OnInit {
+export class I18nViewComponent {
 
-  constructor(private translateService: TranslateService) { }
-
-  ngOnInit(): void {
+  constructor(private translateService: TranslateService) {
   }
 
   switchEN() {
