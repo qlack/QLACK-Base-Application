@@ -8,15 +8,24 @@ start your new project by cloning this repo and then built on top of it.
 
 ## Features
 
-### Login/Logout with JWT integration
+### Login / Logout with JWT integration
 
 ![](doc/1.png)
 
-### Tables with sorting, pagination, and filtering
+### Theme support
+
+![](doc/1a.gif)
+
+### Dynamic collapsible sibebar, dynamic breadcrumb
+![](doc/1b.png)
+![](doc/1c.png)
+![](doc/1d.png)
+
+### Tables with sorting, pagination, and filtering with minimal code
 
 ![](doc/2.png)
 
-### CRUD
+### CRUD examples
 
 ![](doc/3.png)
 
@@ -24,7 +33,7 @@ start your new project by cloning this repo and then built on top of it.
 
 ![](doc/4.png)
 
-### File upload/download
+### File upload / download
 
 ![](doc/5.png)
 
@@ -33,6 +42,7 @@ start your new project by cloning this repo and then built on top of it.
 ![](doc/6.png)
 
 ### Annotation-based content filtering
+![](doc/7b.png)
 
 ![](doc/7.png)
 
@@ -42,7 +52,7 @@ start your new project by cloning this repo and then built on top of it.
 
 ### Internationalisation
 
-![](doc/9.png)
+![](doc/9.gif)
 
 ## Development setup
 

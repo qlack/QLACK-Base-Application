@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {SidebarItemDto, SidebarItemType} from "./sidebar-item.dto";
+import {SidebarItemDto, SidebarItemType} from "./dto/sidebar-item.dto";
 import {
   faFilter,
   faGlobe,

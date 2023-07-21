@@ -7,7 +7,7 @@
   <button class="btn btn-sm btn-secondary" tabindex="-1" (click)="reload()"
           *ngIf="data.buttons.reload">RELOAD
   </button>
-  <button class="btn btn-sm btn-primary" color="primary" tabindex="-1"
+  <button class="btn btn-sm btn-primary" tabindex="-1"
           (click)="dialogRef.close(true)"
           *ngIf="data.buttons.ok">{{data.okValue ? data.okValue : "OK"}}</button>
 </mat-dialog-actions>
