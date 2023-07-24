@@ -5,7 +5,7 @@
 ####################################################################################################
 # Cache Maven dependencies.
 ####################################################################################################
-FROM maven:3.8.1-openjdk-15 as maven
+FROM maven:3.8.1-openjdk-17 as maven
 MAINTAINER qlack@eurodyn.com
 
 # Set working directory.
@@ -20,7 +20,7 @@ RUN mvn dependency:go-offline
 ####################################################################################################
 # Build application.
 ####################################################################################################
-FROM maven:3.8.1-openjdk-15 as build
+FROM maven:3.8.1-openjdk-17 as build
 MAINTAINER qlack@eurodyn.com
 
 # Set working directory
