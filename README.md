@@ -62,7 +62,7 @@ To start the back-end component, issue:
 
 To start the front-end component, issue:
 
-`ng start`
+`npm start`
 
 ## Containers support
 
