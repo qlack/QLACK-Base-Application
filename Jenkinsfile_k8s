@@ -133,21 +133,21 @@ pipeline {
             }
         }
    }
-    // post {
-    //     changed {
-    //         emailext subject: '$DEFAULT_SUBJECT',
-    //             body: '$DEFAULT_CONTENT',
-    //             to: 'qlack@eurodyn.com'
-    //         script {
-    //             if (currentBuild.result == 'SUCCESS') {
-    //                 rocketSend avatar: "http://d2-np.eurodyn.com/jenkins/jenkins.png", channel: 'qlack', message: ":white_check_mark: | ${BUILD_URL} \n\nBuild succeeded. *${env.BRANCH_NAME}* \nChangelog: ${getChangeString(10)}", rawMessage: true
-    //             }
-    //             if (currentBuild.result == 'FAILURE') {
-    //                rocketSend avatar: "http://d2-np.eurodyn.com/jenkins/jenkins.png", channel: 'qlack', message: ":x: | ${BUILD_URL} \n\nBuild failed. *${env.BRANCH_NAME}* \nChangelog: ${getChangeString(10)}", rawMessage: true
-    //             }
-    //         }
-    //     }
-    // }
+    post {
+        changed {
+            emailext subject: '$DEFAULT_SUBJECT',
+                body: '$DEFAULT_CONTENT',
+                to: 'qlack@eurodyn.com'
+            script {
+                if (currentBuild.result == 'SUCCESS') {
+                    rocketSend avatar: "http://d2-np.eurodyn.com/jenkins/jenkins.png", channel: 'qlack', message: ":white_check_mark: | ${BUILD_URL} \n\nBuild succeeded. *${env.BRANCH_NAME}* \nChangelog: ${getChangeString(10)}", rawMessage: true
+                }
+                if (currentBuild.result == 'FAILURE') {
+                   rocketSend avatar: "http://d2-np.eurodyn.com/jenkins/jenkins.png", channel: 'qlack', message: ":x: | ${BUILD_URL} \n\nBuild failed. *${env.BRANCH_NAME}* \nChangelog: ${getChangeString(10)}", rawMessage: true
+                }
+            }
+        }
+    }
 }
 
 @NonCPS
