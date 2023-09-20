@@ -145,7 +145,7 @@ pipeline {
                             git push https://$Username:$Password@github.com/qlack/QLACK-Base-Application.git HEAD:master
                         '''
                     }
-                {}
+                }
             }
         }
     }
