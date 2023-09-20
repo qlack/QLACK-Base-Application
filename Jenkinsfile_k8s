@@ -44,10 +44,10 @@ pipeline {
                       - name: maven
                         persistentVolumeClaim:
                           claimName: maven-nfs-pvc
-                     - name: sonar-scanner
+                      - name: sonar-scanner
                         persistentVolumeClaim:
                           claimName: sonar-scanner-nfs-pvc
-            '''
+            ''' 
             workspaceVolume persistentVolumeClaimWorkspaceVolume(claimName: 'workspace-nfs-pvc', readOnly: false)
         }
     }
