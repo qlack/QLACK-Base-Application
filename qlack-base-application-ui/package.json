@@ -1,6 +1,6 @@
 {
   "name": "qlack-base-application-ui",
-  "version": "3.2.1",
+  "version": "3.2.2-SNAPSHOT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --host 0.0.0.0 --disable-host-check --proxy-config proxy.conf.json --hmr",
