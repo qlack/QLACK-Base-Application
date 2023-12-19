@@ -8,16 +8,20 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 @Configuration
 public class WebSecurityConfig {
 
   private static final String[] PUBLIC_URIS =
-    {"/users/auth", "/ping", "/i18n/*"};
+    {"/users/auth", "/ping", "/i18n/*","/error"};
   private final JwtAuthenticationFilter jwtAuthenticationFilter;
+  private final CustomCookieFilter customCookieFilter;
 
-  public WebSecurityConfig(JwtAuthenticationFilter jwtAuthenticationFilter) {
+  public WebSecurityConfig(JwtAuthenticationFilter jwtAuthenticationFilter,
+      CustomCookieFilter customCsrfCookieFilter) {
     this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+    this.customCookieFilter = customCsrfCookieFilter;
   }
 
   @Bean
@@ -28,6 +32,7 @@ public class WebSecurityConfig {
             .requestMatchers(PUBLIC_URIS).permitAll()
             .anyRequest().authenticated())
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        //.addFilterBefore(customCookieFilter, BasicAuthenticationFilter.class)
         .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
     return http.build();

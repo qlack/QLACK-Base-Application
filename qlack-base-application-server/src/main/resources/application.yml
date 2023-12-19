@@ -25,6 +25,9 @@ spring:
 server:
   servlet:
     context-path: /api
+    session:
+      cookie:
+        same-site: Lax
   error:
     include-stacktrace: never
 
@@ -38,3 +41,24 @@ logging:
   level:
     root: error
     com.eurodyn.qlack: info
+    org.springframework.security: DEBUG
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+customCookieFilter:
+    cookie-name: COOKIE-TOKEN # the name of the cookie
+    cookie-timer: 60 # per seconds, the timer for keep old cookies alive for multiple requests
+    cookie-cache-clean-timer: 0 * * ? * * # the scheduler where we clean cache from non-valid cookies
+    login-path: '/**/users/auth'
+    logout-path: '/**/users/logout'
+
+
+  # 0 * * ? * * 	Every minute
+  # 0 0 * ? * * 	Every hour
+
+
+
+
