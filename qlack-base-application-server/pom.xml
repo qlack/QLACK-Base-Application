@@ -14,7 +14,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <additionalparam>-Xdoclint:none</additionalparam>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <qlack.version>3.6.0</qlack.version>
+    <qlack.version>3.6.5-SNAPSHOT</qlack.version>
     <spring-boot.version>3.1.1</spring-boot.version>
     <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
     <lombok.version>1.18.28</lombok.version>
@@ -140,6 +140,11 @@
     <dependency>
       <groupId>com.eurodyn.qlack.fuse</groupId>
       <artifactId>qlack-fuse-lexicon</artifactId>
+      <version>${qlack.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.eurodyn.qlack.util</groupId>
+      <artifactId>qlack-util-csrf</artifactId>
       <version>${qlack.version}</version>
     </dependency>
   </dependencies>
