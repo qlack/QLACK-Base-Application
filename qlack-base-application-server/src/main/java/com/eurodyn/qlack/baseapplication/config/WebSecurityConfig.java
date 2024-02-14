@@ -1,6 +1,5 @@
 package com.eurodyn.qlack.baseapplication.config;
 
-import com.eurodyn.qlack.filter.CustomCookieFilter;
 import com.eurodyn.qlack.util.jwt.filter.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,12 +16,15 @@ public class WebSecurityConfig {
   private static final String[] PUBLIC_URIS =
     {"/users/auth", "/ping", "/i18n/*","/error"};
   private final JwtAuthenticationFilter jwtAuthenticationFilter;
-  private final CustomCookieFilter customCookieFilter;
+  //TODO uncomment when we release 3.6.5 qlack version
 
-  public WebSecurityConfig(JwtAuthenticationFilter jwtAuthenticationFilter,
-      CustomCookieFilter customCsrfCookieFilter) {
+  //  private final CustomCookieFilter customCookieFilter;
+
+  public WebSecurityConfig(JwtAuthenticationFilter jwtAuthenticationFilter
+//      ,CustomCookieFilter customCsrfCookieFilter
+  ) {
     this.jwtAuthenticationFilter = jwtAuthenticationFilter;
-    this.customCookieFilter = customCsrfCookieFilter;
+//    this.customCookieFilter = customCsrfCookieFilter;
   }
 
   @Bean
@@ -32,7 +34,8 @@ public class WebSecurityConfig {
             .requestMatchers(PUBLIC_URIS).permitAll()
             .anyRequest().authenticated())
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-        .addFilterBefore(customCookieFilter, BasicAuthenticationFilter.class)
+        //TODO uncomment when we release 3.6.5 qlack version
+//        .addFilterBefore(customCookieFilter, BasicAuthenticationFilter.class)
         .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
     return http.build();
