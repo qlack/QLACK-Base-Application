@@ -100,12 +100,7 @@ pipeline {
             steps{
                 container (name: 'qlack-builder') {
                     sh '''
-                        cat > payload.json <<__HERE__
-                        {
-                            "project": "cd02194b-2d24-46fc-867c-bea9b0b9020e",
-                            "bom": "$(cat qlack-base-application-server/target/bom.xml |base64 -w 0 -)"
-                        }
-                        __HERE__
+                        echo '{"project": "cd02194b-2d24-46fc-867c-bea9b0b9020e", "bom": "'"$(cat qlack-base-application-server/target/bom.xml | base64 -w 0)"'"}' > payload.json
                     '''
 
                     sh '''
@@ -118,12 +113,7 @@ pipeline {
             steps{
                 container (name: 'qlack-builder') {
                     sh '''
-                        cat > payload.json <<__HERE__
-                        {
-                            "project": "d6f86bbe-0c74-4480-a27c-cd0e5a770d8a",
-                            "bom": "$(cat qlack-base-application-ui/bom.xml |base64 -w 0 -)"
-                        }
-                        __HERE__
+                        echo '{"project": "d6f86bbe-0c74-4480-a27c-cd0e5a770d8a", "bom": "'"$(cat qlack-base-application-ui/bom.xml | base64 -w 0)"'"}' > payload.json
                     '''
 
                     sh '''
