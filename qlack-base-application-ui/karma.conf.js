@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/newproj'),
+      dir: require('path').join(__dirname, './coverage/qlack_base_application_ui'),
       subdir: '.',
       reporters: [
         { type: 'html' },

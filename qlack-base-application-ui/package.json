@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "karma_coverage": "ng test --no-watch --code-coverage"
   },
   "private": true,
   "dependencies": {
@@ -37,6 +38,7 @@
     "@qlack/form-validation": "1.6.0",
     "@qlack/forms": "2.11.0",
     "file-saver": "2.0.5",
+    "@types/jasmine": "^5.1.2",
     "lodash-es": "4.17.21",
     "moment": "2.29.4",
     "ng2-logger": "13.1.9",
@@ -58,9 +60,15 @@
     "autoprefixer": "10.4.13",
     "codelyzer": "6.0.2",
     "daisyui": "2.50.0",
+    "karma": "^6.4.2",
+    "karma-chrome-launcher": "^3.2.0",
+    "karma-coverage": "^2.2.1",
+    "karma-jasmine": "^5.1.0",
+    "karma-jasmine-html-reporter": "^2.1.0",
+    "karma-spec-reporter": "^0.0.36",
     "postcss": "8.4.21",
     "tailwindcss": "3.2.6",
-    "ts-node": "10.9.1",
+    "ts-node": "^10.9.1",
     "typescript": "4.9.5"
   }
 }
