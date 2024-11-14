@@ -112,3 +112,23 @@ customCookieFilter:
 ```
 
 Ensure these configurations are in place for the filter to function correctly.
+
+## Angular unit tests
+There are 25 Angular unit tests as examples to demostrate testing for Components and Services. The unit tests are the files with naming ending with .spec.ts. You can find the tests at folders "login", "logout", "employee".
+The unit tests are using Jasmine and Karma. All the configurations to use Jasmine and Karma are located inside the karma.conf.js file. Open a terminal in qlack-base-application-ui folder 
+and run the unit tests by typing the command "npm run test". 
+
+### Karma unit tests report
+The report of unit tests will be as shown in the screenshot.
+![](doc/10.png)
+
+### Karma code coverage report
+In the same terminal you can run the command "npm run karma_coverage" to get the code coverage.
+The report of code coverage will be as shown in the screenshot.
+![](doc/11.png)
+The karma code coverage module will also create a code coverage report which you will find it in the path "coverage/qlack_base_application_ui".
+The html report of the code coverage will be as shown in the screenshot.
+![](doc/12.png)
+
+## Springboot Backend
+There 16 unit tests for the Backend. **Jacoco** plugin for code coverage is also included in the pom.xml.
