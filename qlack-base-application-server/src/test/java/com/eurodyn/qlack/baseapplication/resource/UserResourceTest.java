@@ -1,7 +1,5 @@
 package com.eurodyn.qlack.baseapplication.resource;
 
-import static org.mockito.Mockito.when;
-
 import com.eurodyn.qlack.baseapplication.dto.LoginDTO;
 import com.eurodyn.qlack.baseapplication.service.QBAUserService;
 import com.eurodyn.qlack.util.jwt.dto.JwtDTO;
@@ -10,19 +8,21 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import static org.mockito.Mockito.when;
+
 @ContextConfiguration(classes = {UserResource.class})
 @ExtendWith(SpringExtension.class)
 class UserResourceTest {
-    @MockBean
+    @MockitoBean
     private QBAUserService qBAUserService;
 
     @Autowired

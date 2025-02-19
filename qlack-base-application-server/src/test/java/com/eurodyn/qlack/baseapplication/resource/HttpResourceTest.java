@@ -3,8 +3,8 @@ package com.eurodyn.qlack.baseapplication.resource;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
@@ -19,8 +19,6 @@ class HttpResourceTest {
 
     @Autowired
     private HttpResource httpResource;
-
-
 
     @Test
     void testProcess_successful() throws Exception {

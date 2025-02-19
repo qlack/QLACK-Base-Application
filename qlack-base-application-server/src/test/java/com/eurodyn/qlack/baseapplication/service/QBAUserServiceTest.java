@@ -1,15 +1,5 @@
 package com.eurodyn.qlack.baseapplication.service;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.ArgumentMatchers.isA;
-import static org.mockito.ArgumentMatchers.isNull;
-import static org.mockito.Mockito.anyBoolean;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
 import com.eurodyn.qlack.common.exception.QAuthenticationException;
 import com.eurodyn.qlack.fuse.aaa.dto.UserDTO;
 import com.eurodyn.qlack.fuse.aaa.service.UserService;
@@ -18,30 +8,35 @@ import com.eurodyn.qlack.fuse.audit.service.AuditService;
 import com.eurodyn.qlack.util.jwt.dto.JwtDTO;
 import com.eurodyn.qlack.util.jwt.dto.JwtGenerateRequestDTO;
 import com.eurodyn.qlack.util.jwt.service.JwtService;
-
-import java.util.HashSet;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import java.util.HashSet;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.anyBoolean;
+import static org.mockito.Mockito.*;
 
 @ContextConfiguration(classes = {QBAUserService.class})
 @ExtendWith(SpringExtension.class)
 class QBAUserServiceTest {
-    @MockBean
+    @MockitoBean
     private AuditService auditService;
 
-    @MockBean
+    @MockitoBean
     private JwtService jwtService;
 
     @Autowired
     private QBAUserService qBAUserService;
 
-    @MockBean
+    @MockitoBean
     private UserService userService;
 
 

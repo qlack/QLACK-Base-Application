@@ -1,23 +1,22 @@
 package com.eurodyn.qlack.baseapplication.resource;
 
-import static org.mockito.Mockito.when;
-
 import com.eurodyn.qlack.fuse.lexicon.service.KeyService;
-
-import java.util.HashMap;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import java.util.HashMap;
+
+import static org.mockito.Mockito.when;
 
 @ContextConfiguration(classes = {I18NResource.class})
 @ExtendWith(SpringExtension.class)
@@ -25,7 +24,7 @@ class I18NResourceTest {
     @Autowired
     private I18NResource i18NResource;
 
-    @MockBean
+    @MockitoBean
     private KeyService keyService;
 
     @Test

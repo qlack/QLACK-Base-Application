@@ -1,22 +1,17 @@
 package com.eurodyn.qlack.baseapplication.resource;
 
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-
+import com.eurodyn.qlack.baseapplication.dto.EmployeeDTO;
 import com.eurodyn.qlack.baseapplication.mapper.BaseMapper;
 import com.eurodyn.qlack.baseapplication.repository.BaseRepository;
-import com.eurodyn.qlack.baseapplication.dto.EmployeeDTO;
 import com.eurodyn.qlack.baseapplication.service.EmployeeService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
@@ -29,21 +24,26 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 @EnableSpringDataWebSupport
 @ContextConfiguration(classes = {SensitiveResource.class, EmployeeService.class})
 @ExtendWith(SpringExtension.class)
 public class SensitiveResourceTest {
 
-    @MockBean
+    @MockitoBean
     private BaseMapper baseMapper;
 
-    @MockBean
+    @MockitoBean
     private BaseRepository baseRepository;
 
     @Autowired
     private SensitiveResource sensitiveResource;
 
-    @MockBean
+    @MockitoBean
     private EmployeeService employeeService;
 
     ZonedDateTime atStartOfDayResult1 = LocalDate.of(2021, 1, 1).atStartOfDay().atZone(ZoneId.systemDefault());
