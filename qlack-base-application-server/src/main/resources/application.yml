@@ -4,23 +4,18 @@ spring:
     default-property-inclusion: non_null
   datasource:
     name: qDS
-    url: jdbc:h2:mem:testdb;NON_KEYWORDS=value;DATABASE_TO_LOWER=true;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:testdb;NON_KEYWORDS=value;DATABASE_TO_LOWER=false;DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL
     username: sa
     password: password
-    initialization-mode: always
     hikari:
-      connection-test-query: SELECT 1
+#      connection-test-query: SELECT 1
       connection-timeout: 60000
       maximum-pool-size: 100
+#      driver-class-name: org.apache.derby.jdbc.EmbeddedDriver
   jpa:
+    open-in-view: false
     hibernate:
       ddl-auto: none
-    generate-ddl: false
-    open-in-view: false
-#    show-sql: true
-#    properties:
-#      hibernate:
-#        format_sql: true
 
 server:
   servlet:
@@ -36,16 +31,12 @@ qlack:
     jwt:
       issuer: qlack_demo
       validity: 1440
-      #TODO uncomment when we release 3.6.5 qlack version
       #    csrf:
 #      cookie-name: COOKIE-TOKEN # the name of the cookie
 #      cookie-timer: 60 # per seconds, the timer for keep old cookies alive for multiple requests
 #      cookie-cache-clean-timer: 0 * * ? * * # the scheduler where we clean cache from non-valid cookies
 #      login-path: '/users/auth'
 #      logout-path: '/users/logout'
-
-      # 0 * * ? * * 	Every minute
-      # 0 0 * ? * * 	Every hour
 
 logging:
   level:

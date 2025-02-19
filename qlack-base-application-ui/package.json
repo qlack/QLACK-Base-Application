@@ -3,7 +3,7 @@
   "version": "3.2.2-SNAPSHOT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host 0.0.0.0 --disable-host-check --proxy-config proxy.conf.json --hmr",
+    "start": "ng serve --host 0.0.0.0 --disable-host-check --proxy-config proxy.conf.json --hmr --open",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
