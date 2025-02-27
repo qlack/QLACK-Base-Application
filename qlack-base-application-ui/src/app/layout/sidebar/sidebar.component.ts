@@ -1,21 +1,15 @@
 import {Component} from "@angular/core";
 import {SidebarItemDto, SidebarItemType} from "./dto/sidebar-item.dto";
-import {
-  faFilter,
-  faGlobe,
-  faHome,
-  faMessage,
-  faRectangleList,
-  faServer,
-  faTableList,
-  faUpload,
-} from "@fortawesome/free-solid-svg-icons";
 import {BaseComponent} from "../../shared/component/base-component";
 import {AppConstants} from "../../app.constants";
+import {NgClass, NgFor, NgIf, NgOptimizedImage, NgSwitch, NgSwitchCase} from "@angular/common";
+import {RouterLink, RouterLinkActive} from "@angular/router";
+import {MatTooltip} from "@angular/material/tooltip";
 
 @Component({
-  selector: "app-sidebar",
-  templateUrl: "./sidebar.component.html"
+    selector: "app-sidebar",
+    templateUrl: "./sidebar.component.html",
+    imports: [NgClass, NgIf, NgOptimizedImage, NgFor, NgSwitch, NgSwitchCase, RouterLinkActive, RouterLink, MatTooltip]
 })
 export class SidebarComponent extends BaseComponent {
   menuItemType = SidebarItemType;
@@ -40,18 +34,18 @@ export class SidebarComponent extends BaseComponent {
   addSidebarEntries() {
     // Define sidebar entries
     this.category1 = [
-      {icon: faHome, title: "Home", route: "home", type: SidebarItemType.ITEM}
+      {icon: "fa-home", title: "Home", route: "home", type: SidebarItemType.ITEM}
     ];
     this.category2 = [
-      {icon: faTableList, title: "Tables & CRUD", route: "employee", type: SidebarItemType.ITEM},
-      {icon: faServer, title: "HTTP", route: "http", type: SidebarItemType.ITEM},
-      {icon: faUpload, title: "Files", route: "files", type: SidebarItemType.ITEM},
-      {icon: faFilter, title: "Data filtering", route: "sensitive", type: SidebarItemType.ITEM}
+      {icon: "fa-table-list", title: "Tables & CRUD", route: "employee", type: SidebarItemType.ITEM},
+      {icon: "fa-server", title: "HTTP", route: "http", type: SidebarItemType.ITEM},
+      {icon: "fa-upload", title: "Files", route: "files", type: SidebarItemType.ITEM},
+      {icon: "fa-filter", title: "Data filtering", route: "sensitive", type: SidebarItemType.ITEM}
     ];
     this.category3 = [
-      {icon: faRectangleList, title: "Forms", route: "forms", type: SidebarItemType.ITEM},
-      {icon: faMessage, title: "Popups", route: "popups", type: SidebarItemType.ITEM},
-      {icon: faGlobe, title: "I18n", route: "i18n", type: SidebarItemType.ITEM}
+      {icon: "fa-rectangle-list", title: "Forms", route: "forms", type: SidebarItemType.ITEM},
+      {icon: "fa-message", title: "Popups", route: "popups", type: SidebarItemType.ITEM},
+      {icon: "fa-globe", title: "I18n", route: "i18n", type: SidebarItemType.ITEM}
     ];
 
     // Create sidebar.

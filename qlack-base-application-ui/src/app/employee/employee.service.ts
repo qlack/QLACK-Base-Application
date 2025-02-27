@@ -1,6 +1,6 @@
-import { Injectable } from "@angular/core";
+import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {CrudService} from "../services/crud.service";
+import {CrudService} from "../shared/service/crud.service";
 import {EmployeeDto} from "./dto/employee-dto";
 
 @Injectable({

@@ -1,10 +1,12 @@
-import { Component, OnInit } from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {SensitiveService} from "../sensitive.service";
 import {EmployeeDto} from "../../employee/dto/employee-dto";
+import {JsonPipe} from "@angular/common";
 
 @Component({
-  selector: "app-sensitive",
-  templateUrl: "./sensitive-view.component.html"
+    selector: "app-sensitive",
+    templateUrl: "./sensitive-view.component.html",
+    imports: [JsonPipe]
 })
 export class SensitiveViewComponent implements OnInit {
   oneUnfiltered?: EmployeeDto;

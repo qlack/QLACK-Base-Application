@@ -3,7 +3,7 @@ version: '3'
 services:
   ui:
     build: qlack-base-application-ui
-    image: qlack/qba-ui:3.2.1
+    image: qlack/qba-ui:3.2.2-SNAPSHOT
     container_name: qba-ui
     restart: unless-stopped
     depends_on:
@@ -12,7 +12,7 @@ services:
       - "6565:80"
   server:
     build: qlack-base-application-server
-    image: qlack/qba-server:3.2.1
+    image: qlack/qba-server:3.2.2-SNAPSHOT
     container_name: qba-server
     restart: unless-stopped
     environment:

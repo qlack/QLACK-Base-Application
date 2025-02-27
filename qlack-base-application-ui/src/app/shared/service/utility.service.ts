@@ -18,7 +18,7 @@ export class UtilityService {
     this.snackBar.open(message, "CLOSE", {
       duration: 5000,
       verticalPosition: "top",
-      panelClass: "snackbar-green"
+      panelClass: "bg-green-800"
     });
   }
 
@@ -30,7 +30,7 @@ export class UtilityService {
     this.snackBar.open(message, "CLOSE", {
       duration: 10000,
       verticalPosition: "top",
-      panelClass: "snackbar-red"
+      panelClass: "bg-red-800"
     });
   }
 
@@ -42,7 +42,7 @@ export class UtilityService {
     this.snackBar.open(message, "CLOSE", {
       duration: 10000,
       verticalPosition: "top",
-      panelClass: "snackbar-blue"
+      panelClass: "bg-blue-800"
     });
   }
 

@@ -5,8 +5,8 @@
 ####################################################################################################
 # Cache Maven dependencies.
 ####################################################################################################
-FROM maven:3.8.1-openjdk-17 as maven
-MAINTAINER qlack@eurodyn.com
+FROM maven:3.9.9-eclipse-temurin-21-alpine AS maven
+LABEL org.opencontainers.image.authors="qlack@eurodyn.com"
 
 # Set working directory.
 WORKDIR /maven
@@ -20,8 +20,8 @@ RUN mvn dependency:go-offline
 ####################################################################################################
 # Build application.
 ####################################################################################################
-FROM maven:3.8.1-openjdk-17 as build
-MAINTAINER qlack@eurodyn.com
+FROM maven:3.9.9-eclipse-temurin-21-alpine AS build
+LABEL org.opencontainers.image.authors="qlack@eurodyn.com"
 
 # Set working directory
 WORKDIR /app
@@ -35,8 +35,8 @@ RUN mvn clean package spring-boot:repackage -Pprod
 ####################################################################################################
 # Create application image.
 ####################################################################################################
-FROM eclipse-temurin:17-jre-alpine
-MAINTAINER qlack@eurodyn.com
+FROM eclipse-temurin:21-jre-alpine
+LABEL org.opencontainers.image.authors="qlack@eurodyn.com"
 
 # Set working directory
 WORKDIR /app

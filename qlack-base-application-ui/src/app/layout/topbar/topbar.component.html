@@ -2,7 +2,7 @@
   <form novalidate [formGroup]="form">
     <div class="relative focus-within:text-gray-400">
           <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-            <fa-icon icon="search"></fa-icon>
+            <i class="fa fa-search"></i>
           </span>
       <input type="text" formControlName="searchTerm"
              class="input py-2 text-sm text-white rounded-2xl pl-10 focus:text-inherit bg-inherit
@@ -14,8 +14,8 @@
 
   <div title="Change Theme" matTooltip="Themes" class="dropdown dropdown-end ">
     <div tabindex="0" class="btn gap-1 normal-case btn-ghost">
-      <fa-icon icon="swatchbook" size="xl"></fa-icon>
-      <fa-icon icon="chevron-down"></fa-icon>
+      <i class="fa fa-swatchbook" size="xl"></i>
+      <i class="fa fa-chevron-down"></i>
     </div>
     <div
       class="dropdown-content bg-base-200 text-base-content rounded-t-box rounded-b-box top-px max-h-96 h-[70vh] w-52 overflow-y-auto shadow-2xl mt-16">
@@ -44,13 +44,13 @@
     </div>
   </div>
 
-  <div title="Change Theme" class="dropdown dropdown-end">
+  <div title="User menu" class="dropdown dropdown-end">
     <div tabindex="0" class="btn gap-1 normal-case btn-ghost">
-      <fa-icon icon="user" size="xl"></fa-icon>
-      <fa-icon icon="chevron-down"></fa-icon>
+      <i class="fa fa-user font-xl"></i>
+      <i class="fa fa-chevron-down"></i>
     </div>
-    <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-300 rounded-box w-52">
-      <li><a routerLink="/logout">Sign out</a></li>
+    <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-300 rounded-box w-52 p-4">
+      <li><a routerLink="/logout"><i class="fa fa-sign-out mr-2"></i>Sign out</a></li>
     </ul>
   </div>
 

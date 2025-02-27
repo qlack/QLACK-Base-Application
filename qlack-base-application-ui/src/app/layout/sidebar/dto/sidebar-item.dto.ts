@@ -1,7 +1,5 @@
-import {IconProp} from "@fortawesome/fontawesome-svg-core";
-
 export interface SidebarItemDto {
-  icon?: IconProp;
+  icon?: string;
   title?: string;
   route?: string;
   type: SidebarItemType;

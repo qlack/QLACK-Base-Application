@@ -1,0 +1,59 @@
+<div class="card w-full rounded-b-none">
+  <div class="card-body">
+    <h2 class="card-title text-2xl flex flex-row justify-between">
+      <div class="flex flex-row gap-2">
+        <i class="fa fa-rectangle-list"></i>
+        <div>Forms</div>
+      </div>
+    </h2>
+    <div class="mt-5">
+      <div role="alert" class="alert alert-info mb-8">
+        <i class="fa fa-circle-info mr-2"></i>
+        <span>To test this form, name must be greater than 2 characters, Age must be greater than 18.</span>
+      </div>
+
+      <div class="text-xl">Inline error icon</div>
+      <form novalidate [formGroup]="form">
+        <div class="flex flex-col">
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" required>
+            <i class="fa fa-triangle-exclamation text-warning cursor-help" matSuffix
+               *ngIf="hasNamedError(form, 'name', 'message')"
+               matTooltip="{{form.controls['name'].getError('message')}}"
+               matTooltipPosition="left"></i>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Age</mat-label>
+            <input matInput formControlName="age" required>
+            <i class="fa fa-triangle-exclamation text-warning cursor-help" matSuffix
+               *ngIf="hasNamedError(form, 'age', 'message')"
+               matTooltip="{{form.controls['age'].getError('message')}}"
+               matTooltipPosition="left"></i>
+          </mat-form-field>
+        </div>
+      </form>
+
+      <div class="text-xl mt-4">Adjacent error message</div>
+      <form novalidate [formGroup]="form">
+        <div class="flex flex-col">
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" required>
+            <mat-error class="!text-red-500">{{form.controls['name'].getError('message')}}</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Age</mat-label>
+            <input matInput formControlName="age" required>
+            <mat-error class="!text-red-500">{{form.controls['age'].getError('message')}}</mat-error>
+          </mat-form-field>
+        </div>
+      </form>
+
+    </div>
+    <div class="card-actions justify-start mt-10">
+      <button class="btn btn-sm btn-primary" (click)="save()" [disabled]="form.invalid">SAVE
+      </button>
+    </div>
+  </div>
+</div>

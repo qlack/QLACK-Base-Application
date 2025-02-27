@@ -1,14 +1,12 @@
 import {Component} from "@angular/core";
 import {UtilityService} from "../../shared/service/utility.service";
 import {MatDialog} from "@angular/material/dialog";
-import {
-  OkCancelModalComponent
-} from "../../shared/component/ok-cancel-modal/ok-cancel-modal.component";
+import {OkCancelModalComponent} from "../../shared/component/ok-cancel-modal/ok-cancel-modal.component";
 import {TextModalComponent} from "../../shared/component/text-modal/text-modal.component";
 
 @Component({
-  selector: "app-popups",
-  templateUrl: "./popup-view.component.html"
+    selector: "app-popups",
+    templateUrl: "./popup-view.component.html"
 })
 export class PopupViewComponent {
 

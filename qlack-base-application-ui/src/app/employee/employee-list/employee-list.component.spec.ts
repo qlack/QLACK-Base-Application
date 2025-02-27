@@ -43,17 +43,16 @@ describe("EmployeeListComponent", () => {
     fakeUtilityService = jasmine.createSpyObj<UtilityService>("UtilityService", ["popupError"]);
 
     TestBed.configureTestingModule({
-      declarations: [EmployeeListComponent],
-      schemas: [NO_ERRORS_SCHEMA],
-      imports: [ HttpClientTestingModule, ReactiveFormsModule, FormsModule, MatTableModule, MatPaginatorModule, MatSortModule, BrowserAnimationsModule, NoopAnimationsModule ],
-      providers: [
+    schemas: [NO_ERRORS_SCHEMA],
+    imports: [HttpClientTestingModule, ReactiveFormsModule, FormsModule, MatTableModule, MatPaginatorModule, MatSortModule, BrowserAnimationsModule, NoopAnimationsModule, EmployeeListComponent],
+    providers: [
         { provide: EmployeeService, useFactory: () => fakeEmployeeService },
         { provide: QFormsService, useFactory: () => fakeQForms },
         { provide: FormBuilder, useFactory: () => fakeFb },
         { provide: FormGroup, useFactory: () => fakeFg },
         { provide: UtilityService, useFactory: () => fakeUtilityService },
-      ]
-    })
+    ]
+})
       .compileComponents();
   }));
 

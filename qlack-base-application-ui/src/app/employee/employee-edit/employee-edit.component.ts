@@ -1,20 +1,23 @@
 import {Component, OnInit} from "@angular/core";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {QFormsService} from "@qlack/forms";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {BaseComponent} from "../../shared/component/base-component";
 import {UtilityService} from "../../shared/service/utility.service";
 import {EmployeeService} from "../employee.service";
 import {AppConstants} from "../../app.constants";
-import {
-  OkCancelModalComponent
-} from "../../shared/component/ok-cancel-modal/ok-cancel-modal.component";
+import {OkCancelModalComponent} from "../../shared/component/ok-cancel-modal/ok-cancel-modal.component";
 import {EmployeeDto} from "../dto/employee-dto";
+import {MatFormField, MatLabel, MatSuffix} from "@angular/material/form-field";
+import {MatInput} from "@angular/material/input";
+import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from "@angular/material/datepicker";
 
 @Component({
-  selector: "app-employee-edit",
-  templateUrl: "./employee-edit.component.html"
+    selector: "app-employee-edit",
+    templateUrl: "./employee-edit.component.html",
+    imports: [ReactiveFormsModule, MatFormField, MatLabel, MatInput, MatDatepickerInput, MatDatepickerToggle,
+      MatSuffix, MatDatepicker, RouterLink]
 })
 export class EmployeeEditComponent extends BaseComponent implements OnInit {
   form!: FormGroup;
@@ -31,7 +34,7 @@ export class EmployeeEditComponent extends BaseComponent implements OnInit {
     // Check if an edit is performed and fetch data.
     this.id = this.route.snapshot.paramMap.get("id");
 
-    // Setup the form.
+    // Set up the form.
     this.form = this.fb.group({
       id: [],
       firstName: [[], [Validators.required, Validators.maxLength(256)]],
@@ -66,7 +69,7 @@ export class EmployeeEditComponent extends BaseComponent implements OnInit {
         }
       }
     });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result: boolean) => {
       if (result) {
         this.employeeService.delete(this.id).subscribe(() => {
           this.utilityService.popupSuccess("Employee successfully deleted.");

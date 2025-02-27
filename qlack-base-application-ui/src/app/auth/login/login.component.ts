@@ -1,22 +1,28 @@
 import {Component, OnInit, Renderer2} from "@angular/core";
 import {Router} from "@angular/router";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Log} from "ng2-logger/browser";
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {AppConstants} from "../../app.constants";
 import {LoginInfoDto} from "../dto/login-info-dto";
 import {BaseComponent} from "../../shared/component/base-component";
 import {UtilityService} from "../../shared/service/utility.service";
 import {AuthService} from "../auth.service";
-import {JwtTrackerService} from "../../services/jwt-tracker-service";
+import {JwtTrackerService} from "../../shared/service/jwt-tracker.service";
+import {MatFormField} from '@angular/material/form-field';
+import {MatInput} from '@angular/material/input';
+import {NgClass, NgIf} from '@angular/common';
 
 @Component({
   selector: "app-login",
+  imports: [
+    MatFormField,
+    ReactiveFormsModule,
+    MatInput,
+    NgIf,
+    NgClass
+  ],
   templateUrl: "./login.component.html"
 })
 export class LoginComponent extends BaseComponent implements OnInit {
-  // Logger.
-  private log = Log.create("LoginComponent");
-
   // Form control.
   loginForm!: FormGroup;
 
@@ -33,23 +39,23 @@ export class LoginComponent extends BaseComponent implements OnInit {
               private utilityService: UtilityService, private renderer: Renderer2,
               private jwtTrackerService: JwtTrackerService) {
     super();
+
+    // Prepare login form.
+    this.loginForm = this.fb.group({
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.required]]
+    });
   }
 
   ngOnInit() {
     if (!this.isLoggedIn()) {
         this.renderer.setAttribute(document.body, "style",
           "background-image:  linear-gradient(to top, rgba(0,0,0,0)" +
-          " 30%, rgba(255,255,255,0.62) 64%, rgba(255,255,255,1) 89%), url(/assets/img/bg.jpg);" +
+          " 30%, rgba(255,255,255,0.62) 64%, rgba(255,255,255,1) 89%), url(/img/bg.jpg);" +
           " background-size: cover;");
     } else {
       this.router.navigate(["home"]);
     }
-
-    // Prepare login form.
-    this.loginForm = this.fb.group({
-      email: ["", [Validators.required, Validators.email]],
-      password: ["", [Validators.required]]
-    });
   }
 
   onSubmit({value}: { value: LoginInfoDto }) {
@@ -62,7 +68,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
         this.jwtTrackerService.startTracking();
         this.router.navigate(["home"]);
       }, error: onError => {
-        this.log.error("Authentication was unsuccessful.", onError)
+        this.logger.logError("Authentication was unsuccessful.", onError)
         this.utilityService.popupError("Authentication was unsuccessful.");
         this.errorMessage = "Authentication was unsuccessful."
         this.hideLoginForm = false;

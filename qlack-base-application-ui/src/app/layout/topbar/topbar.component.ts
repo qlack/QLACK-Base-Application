@@ -1,14 +1,20 @@
 import {Component, OnInit} from "@angular/core";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {AppConstants} from "../../app.constants";
+import {MatTooltip} from "@angular/material/tooltip";
+import {NgFor} from "@angular/common";
+import {RouterLink} from "@angular/router";
 
 @Component({
-  selector: "app-topbar",
-  templateUrl: "./topbar.component.html"
+    selector: "app-topbar",
+    templateUrl: "./topbar.component.html",
+    imports: [ReactiveFormsModule, MatTooltip, NgFor, RouterLink]
 })
 export class TopbarComponent implements OnInit {
   form!: FormGroup;
-  themes = ["acid", "aqua", "autumn", "black", "bumblebee", "business", "cmyk", "coffee", "corporate", "cupcake", "cyberpunk", "dark", "dracula", "emerald", "fantasy", "forest", "garden", "halloween", "lemonade", "light", "lofi", "luxury", "night", "pastel", "retro", "synthwave", "valentine", "winter", "wireframe"];
+  themes = ["acid", "aqua", "autumn", "black", "bumblebee", "business", "cmyk", "coffee", "corporate", "cupcake",
+    "cyberpunk", "dark", "dracula", "emerald", "fantasy", "forest", "garden", "halloween", "lemonade", "light", "lofi",
+    "luxury", "night", "pastel", "retro", "synthwave", "valentine", "winter", "wireframe"];
 
   constructor(private fb: FormBuilder) {
   }
@@ -21,7 +27,7 @@ export class TopbarComponent implements OnInit {
   }
 
   closeSearchResults() {
-    this.form.controls.searchTerm.setValue("");
+    this.form.controls["searchTerm"].setValue("");
   }
 
   selectTheme(name: string) {

@@ -1,11 +1,10 @@
 import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
-import {JwtHelperService} from "@auth0/angular-jwt";
 import {Observable} from "rxjs";
 import {AppConstants} from "../app.constants";
 import {LoginInfoDto} from "./dto/login-info-dto";
 import {UserDto} from "./dto/user-dto";
-import {CrudService} from "../services/crud.service";
+import {CrudService} from "../shared/service/crud.service";
 import {JwtDto} from "./dto/jwt-dto";
 
 /**
@@ -18,7 +17,7 @@ import {JwtDto} from "./dto/jwt-dto";
 export class AuthService extends CrudService<UserDto> {
   private resource = `users`;
 
-  constructor(http: HttpClient, private jwtService: JwtHelperService) {
+  constructor(http: HttpClient) {
     super(http, "users");
   }
 

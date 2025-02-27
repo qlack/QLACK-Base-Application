@@ -7,8 +7,6 @@ import com.eurodyn.qlack.baseapplication.model.BaseEntity;
 import com.eurodyn.qlack.baseapplication.repository.BaseRepository;
 import com.eurodyn.qlack.util.data.optional.ReturnOptional;
 import com.querydsl.core.types.Predicate;
-import java.io.InputStream;
-import java.util.List;
 import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +18,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
+import java.io.InputStream;
+import java.util.List;
+
 @Service
 @Validated
 @Transactional
 abstract class BaseService<D extends BaseDTO, E extends BaseEntity> {
 
-  @Autowired
   @Getter
+  @Autowired
   private BaseRepository<E> repository;
 
   @Autowired

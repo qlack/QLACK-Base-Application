@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from "@angular/core";
-import {MatSort} from "@angular/material/sort";
+import {MatSort, MatSortHeader} from "@angular/material/sort";
 import {QFormsService} from "@qlack/forms";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {debounceTime, distinctUntilChanged} from "rxjs/operators";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
@@ -9,10 +9,25 @@ import {EmployeeService} from "../employee.service";
 import {UtilityService} from "../../shared/service/utility.service";
 import {BaseComponent} from "../../shared/component/base-component";
 import {EmployeeDto} from "../dto/employee-dto";
+import {
+  CdkCell,
+  CdkCellDef,
+  CdkColumnDef,
+  CdkHeaderCell,
+  CdkHeaderCellDef,
+  CdkHeaderRow,
+  CdkHeaderRowDef,
+  CdkRow,
+  CdkRowDef,
+  CdkTable
+} from "@angular/cdk/table";
+import {RouterLink} from "@angular/router";
+import {DatePipe} from "@angular/common";
 
 @Component({
-  selector: "app-employee",
-  templateUrl: "./employee-list.component.html"
+    selector: "app-employee",
+    templateUrl: "./employee-list.component.html",
+    imports: [ReactiveFormsModule, CdkTable, MatSort, CdkColumnDef, CdkHeaderCellDef, CdkHeaderCell, MatSortHeader, CdkCellDef, CdkCell, CdkHeaderRowDef, CdkHeaderRow, CdkRowDef, CdkRow, RouterLink, MatPaginator, DatePipe]
 })
 export class EmployeeListComponent extends BaseComponent implements AfterViewInit, OnInit {
   // References to sorting and pagination.

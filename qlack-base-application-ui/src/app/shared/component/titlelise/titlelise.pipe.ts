@@ -1,9 +1,7 @@
 import {Pipe, PipeTransform} from "@angular/core";
 import * as _ from "lodash";
 
-@Pipe({
-  name: "titlelise"
-})
+@Pipe({ name: "titlelise" })
 export class TitlelisePipe implements PipeTransform {
 
   transform(value: unknown, ..._args: unknown[]): unknown {

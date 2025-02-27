@@ -36,7 +36,7 @@ export class BreadcrumbService {
       const routeUrl = parentUrl.concat(route.url.map(url => url.path));
 
       // Add an element for the current route part.
-      if (route.data.breadcrumb) {
+      if (route.data["breadcrumb"]) {
         const breadcrumb = {
           label: this.getLabel(route),
           url: "/" + routeUrl.join("/")
@@ -50,8 +50,8 @@ export class BreadcrumbService {
   }
 
   private getLabel(route: ActivatedRouteSnapshot) {
-    return typeof route.data.breadcrumb === "function"
-      ? route.data.breadcrumb(route) : route.data.breadcrumb;
+    return typeof route.data["breadcrumb"] === "function"
+      ? route.data["breadcrumb"](route) : route.data["breadcrumb"];
   }
 
 }

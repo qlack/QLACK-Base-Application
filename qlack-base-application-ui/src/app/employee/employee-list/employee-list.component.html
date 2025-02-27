@@ -2,14 +2,14 @@
   <div class="card-body">
     <h2 class="card-title text-2xl flex flex-row justify-between">
       <div class="flex flex-row gap-2">
-        <fa-icon icon="table-list"></fa-icon>
+        <i class="fa fa-table-list"></i>
         <div>Employees</div>
       </div>
     </h2>
     <div>
       <!-- Filters -->
       <div [formGroup]="filterForm" class="mb-10 mt-5 flex flex-row gap-2">
-        <fa-icon class="mr-5 ml-1 mt-3" icon="search"></fa-icon>
+        <i class="mr-5 ml-1 mt-3 fa fa-search"></i>
         <input class="input w-full max-w-xs placeholder-primary-content/30" formControlName="firstName"
                placeholder="First name" type="text"/>
         <input class="input w-full max-w-xs placeholder-primary-content/30" formControlName="lastName"

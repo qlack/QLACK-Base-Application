@@ -128,9 +128,10 @@ Ensure these configurations are in place for the filter to function correctly.
 
 There are 25 Angular unit tests as examples to demonstrate testing for Components and Services. The unit tests are the
 files with naming ending with .spec.ts. You can find the tests at folders "login", "logout", "employee".
+
 The unit tests are using Jasmine and Karma. All the configurations to use Jasmine and Karma are located inside the
-karma.conf.js file. Open a terminal in qlack-base-application-ui folder
-and run the unit tests by typing the command "npm run test".
+`karma.conf.js` file. Open a terminal in `qlack-base-application-ui` folder and run the unit tests by typing the 
+command `npm run test`.
 
 ### Karma unit tests report
 

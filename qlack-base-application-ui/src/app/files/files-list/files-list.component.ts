@@ -1,14 +1,25 @@
 import {AfterViewInit, Component, ViewChild} from "@angular/core";
 import {FileDto} from "../dto/file-dto";
-import {MatSort} from "@angular/material/sort";
+import {MatSort, MatSortHeader} from "@angular/material/sort";
 import {FilesService} from "../files.service";
-import {MatTableDataSource} from "@angular/material/table";
+import {
+  MatHeaderCellDef,
+  MatHeaderRow,
+  MatHeaderRowDef,
+  MatRow,
+  MatRowDef,
+  MatTableDataSource
+} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {QFormsService} from "@qlack/forms";
+import {CdkCell, CdkCellDef, CdkColumnDef, CdkHeaderCell, CdkTable} from "@angular/cdk/table";
+import {RouterLink} from "@angular/router";
 
 @Component({
-  selector: "app-files",
-  templateUrl: "./files-list.component.html"
+    selector: "app-files",
+    templateUrl: "./files-list.component.html",
+    imports: [CdkTable, MatSort, CdkColumnDef, MatHeaderCellDef, CdkHeaderCell, MatSortHeader, CdkCellDef,
+      CdkCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatPaginator, RouterLink]
 })
 export class FilesListComponent implements AfterViewInit {
   columns = ["fileName", "description", "size", "actions"];

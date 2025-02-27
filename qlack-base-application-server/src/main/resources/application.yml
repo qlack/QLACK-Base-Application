@@ -8,10 +8,12 @@ spring:
     username: sa
     password: password
     hikari:
-#      connection-test-query: SELECT 1
+      connection-test-query: SELECT 1
       connection-timeout: 60000
-      maximum-pool-size: 100
-#      driver-class-name: org.apache.derby.jdbc.EmbeddedDriver
+      maximum-pool-size: 30
+      idle-timeout: 120000
+      minimum-idle: 10
+      max-lifetime: 300000
   jpa:
     open-in-view: false
     hibernate:

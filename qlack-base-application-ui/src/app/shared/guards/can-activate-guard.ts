@@ -1,15 +1,13 @@
 import {inject, Injectable} from "@angular/core";
-import {Log} from "ng2-logger/browser";
 import {AppConstants} from "../../app.constants";
 import {ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot} from "@angular/router";
+import {LumberjackService} from '@ngworker/lumberjack';
 
 @Injectable({
   providedIn: 'root'
 })
 class GuardService {
-  log = Log.create("GuardService");
-
-  constructor(private router: Router) {
+  constructor(private router: Router, private logger: LumberjackService) {
   }
 
   canActivate(): boolean {
@@ -18,7 +16,7 @@ class GuardService {
       return true;
     } else {
       const redirect = window.location.href;
-      this.log.info(`Did not find a JWT. Proceeding to login with a redirect back to ${redirect}.`);
+      this.logger.logInfo(`Did not find a JWT. Proceeding to login with a redirect back to ${redirect}.`);
       this.router.navigate(["login", {redirect: redirect}]);
       return false;
     }

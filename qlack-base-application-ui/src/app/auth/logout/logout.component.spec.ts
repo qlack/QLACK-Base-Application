@@ -1,10 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Renderer2, Type } from '@angular/core';
-import { of, throwError } from 'rxjs';
-import { LogoutComponent } from './logout.component';
-import { AuthService } from '../auth.service';
-import { JwtTrackerService } from '../../services/jwt-tracker-service';
-import { BaseComponent } from 'src/app/shared/component/base-component';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {Renderer2, Type} from '@angular/core';
+import {of, throwError} from 'rxjs';
+import {LogoutComponent} from './logout.component';
+import {AuthService} from '../auth.service';
+import {JwtTrackerService} from '../../shared/service/jwt-tracker.service';
 
 describe('LogoutComponent', () => {
   let component: LogoutComponent;
@@ -18,12 +17,12 @@ describe('LogoutComponent', () => {
     const jwtTrackerServiceSpy = jasmine.createSpyObj('JwtTrackerService', ['stopTracking']);
 
     await TestBed.configureTestingModule({
-      declarations: [LogoutComponent],
-      providers: [
+    declarations: [LogoutComponent],
+    providers: [
         { provide: AuthService, useValue: authServiceSpy },
         { provide: JwtTrackerService, useValue: jwtTrackerServiceSpy }
-      ]
-    }).compileComponents();
+    ]
+}).compileComponents();
 
       authService = TestBed.inject(AuthService) as jasmine.SpyObj<AuthService>;
       jwtTrackerService = TestBed.inject(JwtTrackerService) as jasmine.SpyObj<JwtTrackerService>;
@@ -48,7 +47,7 @@ describe('LogoutComponent', () => {
     expect(renderer.setAttribute).toHaveBeenCalledWith(
       document.body,
       'style',
-      'background-image:  linear-gradient(to top, rgba(0,0,0,0) 30%, rgba(255,255,255,0.62) 64%, rgba(255,255,255,1) 89%), url(/assets/img/bg.jpg); background-size: cover;'
+      'background-image:  linear-gradient(to top, rgba(0,0,0,0) 30%, rgba(255,255,255,0.62) 64%, rgba(255,255,255,1) 89%), url(/img/bg.jpg); background-size: cover;'
     );
   });
 

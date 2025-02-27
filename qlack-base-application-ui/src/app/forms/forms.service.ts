@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {CrudService} from "../services/crud.service";
+import {CrudService} from "../shared/service/crud.service";
 import {HttpClient} from "@angular/common/http";
 import {FormDto} from "./dto/form-dto";
 

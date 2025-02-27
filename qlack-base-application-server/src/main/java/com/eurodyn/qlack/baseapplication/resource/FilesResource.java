@@ -7,7 +7,7 @@ import com.eurodyn.qlack.common.exception.QExceptionWrapper;
 import com.eurodyn.qlack.util.data.exceptions.ExceptionWrapper;
 import com.eurodyn.qlack.util.querydsl.EmptyPredicateCheck;
 import com.querydsl.core.types.Predicate;
-import java.io.IOException;
+import jakarta.ws.rs.core.Response;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.data.domain.Page;
@@ -17,15 +17,10 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @Validated
 @RestController
@@ -37,11 +32,10 @@ public class FilesResource {
 
   @PostMapping
   @ExceptionWrapper(wrapper = QExceptionWrapper.class, logMessage = "Could not save file.")
-  public ResponseEntity save(@RequestParam("file") MultipartFile file,
-      @ModelAttribute FileDTO fileDTO) throws IOException {
+  public Response save(@RequestParam("file") MultipartFile file, @ModelAttribute FileDTO fileDTO) throws IOException {
     filesService.save(fileDTO, file);
 
-    return ResponseEntity.ok().build();
+    return Response.ok().build();
   }
 
   @GetMapping
@@ -57,21 +51,19 @@ public class FilesResource {
   }
 
   @DeleteMapping(path = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-  @ExceptionWrapper(wrapper = QExceptionWrapper.class, logMessage = "Could not delete file."
-      + "provisioning package.")
+  @ExceptionWrapper(wrapper = QExceptionWrapper.class, logMessage = "Could not delete file provisioning package.")
   public void delete(@PathVariable String id) {
     filesService.deleteById(id);
   }
 
   @GetMapping(value = "{id}/download")
   @ExceptionWrapper(wrapper = QExceptionWrapper.class, logMessage = "Could not download file.")
-  public ResponseEntity download(@PathVariable String id) throws IOException {
+  public ResponseEntity<InputStreamResource> download(@PathVariable String id) {
     final FileDTO provisioningDTO = filesService.findById(id);
 
     return ResponseEntity
         .ok()
-        .header(HttpHeaders.CONTENT_DISPOSITION,
-            "attachment; filename=" + provisioningDTO.getFileName())
+        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + provisioningDTO.getFileName())
         .contentLength(provisioningDTO.getFileSize())
         .contentType(MediaType.APPLICATION_OCTET_STREAM)
         .body(new InputStreamResource(filesService.download(id)));
