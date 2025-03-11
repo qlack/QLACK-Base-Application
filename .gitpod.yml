@@ -1,4 +1,4 @@
-image: ./Dockerfile  # Use the custom image
+image: ./dockerfile  # Use the custom image
 
 vscode:
   extensions:
