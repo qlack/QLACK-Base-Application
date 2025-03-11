@@ -3,7 +3,7 @@
 The QLACK Base Application is a full-stack blueprint, featuring Angular and Spring Boot. You can
 start your new project by cloning this repo and then built on top of it.
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/qlack/QLACK-Base-Application)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/qlack/QLACK-Base-Application/tree/test)
 
 ## Features
 
