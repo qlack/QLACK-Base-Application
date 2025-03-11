@@ -1,4 +1,4 @@
-image: ./dockerfile  # Use the custom image
+image: gitpod/workspace-full
 
 vscode:
   extensions:
@@ -14,10 +14,11 @@ vscode:
 tasks:
   - name: Prepare env
     init: |
-      cd /workspace/QLACK-Base-Application/qlack-base-application-server && mvn clean install
+      yes | sdk install java 21.0.6-tem && cd /workspace/QLACK-Base-Application/qlack-base-application-server && mvn clean install
       cd /workspace/QLACK-Base-Application/qlack-base-application-ui && npm install && npx -y @angular/cli build
     command: gp sync-done env
   - name: Backend
+    before: yes | sdk install java 21.0.6-tem --yes
     command: |
       gp sync-await env
       sdk use java 21.0.6-tem
