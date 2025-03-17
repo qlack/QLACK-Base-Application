@@ -19,7 +19,7 @@ tasks:
     command: gp sync-done env
   - name: Backend
     before: |
-      source "$HOME/.sdkman/bin/sdkman-init.sh"
+      sdk install java 21.0.6-tem < /dev/null
       sdk use java 21.0.6-tem
     command: |
       gp sync-await env
