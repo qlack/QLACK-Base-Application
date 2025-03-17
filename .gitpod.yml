@@ -18,9 +18,9 @@ tasks:
       cd /workspace/QLACK-Base-Application/qlack-base-application-ui && npm install && npx -y @angular/cli build
     command: gp sync-done env
   - name: Backend
-    before: yes | sdk install java 21.0.6-tem
     command: |
       gp sync-await env
+      sdk install java 21.0.6-tem < /dev/null
       sdk use java 21.0.6-tem
       cd /workspace/QLACK-Base-Application/qlack-base-application-server
       mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Xdebug -XX:+ShowCodeDetailsInExceptionMessages -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8081" -Dspring-boot.run.arguments="--server.port=8080"
