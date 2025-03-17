@@ -14,14 +14,8 @@ vscode:
 tasks:
   - name: Prepare env
     init: |
-      sdk install java 21.0.6-tem < /dev/null
-      export JAVA_HOME=$(sdk home java 21.0.6-tem)
-      export PATH=$JAVA_HOME/bin:$PATH
-      cd /workspace/QLACK-Base-Application/qlack-base-application-server && mvn clean install
-      cd /workspace/QLACK-Base-Application/qlack-base-application-ui
-      npm install --no-fund --legacy-peer-deps --audit=false
-      export NG_CLI_ANALYTICS=ci  # Disable Angular analytics
-      npx -y @angular/cli build
+      yes | sdk install java 21.0.6-tem && cd /workspace/QLACK-Base-Application/qlack-base-application-server && mvn clean install
+      cd /workspace/QLACK-Base-Application/qlack-base-application-ui && npm install && npx -y @angular/cli build
     command: gp sync-done env
   - name: Backend
     before: yes | sdk install java 21.0.6-tem
@@ -33,7 +27,6 @@ tasks:
   - name: Frontend
     command: |
       gp sync-await env
-      export NG_CLI_ANALYTICS=ci  # Disable Angular analytics
       cd /workspace/QLACK-Base-Application/qlack-base-application-ui
       npx -y @angular/cli serve --host 0.0.0.0 --disable-host-check --proxy-config proxy.conf.json
 
