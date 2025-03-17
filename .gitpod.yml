@@ -19,9 +19,9 @@ tasks:
       export PATH=$JAVA_HOME/bin:$PATH
       cd /workspace/QLACK-Base-Application/qlack-base-application-server && mvn clean install
       cd /workspace/QLACK-Base-Application/qlack-base-application-ui
-      npm install --no-fund --legacy-peer-deps
+      npm install --no-fund --legacy-peer-deps --audit=false
       export NG_CLI_ANALYTICS=ci  # Disable Angular analytics
-      npx -y @angular/cli build --no-interactive
+      npx -y @angular/cli build
     command: gp sync-done env
   - name: Backend
     before: yes | sdk install java 21.0.6-tem
