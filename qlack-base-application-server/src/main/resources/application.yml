@@ -32,13 +32,14 @@ qlack:
   util:
     jwt:
       issuer: qlack_demo
-      validity: 1440
+      validity: 1440 # in minutes, default validity is 1 day
     csrf:
       cookie-name: COOKIE-TOKEN # the name of the cookie
       cookie-timer: 60 # per seconds, the timer for keep old cookies alive for multiple requests
       cookie-cache-clean-timer: 0 * * ? * * # the scheduler where we clean cache from non-valid cookies
       login-path: '/users/auth'
       logout-path: '/users/logout'
+      ignore-paths: '/i18n/*, /error'
 
 logging:
   level:

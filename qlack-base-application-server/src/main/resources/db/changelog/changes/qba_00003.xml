@@ -25,7 +25,7 @@
         <constraints nullable="false"/>
       </column>
       <column name="department" type="VARCHAR(255)"/>
-      <column defaultValueComputed="NULL" name="hiring_date" type="DATETIME">
+      <column name="hiring_date" type="DATETIME">
         <constraints nullable="false"/>
       </column>
     </createTable>
